@@ -12,6 +12,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         source: "2025-1-C",
         explanation: "Yönetmeliğe göre; I ve II doğrudur. 10 ve daha fazla çalışan için dinlenme yeri zorunluluğu yoktur, yanlıştır.",
         profile: "isg_c"
+		image: ""
     },
     {
         category: "Mevzuat",
