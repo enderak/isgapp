@@ -251,12 +251,12 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
     {
         category: "Teknik",
         text: "28. Sağlık ve Güvenlik İşaretleri Yönetmeliği’ne göre yukarıdaki işaret (Mavi daire içinde beyaz musluk), hangi işaret levhası kategorisinde yer alır?",
-        image: "img/eldiven.jpg",
-		options: ["Acil çıkış ve ilk yardım", "Emredici", "Uyarı", "Yangınla mücadele", "Yasaklayıcı"],
+        options: ["Acil çıkış ve ilk yardım", "Emredici", "Uyarı", "Yangınla mücadele", "Yasaklayıcı"],
         correct: 1,
         source: "2025-1-C",
         explanation: "Mavi daire içinde beyaz piktogram, emredici işarettir (örneğin 'göz koruyucu kullan', 'elle yıkama' gibi).",
         profile: "isg_c"
+		image: "img/eldiven.jpg",
     },
     {
         category: "Teknik",
