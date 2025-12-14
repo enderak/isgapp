@@ -75,11 +75,11 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
     },
     {
         category: "Teknik",
-        text: "8. Sağlık ve Güvenlik İşaretleri Yönetmeliği'ne göre şekli ile kodlanmış olan işaretin anlamı aşağıdakilerden hangisidir? (Mavi daire içinde aşağıyı gösteren ok)",
+        text: "8. Sağlık ve Güvenlik İşaretleri Yönetmeliği'ne göre şekli ile kodlanmış olan işaretin anlamı aşağıdakilerden hangisidir?",
         options: ["Hazır ol", "İndir", "Kes acil dur", "Kaldır", "Tamam"],
         correct: 2,
         source: "2025-1-A",
-        explanation: "Mavi daire içinde aşağıyı gösteren ok, 'indir' anlamına gelen bir emredici işarettir.",
+        explanation: "Geçici İşaretler: Gerekli önlemlerin alınması için ilgili kişinin çağrılmasında kullanılan işaretler, Çalışanların acil tahliyesi için ışıklı işaretler, sesli sinyaller, Tehlikeye yol açabilecek ya da tehlikeli manevralar yapan kimseleri yönlendirilmesinde kullanılan işaretler",
         profile: "isg_a",
         image: "img/kesacildur.png"
     },
