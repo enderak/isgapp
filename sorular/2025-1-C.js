@@ -1,7 +1,9 @@
-const questionPool = [
-    // ==========================================
-    // KAYNAK: 2025-1-C
-    // ==========================================
+// Bu satır standarttır, her dosyanın başında olmalı:
+window.SoruHavuzu = window.SoruHavuzu || [];
+
+// Soruları havuza ekle
+window.SoruHavuzu = window.SoruHavuzu.concat([
+    // --- 2025-1C SORULARI (PDF'ten) ---
     {
         category: "Mevzuat",
         text: "1. İşyeri Bina ve Eklentilerinde Alınacak Sağlık ve Güvenlik Önlemlerine İlişkin Yönetmelik hükümlerine göre, dinlenme yerleri için aşağıdakilerden hangileri doğrudur?\n\nI. İş aralarında uygun dinlenme imkânı bulunan büro ve benzeri iş yerlerinde, ayrıca dinlenme yeri bulunması gerekmez.\nII. Gerekli şartlar sağlansa bile, yemek yeme yerlerinin dinlenme yeri olarak kullanılması uygun değildir.\nIII. 10 ve daha fazla çalışanın bulunduğu iş yerlerinde dinlenme yeri bulunmalıdır.",
