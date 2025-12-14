@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>İSG Pro V15</title>
+    <title>İSG Pro V16</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -56,7 +56,7 @@
             });
         }
 
-        // --- 2. PROFİL AYARLARI (GÜNCELLENDİ) ---
+        // --- 2. PROFİL AYARLARI ---
         const CONFIG = {
             'isg_a': { label: 'İSG (A Sınıfı)', color: 'red', desc: 'En Üst Düzey Uzmanlık' },
             'isg_b': { label: 'İSG (B Sınıfı)', color: 'orange', desc: 'Tehlikeli İşler' },
@@ -65,7 +65,6 @@
             'dsp': { label: 'Diğer Sağlık P.', color: 'purple', desc: 'Yardımcı Sağlık' }
         };
 
-        // Standart Soru Dağılımı (Tüm sınıflar için benzerdir)
         const STANDARD_DISTRIBUTION = { 'Teknik': 20, 'Mevzuat': 15, 'Genel İSG Konuları': 7, 'Sağlık': 5, 'Hukuk': 3 };
 
         let app = document.getElementById('app');
@@ -119,7 +118,6 @@
             const totalQ = window.SoruHavuzu.length;
             const history = JSON.parse(localStorage.getItem('examHistory')) || [];
             
-            // Son sınavları listele
             const lastExams = history.slice(0, 3).map(h => `
                 <div class="flex justify-between items-center p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-800 mb-2 text-xs">
                     <div>
@@ -138,13 +136,18 @@
 
             const sources = [...new Set(window.SoruHavuzu.map(q => q.source))].sort().reverse();
             let sourceOpts = sources.map(s => `<option value="${s}">${s}</option>`).join('');
+            
+            // Konu Listesini Çek
+            const categories = [...new Set(window.SoruHavuzu.map(q => q.category))].sort();
+            let catOpts = categories.map(c => `<option value="${c}">${c}</option>`).join('');
+
             const isDark = document.documentElement.classList.contains('dark');
 
             app.innerHTML = `
                 <div class="flex flex-col h-full bg-white dark:bg-slate-900 transition-colors">
                     <div class="p-5 flex justify-between items-center border-b border-slate-100 dark:border-slate-800">
                         <div>
-                            <h1 class="text-2xl font-black text-slate-800 dark:text-white tracking-tight">İSG <span class="text-primary-600">PRO</span> <span class="text-xs font-normal text-slate-400 align-top">V15</span></h1>
+                            <h1 class="text-2xl font-black text-slate-800 dark:text-white tracking-tight">İSG <span class="text-primary-600">PRO</span> <span class="text-xs font-normal text-slate-400 align-top">V16</span></h1>
                         </div>
                         <button onclick="toggleTheme()" class="p-2.5 rounded-full bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all">
                             <i data-lucide="${isDark ? 'sun' : 'moon'}" class="w-5 h-5"></i>
@@ -172,23 +175,33 @@
                                 <i data-lucide="settings-2" class="w-4 h-4 text-slate-400"></i> Sınavı Yapılandır
                             </h3>
                             
-                            <div>
-                                <label class="text-[10px] uppercase font-bold text-slate-400 ml-1">Sınav Grubu</label>
-                                <select id="profileSelect" class="w-full mt-1 p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-bold text-slate-700 dark:text-slate-200 focus:ring-2 focus:ring-primary-500 outline-none appearance-none">
-                                    <option value="isg_a">🅰️ İSG (A Sınıfı)</option>
-                                    <option value="isg_b">🅱️ İSG (B Sınıfı)</option>
-                                    <option value="isg_c" selected>©️ İSG (C Sınıfı)</option>
-                                    <option value="hekim">⚕️ İşyeri Hekimliği</option>
-                                    <option value="dsp">🩺 Diğer Sağlık P.</option>
-                                </select>
-                            </div>
+                            <div class="grid grid-cols-1 gap-4">
+                                <div>
+                                    <label class="text-[10px] uppercase font-bold text-slate-400 ml-1">Sınav Grubu</label>
+                                    <select id="profileSelect" class="w-full mt-1 p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-bold text-slate-700 dark:text-slate-200 focus:ring-2 focus:ring-primary-500 outline-none appearance-none">
+                                        <option value="isg_a">🅰️ İSG (A Sınıfı)</option>
+                                        <option value="isg_b">🅱️ İSG (B Sınıfı)</option>
+                                        <option value="isg_c" selected>©️ İSG (C Sınıfı)</option>
+                                        <option value="hekim">⚕️ İşyeri Hekimliği</option>
+                                        <option value="dsp">🩺 Diğer Sağlık P.</option>
+                                    </select>
+                                </div>
 
-                            <div>
-                                <label class="text-[10px] uppercase font-bold text-slate-400 ml-1">Kaynak Seçimi</label>
-                                <select id="sourceSelect" class="w-full mt-1 p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 focus:ring-2 focus:ring-primary-500 outline-none appearance-none">
-                                    <option value="KARMA" class="font-bold text-primary-600">🎲 Karma Deneme (50 Soru)</option>
-                                    ${sourceOpts}
-                                </select>
+                                <div>
+                                    <label class="text-[10px] uppercase font-bold text-slate-400 ml-1">Kaynak Seçimi</label>
+                                    <select id="sourceSelect" class="w-full mt-1 p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 focus:ring-2 focus:ring-primary-500 outline-none appearance-none">
+                                        <option value="KARMA" class="font-bold text-primary-600">🎲 Karma Deneme (50 Soru)</option>
+                                        ${sourceOpts}
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="text-[10px] uppercase font-bold text-slate-400 ml-1">Konu Filtresi</label>
+                                    <select id="categorySelect" class="w-full mt-1 p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 focus:ring-2 focus:ring-primary-500 outline-none appearance-none">
+                                        <option value="TUMU">📚 Tüm Konular</option>
+                                        ${catOpts}
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-700/50">
@@ -223,65 +236,75 @@
             `;
         }
 
-        // --- 6. SINAV MANTIĞI ---
+        // --- 6. SINAV MANTIĞI (GÜNCELLENDİ) ---
         
         function startCustomQuiz() {
             const profile = document.getElementById('profileSelect').value;
             const source = document.getElementById('sourceSelect').value;
+            const category = document.getElementById('categorySelect').value; // Yeni Filtre
+            
             isEduMode = document.getElementById('eduToggle').checked;
             isTimerActive = !isEduMode;
             timeRemaining = 75 * 60;
             
-            prepareQuizQuestions(source, profile, 50);
+            prepareQuizQuestions(source, profile, category, 50);
         }
 
-        function prepareQuizQuestions(source, profile, count) {
+        function prepareQuizQuestions(source, profile, category, count) {
             currentQuestions = [];
             let pool = window.SoruHavuzu;
             
-            // Profil Kontrolü (İSG A/B/C için 'igu' etiketli soruları da kapsa)
+            // 1. Profil Kontrolü
             const isISG = ['isg_a', 'isg_b', 'isg_c'].includes(profile);
-
-            // Havuzdan uygun soruları süz
             let filteredPool = pool.filter(q => {
-                if (q.profile === 'ortak' || !q.profile) return true; // Ortak sorular herkese
-                if (q.profile === profile) return true; // Tam eşleşme
-                if (isISG && q.profile === 'igu') return true; // A/B/C seçildiyse 'igu' sorularını al
+                if (q.profile === 'ortak' || !q.profile) return true;
+                if (q.profile === profile) return true;
+                if (isISG && q.profile === 'igu') return true;
                 return false;
             });
 
-            // Yedek (Eğer hiç soru kalmazsa genel havuzu kullan)
-            if (filteredPool.length === 0) filteredPool = pool;
+            // 2. Kaynak Kontrolü
+            if (source !== 'KARMA') {
+                filteredPool = filteredPool.filter(q => q.source === source);
+            }
 
-            if (source === 'KARMA') {
+            // 3. Konu Filtresi (YENİ ÖZELLİK)
+            if (category !== 'TUMU') {
+                filteredPool = filteredPool.filter(q => q.category === category);
+            }
+
+            if (filteredPool.length === 0) { 
+                alert("Seçilen kriterlere (Profil + Kaynak + Konu) uygun soru bulunamadı!"); 
+                return; 
+            }
+
+            // 4. Soru Seçimi ve Dağıtım
+            if (source === 'KARMA' && category === 'TUMU') {
                 const distribution = STANDARD_DISTRIBUTION;
-                
-                // Dağılıma göre seç
                 for (const [cat, num] of Object.entries(distribution)) {
                     let catQuestions = filteredPool.filter(q => q.category === cat);
-                    
                     if (catQuestions.length > 0) {
-                        // Yetersizse kopyalayarak çoğalt
                         while(catQuestions.length < num) { 
                             catQuestions.push(catQuestions[Math.floor(Math.random() * catQuestions.length)]); 
                         }
-                        // Karıştır ve al
                         catQuestions.sort(() => Math.random() - 0.5);
                         currentQuestions.push(...catQuestions.slice(0, num));
                     }
                 }
-                // Hepsini karıştır
                 currentQuestions.sort(() => Math.random() - 0.5);
-                
             } else {
-                // Kaynağa göre filtrele (Örn: 2025-1C)
-                currentQuestions = filteredPool.filter(q => q.source === source);
-                
-                // Deneme ise karıştır, yıl sınavıysa sırayı bozma
-                if(source.includes('Deneme')) currentQuestions.sort(() => Math.random() - 0.5);
+                currentQuestions = filteredPool;
+                if(source.includes('Deneme') || category !== 'TUMU') {
+                    currentQuestions.sort(() => Math.random() - 0.5);
+                }
             }
 
-            if (currentQuestions.length === 0) { alert("Bu kriterlere uygun soru bulunamadı!"); return; }
+            if (currentQuestions.length === 0) { alert("Soru oluşturulamadı!"); return; }
+
+            // Filtre varsa ve sayı fazlaysa kes, yoksa hepsini göster
+            if (category !== 'TUMU' && currentQuestions.length > 50) {
+                currentQuestions = currentQuestions.slice(0, 50);
+            }
 
             userAnswers = {};
             bookmarks = new Set();
@@ -328,11 +351,11 @@
 
                 if (isAnswered || isReviewMode) {
                     if (!isEduMode && !isReviewMode) { 
-                        if (i === myAnswer) { // Sınav Modu (Sadece seçiliyi göster)
+                        if (i === myAnswer) { 
                             btnClass = "bg-primary-50 dark:bg-primary-900/20 border-primary-500 ring-1 ring-primary-500 text-primary-900 dark:text-white";
                             iconClass = "bg-primary-600 text-white";
                         }
-                    } else { // Eğitim Modu (Doğru/Yanlış Göster)
+                    } else { 
                         if (i === q.correct) {
                             btnClass = "bg-green-50 dark:bg-green-900/20 border-green-500 ring-1 ring-green-500 text-green-900 dark:text-white";
                             iconClass = "bg-green-600 text-white";
@@ -390,7 +413,7 @@
                 <div id="quizContent" class="flex-1 overflow-y-auto p-5 bg-white dark:bg-slate-900 scroller w-full relative">
                     <div class="max-w-2xl mx-auto fade-in pb-10">
                         <div class="flex gap-2 mb-4">
-                            <span class="text-[10px] font-bold px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-md uppercase tracking-wider border border-slate-200 dark:border-slate-700">${q.category}</span>
+                            <span class="text-[10px] font-bold px-2 py-1 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-md uppercase tracking-wider border border-indigo-100 dark:border-indigo-800">${q.category}</span>
                         </div>
                         
                         ${imageHtml}
@@ -399,6 +422,8 @@
                         
                         <div>${optionsHtml}</div>
                         ${explanationHtml}
+                        
+                        <div class="h-8"></div>
                     </div>
                 </div>
 
@@ -456,8 +481,6 @@
             });
 
             const score = ((correct / currentQuestions.length) * 100).toFixed(1);
-            
-            // Profil bilgisini al
             const profileVal = document.getElementById('profileSelect') ? document.getElementById('profileSelect').value : 'igu';
             const profileInfo = CONFIG[profileVal] || CONFIG['igu'];
 
