@@ -9,7 +9,7 @@ const questionPool = [
         correct: 2,
         source: "2025-1-C",
         explanation: "Yönetmeliğe göre; I ve II doğrudur. 10 ve daha fazla çalışan için dinlenme yeri zorunluluğu yoktur, yanlıştır.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -18,7 +18,7 @@ const questionPool = [
         correct: 1,
         source: "2025-1-C",
         explanation: "Tanım, 6331 sayılı İş Sağlığı ve Güvenliği Kanunu'nda 'iş kazası' olarak tanımlanmıştır.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -27,7 +27,7 @@ const questionPool = [
         correct: 4,
         source: "2025-1-C",
         explanation: "Yönetmeliğe göre bilgilendirme ve eğitim tüm bu konuları (I, II ve III) kapsar.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -36,7 +36,7 @@ const questionPool = [
         correct: 0,
         source: "2025-1-C",
         explanation: "KKD'ler işveren tarafından ücretsiz olarak sağlanır, çalışan tarafından ücret karşılığı alınmaz.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -45,7 +45,7 @@ const questionPool = [
         correct: 3,
         source: "2025-1-C",
         explanation: "Kadın çalışanın kocası da gece postasında çalışıyorsa, kadın çalışanın görüşü dikkate alınarak çalışma saatleri düzenlenir. Görüşü dikkate alınmaksızın düzenlenmesi yanlıştır.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -54,7 +54,7 @@ const questionPool = [
         correct: 0,
         source: "2025-1-C",
         explanation: "Risk değerlendirme sonuçları bildirimde bulunulması zorunlu bilgiler arasında yer almaz. Diğerleri (B, C, D, E) zorunludur.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Hukuk",
@@ -63,7 +63,7 @@ const questionPool = [
         correct: 2,
         source: "2025-1-C",
         explanation: "5 yıldan fazla 15 yıldan az hizmet süresi olan işçinin yıllık izni 20 gündür (18 yaşını doldurmamış veya 50 yaşını geçmiş işçiler için + fazladan günler ayrıca eklenir).",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Hukuk",
@@ -72,7 +72,7 @@ const questionPool = [
         correct: 2,
         source: "2025-1-C",
         explanation: "Haftalık 45 saatlik süre, günde 11 saati aşmamak koşuluyla haftanın çalışılan günlerine dağıtılabilir.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Hukuk",
@@ -81,7 +81,7 @@ const questionPool = [
         correct: 0,
         source: "2025-1-C",
         explanation: "Ahmet, ilk çalışmasında 7 ay, ikincisinde 6 ay çalışmıştır. Yıllık izin için en az 1 yıl (12 ay) kıdemi gereklidir. Toplamda 13 ay çalışmış gibi görünse de, iş sözleşmesi sona erip 3 ay ara verdikten sonra tekrar başladığı için kıdem süresi ikinci işe girişten itibaren yeniden başlar. 6 ay çalıştığı için henüz yıllık izin hakkı kazanmamıştır (en az 1 yıl). Bu nedenle yalnız I doğru olabilir gibi görünse de, aslında hiçbiri doğru değildir. Ancak cevap şıklarına göre 'Yalnız I' işaretlenmiş, bu da soruda yıllık izin hakkı kazanıldığı varsayımıyla hazırlanmış olabilir (pratikte kıdem birleşmez). Soruya göre en uygun cevap A (Yalnız I) olarak alınmıştır.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Hukuk",
@@ -90,7 +90,7 @@ const questionPool = [
         correct: 0,
         source: "2025-1-C",
         explanation: "Emzirme odasında çocuğunu emzirirken meydana gelen kaza, iş kazası kapsamında değerlendirilmez, çünkü işle doğrudan ilgili bir faaliyet değildir. Diğerleri iş kazası sayılır.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -99,7 +99,7 @@ const questionPool = [
         correct: 1,
         source: "2025-1-C",
         explanation: "Eğitim kurumları, Çalışma ve Sosyal Güvenlik Bakanlığı İş Sağlığı ve Güvenliği Genel Müdürlüğü ile sözleşme yapmak zorundadır.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -108,7 +108,7 @@ const questionPool = [
         correct: 1,
         source: "2025-1-C",
         explanation: "Çok tehlikeli sınıfta, her 1000 çalışan için tam gün çalışacak en az 1 iş güvenliği uzmanı görevlendirilir. 1000 çalışan için 1 uzman yeterlidir.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -117,7 +117,7 @@ const questionPool = [
         correct: 1,
         source: "2025-1-C",
         explanation: "Teorik eğitimin en fazla yarısı (180 saat / 2 = 90 saat) uzaktan eğitim ile verilebilir.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Genel İSG Konuları",
@@ -126,7 +126,7 @@ const questionPool = [
         correct: 4,
         source: "2025-1-C",
         explanation: "Uzuv kaybı, diğer seçeneklere göre çok daha ciddi ve şiddeti yüksek bir sonuçtur.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Genel İSG Konuları",
@@ -135,7 +135,7 @@ const questionPool = [
         correct: 1,
         source: "2025-1-C",
         explanation: "JSA, işi adımlara ayırıp her adımdaki tehlikeleri belirlemeye yönelik proaktif bir risk değerlendirme yöntemidir.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Genel İSG Konuları",
@@ -144,7 +144,7 @@ const questionPool = [
         correct: 3,
         source: "2025-1-C",
         explanation: "L tipi matriste risk skoru = Olasılık x Şiddet = 4 x 5 = 20'dir. Yüksek risk skorları için acil önlem alınması gerekir.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -153,7 +153,7 @@ const questionPool = [
         correct: 2,
         source: "2025-1-C",
         explanation: "Tezgâhlar için periyodik kontrol azami süresi 12 aydır (1 yıl).",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -162,7 +162,7 @@ const questionPool = [
         correct: 1,
         source: "2025-1-C",
         explanation: "6331 sayılı Kanun, ev hizmetleri (II) ve hükümlü/tutuklulara yönelik meslek edindirme faaliyetlerinde (III) uygulanmaz.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Hukuk",
@@ -171,7 +171,7 @@ const questionPool = [
         correct: 4,
         source: "2025-1-C",
         explanation: "I ve II doğrudur. İşveren vekilleri İSG Kanunu açısından işveren sayılır, ancak cezai sorumluluk işverene aittir. III ifadesi ise doğru değildir çünkü cezai sorumluluk işverene aittir, vekile değil.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -180,7 +180,7 @@ const questionPool = [
         correct: 0,
         source: "2025-1-C",
         explanation: "6331 sayılı Kanun’a göre genç çalışan; 15 yaşını bitirmiş, 18 yaşını doldurmamış çalışandır.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -189,7 +189,7 @@ const questionPool = [
         correct: 2,
         source: "2025-1-C",
         explanation: "İş yerinde alınan tedbirlerin izlenmesi, denetlenmesi ve uygunsuzlukların giderilmesini sağlamak çalışanların değil, işveren ve iş güvenliği uzmanı gibi görevlilerin sorumluluğundadır.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -198,7 +198,7 @@ const questionPool = [
         correct: 0,
         source: "2025-1-C",
         explanation: "İSG Kurulları Yönetmeliği, 50 ve daha fazla çalışanı olan ve 6 aydan fazla süren sürekli işlerin yapıldığı iş yerlerini kapsar.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Hukuk",
@@ -207,7 +207,7 @@ const questionPool = [
         correct: 4,
         source: "2025-1-C",
         explanation: "Memurlar ve kamu görevlileri grev hakkına sahip değildir. Grev hakkı sadece işçiler için tanınmıştır.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -216,7 +216,7 @@ const questionPool = [
         correct: 0,
         source: "2025-1-C",
         explanation: "Yönetmeliğe göre; 120 cm'den daha derin kazılarda (150 cm değil) şerit kazı yöntemi yasaktır. 150 cm yanlış bir rakamdır.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -225,7 +225,7 @@ const questionPool = [
         correct: 4,
         source: "2025-1-C",
         explanation: "El-kol titreşimi için günlük maruziyet sınır değeri (ELV) 5 m/s²'dir.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -234,7 +234,7 @@ const questionPool = [
         correct: 2,
         source: "2025-1-C",
         explanation: "İşverenin eğitimlere katılma zorunluluğu yoktur. İşveren, eğitimlerin organizasyonu ve verilmesinden sorumludur, ancak bizzat katılmak zorunda değildir.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Teknik",
@@ -243,7 +243,7 @@ const questionPool = [
         correct: 3,
         source: "2025-1-C",
         explanation: "Uyarı işaretleri sarı zemin üzerine siyah piktogram ve siyah çerçevelidir.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Teknik",
@@ -253,7 +253,7 @@ const questionPool = [
         correct: 1,
         source: "2025-1-C",
         explanation: "Mavi daire içinde beyaz piktogram, emredici işarettir (örneğin 'göz koruyucu kullan', 'elle yıkama' gibi).",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Teknik",
@@ -262,7 +262,7 @@ const questionPool = [
         correct: 2,
         source: "2025-1-C",
         explanation: "Yasak işaretlerinde kırmızı kısımlar (çerçeve ve çapraz çizgi) işaret alanının en az %35'ini kapsamalıdır.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Teknik",
@@ -271,7 +271,7 @@ const questionPool = [
         correct: 3,
         source: "2025-1-C",
         explanation: "Tanım, 'Tehlikeli gerilim' kavramına aittir.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -280,7 +280,7 @@ const questionPool = [
         correct: 0,
         source: "2025-1-C",
         explanation: "Az tehlikeli sınıfta, iş yerinde 90 çalışan olsa bile en az 1 söndürme ekibi yeterlidir.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -289,7 +289,7 @@ const questionPool = [
         correct: 4,
         source: "2025-1-C",
         explanation: "Az tehlikeli iş yerlerinde acil durum planı en geç 6 yılda bir yenilenir.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Teknik",
@@ -298,7 +298,7 @@ const questionPool = [
         correct: 0,
         source: "2025-1-C",
         explanation: "Boşluk 0,5 bar olmalıdır. Yönetmelik 0,5 bar üzeri basınçlı kapları kapsar.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -307,7 +307,7 @@ const questionPool = [
         correct: 3,
         source: "2025-1-C",
         explanation: "Acil çıkış kapıları raylı veya döner kapı olmamalıdır. Panik barlı, dışarıya doğru kolayca açılabilen kapılar olmalıdır.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Teknik",
@@ -316,7 +316,7 @@ const questionPool = [
         correct: 1,
         source: "2025-1-C",
         explanation: "Karbonmonoksit (CO) renksiz, kokusuz, zehirli bir gazdır. Yangınlarda ölümlerin başlıca nedenidir.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Teknik",
@@ -325,7 +325,7 @@ const questionPool = [
         correct: 2,
         source: "2025-1-C",
         explanation: "Doğal gaz, yanıcı gaz olduğu için yangın sınıfı C'dir, A değil. A sınıfı katı madde yangınlarıdır.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -334,7 +334,7 @@ const questionPool = [
         correct: 3,
         source: "2025-1-C",
         explanation: "Çalışanların doğal bağışıklık kazanması için kasıtlı maruziyet sağlanması kesinlikle yasaktır ve önlem değildir.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -343,7 +343,7 @@ const questionPool = [
         correct: 2,
         source: "2025-1-C",
         explanation: "En düşük maruziyet eylem değeri (Lower Exposure Action Value - LEX,8h) 80 dB(A)'dır.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Teknik",
@@ -352,7 +352,7 @@ const questionPool = [
         correct: 2,
         source: "2025-1-C",
         explanation: "Aynı şiddette iki ses kaynağı toplandığında toplam gürültü yaklaşık 3 dB artar. 85 + 85 ≈ 88 dB(A).",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Teknik",
@@ -361,7 +361,7 @@ const questionPool = [
         correct: 0,
         source: "2025-1-C",
         explanation: "CEILING (Tavan değer), herhangi bir an için aşılmaması gereken maruziyet sınır değeridir.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -370,7 +370,7 @@ const questionPool = [
         correct: 2,
         source: "2025-1-C",
         explanation: "İlk 150 çalışana kadar 1 temsilci, sonraki her 150'ye kadar 1 temsilci daha eklenir. 1300 çalışan için: 150'ye kadar 1, 150-300 arası +1, 300-450 +1, 450-600 +1, 600-750 +1, 750-900 +1, 900-1050 +1, 1050-1200 +1, 1200-1300 +1 (toplam 9? Ancak pratikte: 2-150:1, 151-300:2, 301-450:3, 451-600:4, 601-750:5, 751-900:6, 901-1050:7, 1051-1200:8, 1201-1350:9 şeklinde olmalıdır. Ancak soruda 1300 için 5 cevabı verilmiş. Bu, farklı bir yöntem veya hata olabilir. Soruya göre cevap C (5) olarak alınmıştır.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Sağlık",
@@ -379,7 +379,7 @@ const questionPool = [
         correct: 3,
         source: "2025-1-C",
         explanation: "Gürültüye bağlı işitme kaybı kalıcıdır, maruziyet sona erdiğinde kendiliğinden düzelmez.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -388,7 +388,7 @@ const questionPool = [
         correct: 3,
         source: "2025-1-C",
         explanation: "Elle taşıma işi; kaldırma, indirme, itme, çekme, taşıma veya hareket ettirme gibi işlerdir. Tartma, elle taşıma işi değildir.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -397,7 +397,7 @@ const questionPool = [
         correct: 4,
         source: "2025-1-C",
         explanation: "Yükün maddi değeri, elle taşıma risk faktörleri arasında sayılmaz. Diğerleri (ortam, güç, iş, yük özellikleri) risk faktörleridir.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -406,7 +406,7 @@ const questionPool = [
         correct: 4,
         source: "2025-1-C",
         explanation: "Değerlendirmede maruziyet türü, süresi ve düzeyi (I, II ve IV) dikkate alınır. Cinsiyet (III) genel bir risk faktörü olarak sayılmaz.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -415,7 +415,7 @@ const questionPool = [
         correct: 3,
         source: "2025-1-C",
         explanation: "I ve III doğrudur. II yanlıştır; tereddüt halinde iş yerinin NACE koduna veya ağırlıklı faaliyete bakılır, kuruluş amacına değil.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Teknik",
@@ -424,7 +424,7 @@ const questionPool = [
         correct: 4,
         source: "2025-1-C",
         explanation: "Tüpler taşınırken vanalar kapalı ve koruyucu kapaklar takılı olmalıdır. Bu temel güvenlik kuralıdır.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -433,7 +433,7 @@ const questionPool = [
         correct: 4,
         source: "2025-1-C",
         explanation: "Tüm ifadeler (I, II ve III) doğrudur ve işverenin gebe/emziren çalışanlar için alması gereken önlemleri tanımlar.",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -442,7 +442,7 @@ const questionPool = [
         correct: 0,
         source: "2025-1-C",
         explanation: "Az tehlikeli: 5 dk, Tehlikeli: 10 dk, Çok tehlikeli: 15 dk (çalışan başına aylık asgari süre).",
-        profile: "C"
+        profile: "isg_c"
     },
     {
         category: "Mevzuat",
@@ -451,6 +451,6 @@ const questionPool = [
         correct: 1,
         source: "2025-1-C",
         explanation: "Maden terimi olarak 'ayak', iki galeri arasında cephe halinde üretim yapılan yerdir.",
-        profile: "C"
+        profile: "isg_c"
     },
 ];
