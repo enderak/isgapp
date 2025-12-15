@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>İSG Pro V16</title>
+    <title>İSG Pro V16.5</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -28,6 +28,10 @@
         .dark .scroller::-webkit-scrollbar-thumb { background: #334155; }
         .fade-in { animation: fadeIn 0.2s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+        
+        /* Modal Stili */
+        .modal-open { overflow: hidden; }
+        .modal-overlay { background-color: rgba(0, 0, 0, 0.85); backdrop-filter: blur(4px); }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
@@ -41,29 +45,38 @@
         </div>
     </div>
 
+    <div id="imageModal" class="fixed inset-0 z-[100] hidden items-center justify-center modal-overlay p-4" onclick="closeImageModal()">
+        <div class="relative max-w-4xl w-full max-h-full flex justify-center">
+            <button class="absolute -top-10 right-0 text-white hover:text-red-400 p-2" onclick="closeImageModal()">
+                <i data-lucide="x" class="w-8 h-8"></i>
+            </button>
+            <img id="modalImage" src="" class="max-w-full max-h-[85vh] rounded-lg shadow-2xl object-contain bg-white">
+        </div>
+    </div>
+
     <script>window.SoruHavuzu = window.SoruHavuzu || [];</script>
     
-    <script src="sorular/2025-1-A.js" onerror="console.log('2025-1-A dosyası yok')"></script>
-    <script src="sorular/2025-1-B.js" onerror="console.log('2025-1-B dosyası yok')"></script>
-    <script src="sorular/2025-1-C.js" onerror="console.log('2025-1-C dosyası yok')"></script>
-    <script src="sorular/deneme_mevzuat.js" onerror="console.log('Mevzuat dosyası yok')"></script>
-    <script src="sorular/deneme_02.js" onerror="console.log('Deneme 02 yok')"></script>
+    <script src="sorular/2025-1-A.js" onerror="console.warn('2025-1-A yüklenemedi')"></script>
+    <script src="sorular/2025-1-B.js" onerror="console.warn('2025-1-B yüklenemedi')"></script>
+    <script src="sorular/2025-1-C.js" onerror="console.warn('2025-1-C yüklenemedi')"></script>
+    <script src="sorular/deneme_mevzuat.js" onerror="console.warn('Mevzuat yüklenemedi')"></script>
+    <script src="sorular/deneme_02.js" onerror="console.warn('Deneme 02 yüklenemedi')"></script>
 
     <script>
         // --- 1. GÜVENLİK ---
         if (window.SoruHavuzu.length === 0) {
             window.SoruHavuzu.push({
-                category: "Sistem", text: "Demo Soru: 'sorular' klasörünü kontrol edin.", options: ["Tamam", "Biliyorum", "Ayarlar", "Kapat", "Yardım"], correct: 0, source: "DEMO", explanation: "Dosya bulunamadı.", profile: "ortak"
+                category: "Sistem", text: "⚠️ Uyarı: Hiçbir soru dosyası yüklenemedi. Lütfen 'sorular' klasörünü ve index.html içindeki script etiketlerini kontrol edin.", options: ["Anladım"], correct: 0, source: "SİSTEM", explanation: "Dosya yolu hatası.", profile: "ortak"
             });
         }
 
-        // --- 2. PROFİL AYARLARI ---
+        // --- 2. AYARLAR ---
         const CONFIG = {
-            'isg_a': { label: 'İSG (A Sınıfı)', color: 'red', desc: 'En Üst Düzey Uzmanlık' },
-            'isg_b': { label: 'İSG (B Sınıfı)', color: 'orange', desc: 'Tehlikeli İşler' },
-            'isg_c': { label: 'İSG (C Sınıfı)', color: 'blue', desc: 'Az Tehlikeli İşler' },
-            'hekim': { label: 'İşyeri Hekimliği', color: 'emerald', desc: 'Tıbbi ve Sağlık' },
-            'dsp': { label: 'Diğer Sağlık P.', color: 'purple', desc: 'Yardımcı Sağlık' }
+            'isg_a': { label: 'İSG (A Sınıfı)', color: 'red' },
+            'isg_b': { label: 'İSG (B Sınıfı)', color: 'orange' },
+            'isg_c': { label: 'İSG (C Sınıfı)', color: 'blue' },
+            'hekim': { label: 'İşyeri Hekimliği', color: 'emerald' },
+            'dsp': { label: 'Diğer Sağlık P.', color: 'purple' }
         };
 
         const STANDARD_DISTRIBUTION = { 'Teknik': 20, 'Mevzuat': 15, 'Genel İSG Konuları': 7, 'Sağlık': 5, 'Hukuk': 3 };
@@ -79,11 +92,9 @@
         let isTimerActive = true;
         let isEduMode = false;
         let isReviewMode = false;
-        
         let touchStartX = 0;
-        let touchEndX = 0;
 
-        // --- 3. INIT ---
+        // --- 3. TEMEL FONKSİYONLAR ---
         function initTheme() {
             const saved = localStorage.getItem('theme');
             if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -101,16 +112,28 @@
             else if(currentScreen === 'result') finishQuiz();
         }
 
-        // --- 4. KLAVYE ---
+        // Resim Modal İşlemleri
+        function openImageModal(src) {
+            document.getElementById('modalImage').src = src;
+            document.getElementById('imageModal').classList.remove('hidden');
+            document.getElementById('imageModal').classList.add('flex');
+        }
+        function closeImageModal() {
+            document.getElementById('imageModal').classList.add('hidden');
+            document.getElementById('imageModal').classList.remove('flex');
+        }
+
+        // --- 4. KLAVYE & DOKUNMATİK ---
         document.addEventListener('keydown', (e) => {
             if (currentScreen !== 'quiz') return;
             if (e.key >= '1' && e.key <= '5') selectAnswer(parseInt(e.key) - 1);
             if (e.key === 'ArrowRight') nextQ();
             if (e.key === 'ArrowLeft') prevQ();
             if (e.key.toLowerCase() === 'm') toggleBookmark();
+            if (e.key === 'Escape') closeImageModal();
         });
 
-        // --- 5. EKRAN: ANA SAYFA ---
+        // --- 5. EKRAN: BAŞLANGIÇ ---
         function renderStartScreen() {
             currentScreen = 'start';
             isReviewMode = false;
@@ -138,7 +161,6 @@
             const sources = [...new Set(window.SoruHavuzu.map(q => q.source))].sort().reverse();
             let sourceOpts = sources.map(s => `<option value="${s}">${s}</option>`).join('');
             
-            // Konu Listesini Çek
             const categories = [...new Set(window.SoruHavuzu.map(q => q.category))].sort();
             let catOpts = categories.map(c => `<option value="${c}">${c}</option>`).join('');
 
@@ -148,7 +170,7 @@
                 <div class="flex flex-col h-full bg-white dark:bg-slate-900 transition-colors">
                     <div class="p-5 flex justify-between items-center border-b border-slate-100 dark:border-slate-800">
                         <div>
-                            <h1 class="text-2xl font-black text-slate-800 dark:text-white tracking-tight">İSG <span class="text-primary-600">PRO</span> <span class="text-xs font-normal text-slate-400 align-top">V16</span></h1>
+                            <h1 class="text-2xl font-black text-slate-800 dark:text-white tracking-tight">İSG <span class="text-primary-600">PRO</span> <span class="text-xs font-normal text-slate-400 align-top">V16.5</span></h1>
                         </div>
                         <button onclick="toggleTheme()" class="p-2.5 rounded-full bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all">
                             <i data-lucide="${isDark ? 'sun' : 'moon'}" class="w-5 h-5"></i>
@@ -227,9 +249,12 @@
                         </div>
 
                         <div>
-                            <h3 class="text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                                <i data-lucide="history" class="w-4 h-4 text-slate-400"></i> Son Sınavlar
-                            </h3>
+                            <div class="flex items-center justify-between mb-3">
+                                <h3 class="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                                    <i data-lucide="history" class="w-4 h-4 text-slate-400"></i> Son Sınavlar
+                                </h3>
+                                <button onclick="clearHistory()" class="text-[10px] text-red-400 hover:text-red-600 hover:underline">Geçmişi Temizle</button>
+                            </div>
                             ${lastExams}
                         </div>
                     </div>
@@ -237,12 +262,18 @@
             `;
         }
 
-        // --- 6. SINAV MANTIĞI (GÜNCELLENDİ) ---
-        
+        function clearHistory() {
+            if(confirm("Sınav geçmişini silmek istiyor musun?")) {
+                localStorage.removeItem('examHistory');
+                renderStartScreen();
+            }
+        }
+
+        // --- 6. SINAV HAZIRLIK ---
         function startCustomQuiz() {
             const profile = document.getElementById('profileSelect').value;
             const source = document.getElementById('sourceSelect').value;
-            const category = document.getElementById('categorySelect').value; // Yeni Filtre
+            const category = document.getElementById('categorySelect').value;
             
             isEduMode = document.getElementById('eduToggle').checked;
             isTimerActive = !isEduMode;
@@ -254,9 +285,8 @@
         function prepareQuizQuestions(source, profile, category, count) {
             currentQuestions = [];
             let pool = window.SoruHavuzu;
-            
-            // 1. Profil Kontrolü
             const isISG = ['isg_a', 'isg_b', 'isg_c'].includes(profile);
+
             let filteredPool = pool.filter(q => {
                 if (q.profile === 'ortak' || !q.profile) return true;
                 if (q.profile === profile) return true;
@@ -264,22 +294,19 @@
                 return false;
             });
 
-            // 2. Kaynak Kontrolü
             if (source !== 'KARMA') {
                 filteredPool = filteredPool.filter(q => q.source === source);
             }
 
-            // 3. Konu Filtresi (YENİ ÖZELLİK)
             if (category !== 'TUMU') {
                 filteredPool = filteredPool.filter(q => q.category === category);
             }
 
             if (filteredPool.length === 0) { 
-                alert("Seçilen kriterlere (Profil + Kaynak + Konu) uygun soru bulunamadı!"); 
+                alert("Seçilen kriterlere uygun soru bulunamadı!"); 
                 return; 
             }
 
-            // 4. Soru Seçimi ve Dağıtım
             if (source === 'KARMA' && category === 'TUMU') {
                 const distribution = STANDARD_DISTRIBUTION;
                 for (const [cat, num] of Object.entries(distribution)) {
@@ -292,17 +319,13 @@
                         currentQuestions.push(...catQuestions.slice(0, num));
                     }
                 }
-                currentQuestions.sort(() => Math.random() - 0.5);
             } else {
                 currentQuestions = filteredPool;
-                if(source.includes('Deneme') || category !== 'TUMU') {
-                    currentQuestions.sort(() => Math.random() - 0.5);
-                }
             }
 
-            if (currentQuestions.length === 0) { alert("Soru oluşturulamadı!"); return; }
+            // HER ZAMAN KARIŞTIR (İyileştirme)
+            currentQuestions.sort(() => Math.random() - 0.5);
 
-            // Filtre varsa ve sayı fazlaysa kes, yoksa hepsini göster
             if (category !== 'TUMU' && currentQuestions.length > 50) {
                 currentQuestions = currentQuestions.slice(0, 50);
             }
@@ -329,7 +352,7 @@
             }, 1000);
         }
 
-        // --- 7. SORU EKRANI ---
+        // --- 7. SINAV EKRANI ---
         function renderQuiz() {
             currentScreen = 'quiz';
             setTimeout(() => lucide.createIcons(), 0);
@@ -340,9 +363,11 @@
             const isBookmarked = bookmarks.has(currentIndex);
 
             let imageHtml = q.image ? `
-                <div class="mb-4 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 flex justify-center group relative">
-                    <img src="${q.image}" class="max-h-56 object-contain" onclick="window.open(this.src)" onerror="this.style.display='none'">
-                    <div class="absolute bottom-2 right-2 bg-black/50 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Büyüt</div>
+                <div class="mb-4 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 flex justify-center group relative cursor-zoom-in" onclick="openImageModal('${q.image}')">
+                    <img src="${q.image}" class="max-h-56 object-contain" onerror="this.style.display='none'">
+                    <div class="absolute bottom-2 right-2 bg-black/50 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+                        <i data-lucide="maximize-2" class="w-3 h-3"></i> Büyüt
+                    </div>
                 </div>` : '';
 
             let optionsHtml = q.options.map((opt, i) => {
@@ -444,12 +469,13 @@
                 </div>
             `;
 
+            // Dokunmatik Kaydırma
             const content = document.getElementById('quizContent');
             content.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX);
             content.addEventListener('touchend', e => {
-                touchEndX = e.changedTouches[0].screenX;
-                if (touchEndX < touchStartX - 50) nextQ();
-                if (touchEndX > touchStartX + 50) prevQ();
+                let touchEndX = e.changedTouches[0].screenX;
+                if (touchEndX < touchStartX - 70) nextQ(); // Hassasiyet ayarlandı
+                if (touchEndX > touchStartX + 70) prevQ();
             });
         }
 
