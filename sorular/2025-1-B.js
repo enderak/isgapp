@@ -485,7 +485,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         source: "2025-1-B",
         explanation: "Güvenlik ağları Sistem T olarak sınıflandırılır.",
         profile: "isg_b",
-        image: ""
+        image: "img/sistemT.jpg"
     },
     {
         category: "Teknik",
