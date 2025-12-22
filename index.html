@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>İSG Pro V17.1 (Final)</title>
+    <title>İSG Sınavmatik</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -28,6 +28,7 @@
         .dark .scroller::-webkit-scrollbar-thumb { background: #334155; }
         .fade-in { animation: fadeIn 0.2s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+        /* Modal Stilleri */
         .modal-overlay { background-color: rgba(0, 0, 0, 0.85); backdrop-filter: blur(4px); }
     </style>
 </head>
@@ -37,7 +38,7 @@
         <div class="flex items-center justify-center h-full">
             <div class="flex flex-col items-center animate-pulse">
                 <i data-lucide="loader-2" class="w-10 h-10 text-primary-600 animate-spin mb-3"></i>
-                <div class="text-sm font-medium text-slate-400">Sistem Yükleniyor...</div>
+                <div class="text-sm font-medium text-slate-400">Sınavmatik Hazırlanıyor...</div>
             </div>
         </div>
     </div>
@@ -53,18 +54,19 @@
 
     <script>window.SoruHavuzu = window.SoruHavuzu || [];</script>
     
-    <script src="sorular/2025-1-A.js" onerror="console.warn('2025-1-A yüklenemedi')"></script>
-    <script src="sorular/2025-1-B.js" onerror="console.warn('2025-1-B yüklenemedi')"></script>
-    <script src="sorular/2025-1-C.js" onerror="console.warn('2025-1-C yüklenemedi')"></script>
-    <script src="sorular/Deneme-2025-1-A.js" onerror="console.warn('Deneme-2025-1-A yüklenemedi')"></script>
-    <script src="sorular/Deneme-2025-1-B.js" onerror="console.warn('Deneme-2025-1-B yüklenemedi')"></script>
-    <script src="sorular/Deneme-2025-1-C.js" onerror="console.warn('Deneme-2025-1-C yüklenemedi')"></script>
+    <script src="sorular/2025-1-A.js" onerror="console.log('2025-1-A yok')"></script>
+    <script src="sorular/2025-1-B.js" onerror="console.log('2025-1-B yok')"></script>
+    <script src="sorular/2025-1-C.js" onerror="console.log('2025-1-C yok')"></script>
+    
+    <script src="sorular/Deneme-2025-1-A.js" onerror="console.log('Deneme A yok')"></script>
+    <script src="sorular/Deneme-2025-1-B.js" onerror="console.log('Deneme B yok')"></script>
+    <script src="sorular/Deneme-2025-1-C.js" onerror="console.log('Deneme C yok')"></script>
 
     <script>
         // --- 1. GÜVENLİK ---
         if (window.SoruHavuzu.length === 0) {
             window.SoruHavuzu.push({
-                category: "Sistem", text: "Demo Soru: 'sorular' klasörünü kontrol edin.", options: ["Tamam"], correct: 0, source: "DEMO", explanation: "Dosya bulunamadı.", profile: "ortak"
+                category: "Sistem", text: "Uyarı: Soru dosyaları yüklenemedi. Lütfen 'sorular' klasörünü kontrol edin.", options: ["Tamam"], correct: 0, source: "SİSTEM", explanation: "Dosya yolu hatası.", profile: "ortak"
             });
         }
 
@@ -90,7 +92,7 @@
         let isTimerActive = true;
         let isEduMode = false;
         let isReviewMode = false;
-        let activeProfile = 'isg_c'; // HATAYI ÇÖZEN DEĞİŞKEN (Varsayılan değer)
+        let activeProfile = 'isg_c'; // HATAYI ÇÖZEN DEĞİŞKEN
         let touchStartX = 0;
 
         // --- 3. TEMEL FONKSİYONLAR ---
@@ -160,16 +162,11 @@
             let catOpts = categories.map(c => `<option value="${c}">${c}</option>`).join('');
             const isDark = document.documentElement.classList.contains('dark');
 
-            // Profil seçimi HTML'i - 'selected' özelliğini activeProfile değişkenine göre ayarla
-            const profileOptions = Object.keys(CONFIG).map(key => 
-                `<option value="${key}" ${activeProfile === key ? 'selected' : ''}>${CONFIG[key].label.replace('İSG', '')} ${CONFIG[key].label.includes('İSG') ? 'İSG' : ''}</option>`
-            ).join('');
-
             app.innerHTML = `
                 <div class="flex flex-col h-full bg-white dark:bg-slate-900 transition-colors">
                     <div class="p-5 flex justify-between items-center border-b border-slate-100 dark:border-slate-800">
                         <div>
-                            <h1 class="text-2xl font-black text-slate-800 dark:text-white tracking-tight">İSG <span class="text-primary-600">PRO</span> <span class="text-xs font-normal text-slate-400 align-top">V17.1</span></h1>
+                            <h1 class="text-2xl font-black text-slate-800 dark:text-white tracking-tight">İSG <span class="text-primary-600">SINAVMATİK</span></h1>
                         </div>
                         <button onclick="toggleTheme()" class="p-2.5 rounded-full bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all">
                             <i data-lucide="${isDark ? 'sun' : 'moon'}" class="w-5 h-5"></i>
@@ -203,8 +200,8 @@
                                         <option value="isg_a">🅰️ İSG (A Sınıfı)</option>
                                         <option value="isg_b">🅱️ İSG (B Sınıfı)</option>
                                         <option value="isg_c">©️ İSG (C Sınıfı)</option>
-                                        <option value="hekim">⚕️ İşyeri Hekimliği</option>
-                                        <option value="dsp">🩺 Diğer Sağlık P.</option>
+                                        <option value="hekim">🩺 İşyeri Hekimliği</option>
+                                        <option value="dsp">⚕️ Diğer Sağlık P.</option>
                                     </select>
                                 </div>
 
@@ -257,7 +254,6 @@
                 </div>
             `;
             
-            // Profil seçimini manuel düzelt (selected attribute bazen yetmez)
             document.getElementById('profileSelect').value = activeProfile;
         }
 
@@ -545,8 +541,6 @@
             });
 
             const score = ((correct / currentQuestions.length) * 100).toFixed(1);
-            
-            // !!! KRİTİK DÜZELTME: Profili hafızadan (activeProfile) al !!!
             const profileVal = activeProfile; 
             const profileInfo = CONFIG[profileVal] || CONFIG['igu'];
 
