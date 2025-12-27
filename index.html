@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>İSG Sınavmatik V19</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -68,35 +69,51 @@
             
             <div class="text-xs text-slate-500 dark:text-slate-400 mb-4 bg-slate-50 dark:bg-slate-900 p-3 rounded-lg border border-slate-100 dark:border-slate-700">
                 <p><strong>Kaynak:</strong> <span id="reportSource">...</span></p>
-                <p class="truncate mt-1"><strong>Soru Özeti:</strong> <span id="reportQText">...</span></p>
+                <p class="truncate mt-1"><strong>Soru ID:</strong> <span id="reportQIndex">...</span></p>
             </div>
 
             <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Hata nedir?</label>
             <textarea id="reportMessage" rows="3" class="w-full p-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-sm focus:ring-2 focus:ring-red-500 outline-none mb-4" placeholder="Örn: Cevap A şıkkı olmalı, soruda yazım hatası var vb."></textarea>
 
             <button onclick="sendReportEmail()" class="w-full py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-sm shadow transition-colors flex items-center justify-center gap-2">
-                <i data-lucide="send" class="w-4 h-4"></i> Bildirimi Gönder
+                <i data-lucide="send" class="w-4 h-4"></i> Bildirimi E-Posta ile Gönder
+            </button>
+        </div>
+    </div>
+
+    <div id="secretCounterPanel" class="fixed bottom-4 right-4 z-50 hidden bg-black/90 p-3 rounded-lg border border-slate-700 shadow-2xl backdrop-blur-sm">
+        <div class="text-[10px] text-slate-400 uppercase font-bold mb-1 text-center">Yönetici Paneli</div>
+        
+        <div class="text-center text-white text-xs py-1">
+            Ziyaretçi Takibi
+        </div>
+        
+        <div class="mt-2 pt-2 border-t border-slate-700 text-center">
+            <button onclick="localStorage.clear(); location.reload();" class="text-[9px] text-red-400 hover:text-red-300 underline">
+                Önbelleği Sıfırla
             </button>
         </div>
     </div>
 
     <script>window.SoruHavuzu = window.SoruHavuzu || [];</script>
     
+    <script src="sorular/2024-2-C.js" onerror="console.log('2024-2-C yok')"></script>
     <script src="sorular/2025-1-A.js" onerror="console.log('2025-1-A yok')"></script>
     <script src="sorular/2025-1-B.js" onerror="console.log('2025-1-B yok')"></script>
     <script src="sorular/2025-1-C.js" onerror="console.log('2025-1-C yok')"></script>
+    
     <script src="sorular/Deneme-2025-1-A.js" onerror="console.log('Deneme A yok')"></script>
     <script src="sorular/Deneme-2025-1-B.js" onerror="console.log('Deneme B yok')"></script>
     <script src="sorular/Deneme-2025-1-C.js" onerror="console.log('Deneme C yok')"></script>
 
     <script>
-        // --- ADMIN AYARI (E-Postanı Buraya Yaz) ---
+        // --- AYAR: E-POSTA ADRESİNİ BURAYA YAZ ---
         const ADMIN_EMAIL = "isgapp@proton.me"; 
         // ------------------------------------------
 
         if (window.SoruHavuzu.length === 0) {
             window.SoruHavuzu.push({
-                category: "Sistem", text: "Uyarı: Soru dosyaları yüklenemedi.", options: ["Tamam"], correct: 0, source: "SİSTEM", explanation: "Dosya yolu hatası.", profile: "ortak"
+                category: "Sistem", text: "Uyarı: Soru dosyaları yüklenemedi. Klasör yapısını kontrol edin.", options: ["Tamam"], correct: 0, source: "SİSTEM", explanation: "Dosya yolu hatası.", profile: "ortak"
             });
         }
 
@@ -155,8 +172,8 @@
         function openReportModal() {
             const q = currentQuestions[currentIndex];
             document.getElementById('reportSource').innerText = q.source || "Bilinmiyor";
-            document.getElementById('reportQText').innerText = q.text.substring(0, 50) + "...";
-            document.getElementById('reportMessage').value = ""; // Temizle
+            document.getElementById('reportQIndex').innerText = (currentIndex + 1) + ". Soru";
+            document.getElementById('reportMessage').value = ""; 
             
             document.getElementById('reportModal').classList.remove('hidden');
             document.getElementById('reportModal').classList.add('flex');
@@ -179,14 +196,22 @@
                 `--------------------------------\n` +
                 `KAYNAK: ${q.source}\n` +
                 `KATEGORİ: ${q.category}\n` +
-                `SORU ÖZETİ: ${q.text.substring(0, 100)}...\n` +
+                `SORU METNİ: ${q.text.substring(0, 150)}...\n` +
                 `--------------------------------\n\n` +
-                `HATA AÇIKLAMASI:\n${msg}\n\n` +
-                `Teşekkürler.`
+                `HATA AÇIKLAMASI:\n${msg}\n\n`
             );
 
+            // E-posta istemcisini aç
             window.location.href = `mailto:${ADMIN_EMAIL}?subject=${subject}&body=${body}`;
             closeReportModal();
+        }
+
+        // --- ADMIN KONTROLÜ ---
+        function checkAdminMode() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if(urlParams.get('mod') === 'admin') {
+                document.getElementById('secretCounterPanel').classList.remove('hidden');
+            }
         }
 
         document.addEventListener('keydown', (e) => {
@@ -202,6 +227,8 @@
         function renderStartScreen() {
             currentScreen = 'start';
             isReviewMode = false;
+            checkAdminMode(); // Admin kontrolü
+            
             setTimeout(() => { 
                 lucide.createIcons();
                 updateSourceList(); 
@@ -229,6 +256,11 @@
             const categories = [...new Set(window.SoruHavuzu.map(q => q.category))].sort();
             let catOpts = categories.map(c => `<option value="${c}">${c}</option>`).join('');
             const isDark = document.documentElement.classList.contains('dark');
+
+            // Profil Seçenekleri (Seçili olanı hatırla)
+            const profileOptions = Object.keys(CONFIG).map(key => 
+                `<option value="${key}" ${activeProfile === key ? 'selected' : ''}>${CONFIG[key].label}</option>`
+            ).join('');
 
             app.innerHTML = `
                 <div class="flex flex-col h-full bg-white dark:bg-slate-900 transition-colors">
@@ -270,18 +302,14 @@
                                 <div>
                                     <label class="text-[10px] uppercase font-bold text-slate-400 ml-1">Sınav Grubu</label>
                                     <select id="profileSelect" onchange="updateSourceList()" class="w-full mt-1 p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-bold text-slate-700 dark:text-slate-200 focus:ring-2 focus:ring-primary-500 outline-none appearance-none">
-                                        <option value="isg_a">🅰️ İSG (A Sınıfı)</option>
-                                        <option value="isg_b">🅱️ İSG (B Sınıfı)</option>
-                                        <option value="isg_c">©️ İSG (C Sınıfı)</option>
-                                        <option value="hekim">🩺 İşyeri Hekimliği</option>
-                                        <option value="dsp">⚕️ Diğer Sağlık P.</option>
+                                        ${profileOptions}
                                     </select>
                                 </div>
 
                                 <div>
                                     <label class="text-[10px] uppercase font-bold text-slate-400 ml-1">Kaynak Seçimi</label>
                                     <select id="sourceSelect" class="w-full mt-1 p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 focus:ring-2 focus:ring-primary-500 outline-none appearance-none">
-                                    </select>
+                                        </select>
                                 </div>
 
                                 <div>
@@ -326,12 +354,14 @@
                     </div>
                 </div>
             `;
-            
-            document.getElementById('profileSelect').value = activeProfile;
         }
 
+        // --- YENİ FONKSİYON: Akıllı Kaynak Listesi ---
         function updateSourceList() {
-            const profile = document.getElementById('profileSelect').value;
+            // Profil değiştiğinde global değişkeni güncelle
+            activeProfile = document.getElementById('profileSelect').value;
+            
+            const profile = activeProfile;
             const select = document.getElementById('sourceSelect');
             
             const allSources = [...new Set(window.SoruHavuzu.map(q => q.source))].sort().reverse();
