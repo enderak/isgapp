@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>İSG Sınavmatik V20</title>
+    <title>İSG Sınavmatik</title>
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XNTGQBXZ3Y"></script>
     <script>
@@ -89,20 +89,6 @@
         </div>
     </div>
 
-    <div id="secretCounterPanel" class="fixed bottom-4 right-4 z-50 hidden bg-black/90 p-3 rounded-lg border border-slate-700 shadow-2xl backdrop-blur-sm">
-        <div class="text-[10px] text-slate-400 uppercase font-bold mb-1 text-center">Yönetici Paneli</div>
-        
-        <div class="text-center text-white text-xs py-1">
-            <a href="https://analytics.google.com/" target="_blank" class="text-blue-400 hover:underline">Google Analytics'e Git</a>
-        </div>
-        
-        <div class="mt-2 pt-2 border-t border-slate-700 text-center">
-            <button onclick="localStorage.clear(); location.reload();" class="text-[9px] text-red-400 hover:text-red-300 underline">
-                Önbelleği Sıfırla
-            </button>
-        </div>
-    </div>
-
     <script>window.SoruHavuzu = window.SoruHavuzu || [];</script>
     
     <script src="sorular/2024-2-C.js" onerror="console.log('2024-2-C yok')"></script>
@@ -114,9 +100,9 @@
     <script src="sorular/Deneme-2025-1-C.js" onerror="console.log('Deneme C yok')"></script>
 
     <script>
-        // --- YENİ E-POSTA ADRESİ ---
-        const ADMIN_EMAIL = "isgapp@proton.me"; 
-        // ------------------------------------------
+        // --- E-POSTA ADRESİ ---
+        const ADMIN_EMAIL = "ispapp@proton.me"; 
+        // ----------------------
 
         if (window.SoruHavuzu.length === 0) {
             window.SoruHavuzu.push({
@@ -208,26 +194,8 @@
                 `HATA AÇIKLAMASI:\n${msg}\n\n`
             );
 
-            // E-posta istemcisini aç
             window.location.href = `mailto:${ADMIN_EMAIL}?subject=${subject}&body=${body}`;
             closeReportModal();
-        }
-
-        // --- ADMIN ŞİFRE KONTROLÜ ---
-        function checkAdminMode() {
-            const urlParams = new URLSearchParams(window.location.search);
-            if(urlParams.get('mod') === 'admin') {
-                // Şifre Sor
-                const password = prompt("Yönetici Paneli Şifresi:");
-                if(password === 'isgapp54') {
-                    document.getElementById('secretCounterPanel').classList.remove('hidden');
-                    alert("Yönetici girişi başarılı.");
-                } else {
-                    alert("Hatalı şifre!");
-                    // URL'i temizle ve ana sayfaya dön
-                    window.location.href = window.location.pathname;
-                }
-            }
         }
 
         document.addEventListener('keydown', (e) => {
@@ -247,7 +215,6 @@
             setTimeout(() => { 
                 lucide.createIcons();
                 updateSourceList(); 
-                checkAdminMode(); // Admin kontrolünü başlat
             }, 0);
 
             const totalQ = window.SoruHavuzu.length;
