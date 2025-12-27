@@ -3,8 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>İSG Sınavmatik V19</title>
+    <title>İSG Sınavmatik V20</title>
     
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XNTGQBXZ3Y"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XNTGQBXZ3Y');
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -85,7 +93,7 @@
         <div class="text-[10px] text-slate-400 uppercase font-bold mb-1 text-center">Yönetici Paneli</div>
         
         <div class="text-center text-white text-xs py-1">
-            Ziyaretçi Takibi
+            <a href="https://analytics.google.com/" target="_blank" class="text-blue-400 hover:underline">Google Analytics'e Git</a>
         </div>
         
         <div class="mt-2 pt-2 border-t border-slate-700 text-center">
@@ -101,13 +109,12 @@
     <script src="sorular/2025-1-A.js" onerror="console.log('2025-1-A yok')"></script>
     <script src="sorular/2025-1-B.js" onerror="console.log('2025-1-B yok')"></script>
     <script src="sorular/2025-1-C.js" onerror="console.log('2025-1-C yok')"></script>
-    
     <script src="sorular/Deneme-2025-1-A.js" onerror="console.log('Deneme A yok')"></script>
     <script src="sorular/Deneme-2025-1-B.js" onerror="console.log('Deneme B yok')"></script>
     <script src="sorular/Deneme-2025-1-C.js" onerror="console.log('Deneme C yok')"></script>
 
     <script>
-        // --- AYAR: E-POSTA ADRESİNİ BURAYA YAZ ---
+        // --- YENİ E-POSTA ADRESİ ---
         const ADMIN_EMAIL = "isgapp@proton.me"; 
         // ------------------------------------------
 
@@ -206,11 +213,20 @@
             closeReportModal();
         }
 
-        // --- ADMIN KONTROLÜ ---
+        // --- ADMIN ŞİFRE KONTROLÜ ---
         function checkAdminMode() {
             const urlParams = new URLSearchParams(window.location.search);
             if(urlParams.get('mod') === 'admin') {
-                document.getElementById('secretCounterPanel').classList.remove('hidden');
+                // Şifre Sor
+                const password = prompt("Yönetici Paneli Şifresi:");
+                if(password === 'isgapp54') {
+                    document.getElementById('secretCounterPanel').classList.remove('hidden');
+                    alert("Yönetici girişi başarılı.");
+                } else {
+                    alert("Hatalı şifre!");
+                    // URL'i temizle ve ana sayfaya dön
+                    window.location.href = window.location.pathname;
+                }
             }
         }
 
@@ -227,11 +243,11 @@
         function renderStartScreen() {
             currentScreen = 'start';
             isReviewMode = false;
-            checkAdminMode(); // Admin kontrolü
             
             setTimeout(() => { 
                 lucide.createIcons();
                 updateSourceList(); 
+                checkAdminMode(); // Admin kontrolünü başlat
             }, 0);
 
             const totalQ = window.SoruHavuzu.length;
