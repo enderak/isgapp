@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:;">
+    
     <title>İSG Sınavmatik</title>
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XNTGQBXZ3Y"></script>
@@ -77,7 +79,7 @@
             
             <div class="text-xs text-slate-500 dark:text-slate-400 mb-4 bg-slate-50 dark:bg-slate-900 p-3 rounded-lg border border-slate-100 dark:border-slate-700">
                 <p><strong>Kaynak:</strong> <span id="reportSource">...</span></p>
-                <p class="truncate mt-1"><strong>Soru ID:</strong> <span id="reportQIndex">...</span></p>
+                <p class="truncate mt-1"><strong>Soru:</strong> <span id="reportQText">...</span></p>
             </div>
 
             <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Hata nedir?</label>
@@ -102,14 +104,13 @@
     <script src="sorular/Deneme-2025-1-C.js" onerror="console.log('Deneme 2025-1-C yok')"></script>
 
     <script>
-        // --- SENİN E-POSTA ADRESİN ---
+        // --- DÜZELTİLMİŞ E-POSTA ADRESİ ---
         const ADMIN_EMAIL = "isgapp@proton.me"; 
-        // -----------------------------
+        // ----------------------------------
 
-        // GÜVENLİK: Eğer soru havuzu boşsa
         if (window.SoruHavuzu.length === 0) {
             window.SoruHavuzu.push({
-                category: "Sistem", text: "Uyarı: Soru dosyaları yüklenemedi. Lütfen 'sorular' klasörünü kontrol edin.", options: ["Tamam"], correct: 0, source: "SİSTEM", explanation: "Dosya yolu hatası.", profile: "ortak"
+                category: "Sistem", text: "Uyarı: Hiçbir soru dosyası yüklenemedi. Lütfen 'sorular' klasörünü kontrol edin.", options: ["Tamam"], correct: 0, source: "SİSTEM", explanation: "Dosya yolu hatası.", profile: "ortak"
             });
         }
 
@@ -123,7 +124,6 @@
 
         const STANDARD_DISTRIBUTION = { 'Teknik': 20, 'Mevzuat': 15, 'Genel İSG Konuları': 7, 'Sağlık': 5, 'Hukuk': 3 };
         
-        // RÜTBE SİSTEMİ
         const RANKS = [
             { min: 0, title: "Çırak", icon: "user", color: "gray" },
             { min: 100, title: "Kalfa", icon: "hammer", color: "blue" },
@@ -137,7 +137,6 @@
         let currentQuestions = [];
         let userAnswers = {};
         
-        // Hata önleyici localStorage okuma
         let favoriteIDs;
         try {
             favoriteIDs = new Set(JSON.parse(localStorage.getItem('isg_favs') || '[]'));
@@ -191,13 +190,13 @@
             document.getElementById('imageModal').classList.remove('flex');
         }
 
-        // --- HATA BİLDİRİM ---
+        // --- HATA BİLDİRİM FONKSİYONLARI ---
         function openReportModal() {
             if (!currentQuestions[currentIndex]) return;
-            
             const q = currentQuestions[currentIndex];
+            
             document.getElementById('reportSource').innerText = q.source || "Bilinmiyor";
-            document.getElementById('reportQIndex').innerText = (currentIndex + 1) + ". Soru";
+            document.getElementById('reportQText').innerText = q.text.substring(0, 50) + "...";
             document.getElementById('reportMessage').value = ""; 
             
             document.getElementById('reportModal').classList.remove('hidden');
@@ -221,7 +220,7 @@
                 `--------------------------------\n` +
                 `KAYNAK: ${q.source}\n` +
                 `KATEGORİ: ${q.category}\n` +
-                `SORU METNİ: ${q.text.substring(0, 150)}...\n` +
+                `SORU METNİ: ${q.text}\n` + 
                 `--------------------------------\n\n` +
                 `HATA AÇIKLAMASI:\n${msg}\n\n`
             );
@@ -231,7 +230,7 @@
         }
 
         function shareResult(score, correct, wrong) {
-            const text = `İSG Sınavmatik'te bir denemeyi bitirdim!\n\nPuan: ${score}\nDoğru: ${correct}\nYanlış: ${wrong}\n\nSen de çöz: https://isgapp.vercel.app`;
+            const text = `İSG Sınavmatik'te ${activeProfile.toUpperCase().replace('_',' ')} seviyesinde bir denemeyi bitirdim!\n\nPuan: ${score}\nDoğru: ${correct}\nYanlış: ${wrong}\n\nSen de çöz: https://isgapp.vercel.app`;
             
             if (navigator.share) {
                 navigator.share({
@@ -263,6 +262,7 @@
         function renderStartScreen() {
             currentScreen = 'start';
             isReviewMode = false;
+            
             history.pushState(null, null, window.location.pathname);
             
             setTimeout(() => { 
@@ -274,7 +274,7 @@
             const historyData = JSON.parse(localStorage.getItem('examHistory')) || [];
             const favCount = favoriteIDs.size;
 
-            // Rütbe Hesapla
+            // Rütbe Hesabı
             let currentRank = RANKS[0];
             let nextRank = null;
             for(let i = 0; i < RANKS.length; i++) {
@@ -789,7 +789,7 @@
                 if(historyData.length > 10) historyData.pop();
                 localStorage.setItem('examHistory', JSON.stringify(historyData));
 
-                // RÜTBE İÇİN PUAN EKLE
+                // TOPLAM DOĞRUYU GÜNCELLE
                 totalCorrectAllTime += correct;
                 localStorage.setItem('isg_total_correct', totalCorrectAllTime.toString());
             }
