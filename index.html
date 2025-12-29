@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>İSG Sınavmatik V22</title>
+    <title>İSG Sınavmatik</title>
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XNTGQBXZ3Y"></script>
     <script>
@@ -95,18 +95,21 @@
     <script src="sorular/2025-1-A.js" onerror="console.log('2025-1-A yok')"></script>
     <script src="sorular/2025-1-B.js" onerror="console.log('2025-1-B yok')"></script>
     <script src="sorular/2025-1-C.js" onerror="console.log('2025-1-C yok')"></script>
-    <script src="sorular/Deneme-2025-1-A.js" onerror="console.log('Deneme A yok')"></script>
-    <script src="sorular/Deneme-2025-1-B.js" onerror="console.log('Deneme B yok')"></script>
-    <script src="sorular/Deneme-2025-1-C.js" onerror="console.log('Deneme C yok')"></script>
+    
+    <script src="sorular/Deneme-2024-2-C.js" onerror="console.log('Deneme 2024-2-C yok')"></script>
+    <script src="sorular/Deneme-2025-1-A.js" onerror="console.log('Deneme 2025-1-A yok')"></script>
+    <script src="sorular/Deneme-2025-1-B.js" onerror="console.log('Deneme 2025-1-B yok')"></script>
+    <script src="sorular/Deneme-2025-1-C.js" onerror="console.log('Deneme 2025-1-C yok')"></script>
 
     <script>
-        // --- E-POSTA ADRESİ ---
-        const ADMIN_EMAIL = "ispapp@proton.me"; 
-        // ----------------------
+        // --- SENİN E-POSTA ADRESİN ---
+        const ADMIN_EMAIL = "isgapp@proton.me"; 
+        // -----------------------------
 
+        // GÜVENLİK: Eğer soru havuzu boşsa
         if (window.SoruHavuzu.length === 0) {
             window.SoruHavuzu.push({
-                category: "Sistem", text: "Uyarı: Soru dosyaları yüklenemedi. Klasör yapısını kontrol edin.", options: ["Tamam"], correct: 0, source: "SİSTEM", explanation: "Dosya yolu hatası.", profile: "ortak"
+                category: "Sistem", text: "Uyarı: Soru dosyaları yüklenemedi. Lütfen 'sorular' klasörünü kontrol edin.", options: ["Tamam"], correct: 0, source: "SİSTEM", explanation: "Dosya yolu hatası.", profile: "ortak"
             });
         }
 
@@ -119,7 +122,7 @@
         };
 
         const STANDARD_DISTRIBUTION = { 'Teknik': 20, 'Mevzuat': 15, 'Genel İSG Konuları': 7, 'Sağlık': 5, 'Hukuk': 3 };
-
+        
         // RÜTBE SİSTEMİ
         const RANKS = [
             { min: 0, title: "Çırak", icon: "user", color: "gray" },
@@ -133,7 +136,13 @@
         let currentScreen = 'start';
         let currentQuestions = [];
         let userAnswers = {};
-        let favoriteIDs = new Set(JSON.parse(localStorage.getItem('isg_favs') || '[]'));
+        
+        // Hata önleyici localStorage okuma
+        let favoriteIDs;
+        try {
+            favoriteIDs = new Set(JSON.parse(localStorage.getItem('isg_favs') || '[]'));
+        } catch(e) { favoriteIDs = new Set(); }
+
         let totalCorrectAllTime = parseInt(localStorage.getItem('isg_total_correct') || '0');
         let currentIndex = 0;
         let timerInterval;
@@ -144,6 +153,17 @@
         let activeProfile = 'isg_c'; 
         let touchStartX = 0;
         let fontLevel = 1; 
+
+        // Geri tuşu kontrolü
+        window.addEventListener('popstate', (e) => {
+            if (currentScreen === 'quiz' && !isReviewMode) {
+                if (confirm('Sınavdan çıkmak istediğinize emin misiniz? İlerlemeniz kaybolacak.')) {
+                    renderStartScreen();
+                } else {
+                    history.pushState(null, null, window.location.pathname);
+                }
+            }
+        });
 
         function initTheme() {
             const saved = localStorage.getItem('theme');
@@ -171,8 +191,10 @@
             document.getElementById('imageModal').classList.remove('flex');
         }
 
-        // --- HATA BİLDİRİM FONKSİYONLARI ---
+        // --- HATA BİLDİRİM ---
         function openReportModal() {
+            if (!currentQuestions[currentIndex]) return;
+            
             const q = currentQuestions[currentIndex];
             document.getElementById('reportSource').innerText = q.source || "Bilinmiyor";
             document.getElementById('reportQIndex').innerText = (currentIndex + 1) + ". Soru";
@@ -208,7 +230,6 @@
             closeReportModal();
         }
 
-        // --- PAYLAŞIM FONKSİYONU ---
         function shareResult(score, correct, wrong) {
             const text = `İSG Sınavmatik'te bir denemeyi bitirdim!\n\nPuan: ${score}\nDoğru: ${correct}\nYanlış: ${wrong}\n\nSen de çöz: https://isgapp.vercel.app`;
             
@@ -219,14 +240,13 @@
                     url: 'https://isgapp.vercel.app',
                 }).catch(console.error);
             } else {
-                // Fallback: Panoya kopyala
                 const tempInput = document.createElement("textarea");
                 tempInput.value = text;
                 document.body.appendChild(tempInput);
                 tempInput.select();
                 document.execCommand("copy");
                 document.body.removeChild(tempInput);
-                alert("Sonuç panoya kopyalandı! İstediğin yere yapıştırabilirsin.");
+                alert("Sonuç panoya kopyalandı! WhatsApp'ta paylaşabilirsin.");
             }
         }
 
@@ -243,6 +263,7 @@
         function renderStartScreen() {
             currentScreen = 'start';
             isReviewMode = false;
+            history.pushState(null, null, window.location.pathname);
             
             setTimeout(() => { 
                 lucide.createIcons();
@@ -250,10 +271,10 @@
             }, 0);
 
             const totalQ = window.SoruHavuzu.length;
-            const history = JSON.parse(localStorage.getItem('examHistory')) || [];
+            const historyData = JSON.parse(localStorage.getItem('examHistory')) || [];
             const favCount = favoriteIDs.size;
 
-            // Rütbe Hesabı
+            // Rütbe Hesapla
             let currentRank = RANKS[0];
             let nextRank = null;
             for(let i = 0; i < RANKS.length; i++) {
@@ -263,7 +284,6 @@
                 }
             }
             
-            // Progress Bar Hesabı
             let progressPercent = 100;
             let progressText = "Maksimum Seviye";
             if (nextRank) {
@@ -273,7 +293,7 @@
                 progressText = `${nextRank.title} için ${nextRank.min - totalCorrectAllTime} doğru kaldı`;
             }
 
-            const lastExams = history.slice(0, 3).map(h => `
+            const lastExams = historyData.slice(0, 3).map(h => `
                 <div class="flex justify-between items-center p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-800 mb-2 text-xs">
                     <div>
                         <div class="font-bold text-slate-700 dark:text-slate-200">${h.date}</div>
@@ -290,9 +310,7 @@
 
             const categories = [...new Set(window.SoruHavuzu.map(q => q.category))].sort();
             let catOpts = categories.map(c => `<option value="${c}">${c}</option>`).join('');
-            const isDark = document.documentElement.classList.contains('dark');
-
-            // Profil Seçenekleri (Seçili olanı hatırla)
+            
             const profileOptions = Object.keys(CONFIG).map(key => 
                 `<option value="${key}" ${activeProfile === key ? 'selected' : ''}>${CONFIG[key].label}</option>`
             ).join('');
@@ -304,7 +322,7 @@
                             <h1 class="text-2xl font-black text-slate-800 dark:text-white tracking-tight">İSG <span class="text-primary-600">SINAVMATİK</span></h1>
                         </div>
                         <button onclick="toggleTheme()" class="p-2.5 rounded-full bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all">
-                            <i data-lucide="${isDark ? 'sun' : 'moon'}" class="w-5 h-5"></i>
+                            <i data-lucide="${document.documentElement.classList.contains('dark') ? 'sun' : 'moon'}" class="w-5 h-5"></i>
                         </button>
                     </div>
 
@@ -411,9 +429,7 @@
 
         // --- YENİ FONKSİYON: Akıllı Kaynak Listesi ---
         function updateSourceList() {
-            // Profil değiştiğinde global değişkeni güncelle
             activeProfile = document.getElementById('profileSelect').value;
-            
             const profile = activeProfile;
             const select = document.getElementById('sourceSelect');
             
@@ -532,6 +548,8 @@
             userAnswers = {};
             currentIndex = 0;
             if (isTimerActive) startTimer();
+            
+            history.pushState({ screen: 'quiz' }, null, window.location.pathname);
             renderQuiz();
         }
 
@@ -560,6 +578,13 @@
         // --- SINAV EKRANI ---
         function renderQuiz() {
             currentScreen = 'quiz';
+            
+            if (!currentQuestions[currentIndex]) {
+                console.error("Soru bulunamadı!");
+                finishQuiz();
+                return;
+            }
+
             setTimeout(() => lucide.createIcons(), 0);
             
             const q = currentQuestions[currentIndex];
@@ -606,7 +631,7 @@
                     <div class="flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs border ${iconClass} mt-0.5">
                         ${letters[i]}
                     </div>
-                    <span class="${fontClass} font-medium leading-snug pt-1">${opt}</span>
+                    <span class="${fontClass} font-medium leading-snug pt-1 select-none">${opt}</span>
                 </div>`;
             }).join('');
 
@@ -663,7 +688,7 @@
                         
                         ${imageHtml}
                         
-                        <h2 class="${titleFontClass} font-bold text-slate-800 dark:text-slate-100 mb-6 leading-relaxed">${q.text}</h2>
+                        <h2 class="${titleFontClass} font-bold text-slate-800 dark:text-slate-100 mb-6 leading-relaxed select-none">${q.text}</h2>
                         
                         <div>${optionsHtml}</div>
                         ${explanationHtml}
@@ -723,6 +748,14 @@
             currentScreen = 'result';
             if(timerInterval) clearInterval(timerInterval);
             
+            // ANALYTICS: Sınav Bitişi
+            if (typeof gtag === 'function') {
+                gtag('event', 'quiz_completed', {
+                    'event_category': 'Engagement',
+                    'event_label': activeProfile
+                });
+            }
+
             let correct = 0, wrong = 0, empty = 0;
             let topicStats = {};
 
@@ -743,8 +776,8 @@
             const profileInfo = CONFIG[profileVal] || CONFIG['igu'];
 
             if(!isReviewMode && activeProfile !== 'favoriler') {
-                const history = JSON.parse(localStorage.getItem('examHistory')) || [];
-                history.unshift({
+                const historyData = JSON.parse(localStorage.getItem('examHistory')) || [];
+                historyData.unshift({
                     date: new Date().toLocaleDateString('tr-TR', { day: 'numeric', month: 'short', hour:'2-digit', minute:'2-digit'}),
                     score: score,
                     correct: correct,
@@ -753,10 +786,10 @@
                     profileLabel: profileInfo.label,
                     profileColor: profileInfo.color
                 });
-                if(history.length > 10) history.pop();
-                localStorage.setItem('examHistory', JSON.stringify(history));
+                if(historyData.length > 10) historyData.pop();
+                localStorage.setItem('examHistory', JSON.stringify(historyData));
 
-                // TOPLAM DOĞRUYU GÜNCELLE
+                // RÜTBE İÇİN PUAN EKLE
                 totalCorrectAllTime += correct;
                 localStorage.setItem('isg_total_correct', totalCorrectAllTime.toString());
             }
