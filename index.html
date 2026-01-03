@@ -45,9 +45,19 @@
         .text-size-2 { font-size: 1.125rem; } 
         .text-size-3 { font-size: 1.25rem; }
         
-        /* Resim Yüklenirken Alan Kaymasını Önleyen Class */
-        .img-placeholder { min-height: 220px; background-color: #f8fafc; display: flex; align-items: center; justify-content: center; }
-        .dark .img-placeholder { background-color: #1e293b; }
+        /* RESİM KAYMASINI ENGELLEYEN SABİT ALAN */
+        .img-placeholder { 
+            min-height: 200px; 
+            background-color: #f8fafc; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            border: 1px solid #e2e8f0;
+        }
+        .dark .img-placeholder { 
+            background-color: #1e293b; 
+            border-color: #334155;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
@@ -87,7 +97,7 @@
             </div>
 
             <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Hata nedir?</label>
-            <textarea id="reportMessage" rows="3" class="w-full p-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-sm focus:ring-2 focus:ring-red-500 outline-none mb-4" placeholder="Örn: Cevap A şıkkı olmalı, soruda yazım hatası var vb."></textarea>
+            <textarea id="reportMessage" rows="3" class="w-full p-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-sm focus:ring-2 focus:ring-red-500 outline-none mb-4" placeholder="Örn: Cevap A şıkkı olmalı..."></textarea>
 
             <button onclick="sendReportEmail()" class="w-full py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-sm shadow transition-colors flex items-center justify-center gap-2">
                 <i data-lucide="send" class="w-4 h-4"></i> Bildirimi E-Posta ile Gönder
@@ -95,20 +105,25 @@
         </div>
     </div>
 
-    <script>window.SoruHavuzu = window.SoruHavuzu || [];</script>    
-    <script src="sorular/2024-1-C.js" onerror="console.log('2024-1-C yok')"></script> 
-    <script src="sorular/2024-2-C.js" onerror="console.log('2024-2-C yok')"></script>
-    <script src="sorular/2025-1-A.js" onerror="console.log('2025-1-A yok')"></script>
-    <script src="sorular/2025-1-B.js" onerror="console.log('2025-1-B yok')"></script>
-    <script src="sorular/2025-1-C.js" onerror="console.log('2025-1-C yok')"></script>
-    <script src="sorular/Deneme-2024-1-C.js" onerror="console.log('Deneme 2024-1-C yok')"></script> 
-    <script src="sorular/Deneme-2024-2-C.js" onerror="console.log('Deneme 2024-2-C yok')"></script>
-    <script src="sorular/Deneme-2025-1-A.js" onerror="console.log('Deneme 2025-1-A yok')"></script>
-    <script src="sorular/Deneme-2025-1-B.js" onerror="console.log('Deneme 2025-1-B yok')"></script>
-    <script src="sorular/Deneme-2025-1-C.js" onerror="console.log('Deneme 2025-1-C yok')"></script>
-    <script src="sorular/Deneme-2026-Tahmini-C.js" onerror="console.log('Deneme 2026 Tahmini yok')"></script>
-    <script src="sorular/Deneme-2026-Tahmini2-C.js" onerror="console.log('Deneme 2026 Tahmini2 yok')"></script>
-    <script src="sorular/Deneme-2026-Tahmini3-C.js" onerror="console.log('Deneme 2026 Tahmini3 yok')"></script> <script>
+    <script>window.SoruHavuzu = window.SoruHavuzu || [];</script>
+    
+    <script src="sorular/2024-1-C.js" onerror="console.error('HATA: 2024-1-C.js yüklenemedi!')"></script>
+    <script src="sorular/2024-2-C.js" onerror="console.error('HATA: 2024-2-C.js yüklenemedi!')"></script>
+    <script src="sorular/2025-1-A.js" onerror="console.error('HATA: 2025-1-A.js yüklenemedi!')"></script>
+    <script src="sorular/2025-1-B.js" onerror="console.error('HATA: 2025-1-B.js yüklenemedi!')"></script>
+    <script src="sorular/2025-1-C.js" onerror="console.error('HATA: 2025-1-C.js yüklenemedi!')"></script>
+    
+    <script src="sorular/Deneme-2024-1-C.js" onerror="console.error('HATA: Deneme-2024-1-C.js yüklenemedi!')"></script>
+    <script src="sorular/Deneme-2024-2-C.js" onerror="console.error('HATA: Deneme-2024-2-C.js yüklenemedi!')"></script>
+    <script src="sorular/Deneme-2025-1-A.js" onerror="console.error('HATA: Deneme-2025-1-A.js yüklenemedi!')"></script>
+    <script src="sorular/Deneme-2025-1-B.js" onerror="console.error('HATA: Deneme-2025-1-B.js yüklenemedi!')"></script>
+    <script src="sorular/Deneme-2025-1-C.js" onerror="console.error('HATA: Deneme-2025-1-C.js yüklenemedi!')"></script>
+    
+    <script src="sorular/Deneme-2026-Tahmini-C.js" onerror="console.error('HATA: Deneme-2026-Tahmini-C.js yüklenemedi!')"></script>
+    <script src="sorular/Deneme-2026-Tahmini3-C.js" onerror="console.error('HATA: Deneme-2026-Tahmini3-C.js yüklenemedi!')"></script>
+        <script src="sorular/Deneme-2026-Tahmini2-C.js" onerror="console.error('HATA: Deneme-2026-Tahmini2-C.js yüklenemedi!')"></script>
+
+    <script>
         // --- E-POSTA ADRESİ ---
         const ADMIN_EMAIL = "isgapp@proton.me"; 
         // ----------------------
@@ -597,7 +612,7 @@
             const myAnswer = userAnswers[currentIndex];
             const isBookmarked = favoriteIDs.has(q.text);
 
-            // GÜNCELLEME: RESİM ALANI İÇİN SABİT YÜKSEKLİK VE PLACEHOLDER
+            // GÜNCELLEME: RESİM YER TUTUCUSU EKLENDİ (LAYOUT SHIFT ÖNLENDİ)
             let imageHtml = q.image ? `
                 <div class="mb-4 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 flex justify-center group relative cursor-zoom-in img-placeholder" onclick="openImageModal('${q.image}')">
                     <img src="${q.image}" class="max-h-56 object-contain" onerror="this.style.display='none'">
