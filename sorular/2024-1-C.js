@@ -109,8 +109,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Durdurulan işlerde izinsiz çalışma yaptıran işverene 3 yıldan 5 yıla kadar hapis cezası verilir.", "Kararın yerine getirildiği tarihten itibaren 7 iş günü içinde karara itiraz edilebilir.", "Mahkeme, işi durdurmaya ilişkin itirazı 15 iş günü içinde karara bağlar.", "İşveren, işin durdurulması sebebiyle işsiz kalan çalışanlara ücretlerini ödemekle veya başka bir iş vermekle yükümlü değildir.", "İş mahkemesi nezdinde yapılan itiraz, işin durdurulması kararının uygulanmasını durdurur."],
         correct: 0,
         source: "2024-1-C",
-        explanation: "6331 sayılı Kanun’a göre işin durdurulması kararına rağmen izinsiz şekilde çalıştırmaya devam eden işverene hapis cezası öngörülmüştür.
-        Ancak uygulamada bu soruda itirazlar genellikle itiraz süresi ve itirazın yürütmeyi durdurup durdurmadığı konularının karıştırılmasından kaynaklanmaktadır. Buna rağmen mevzuat metni esas alındığında sınav cevabı doğru kabul edilmektedir.",
+        explanation: "6331 sayılı Kanun’a göre işin durdurulması kararına rağmen izinsiz şekilde çalıştırmaya devam eden işverene hapis cezası öngörülmüştür. Ancak uygulamada bu soruda itirazlar genellikle itiraz süresi ve itirazın yürütmeyi durdurup durdurmadığı konularının karıştırılmasından kaynaklanmaktadır. Buna rağmen mevzuat metni esas alındığında sınav cevabı doğru kabul edilmektedir.",
         profile: "isg_c",
         image: ""
     },
@@ -120,8 +119,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["25-30 m derinlikte su altında basınçlı hava içinde çalışmayı gerektiren işler - 6 saat", "Cıva izabe fırınlarında görülen işler - 4 saat", "Kurşun izabe fırınlarının teksif odalarında biriken kuru tozları kaldırma işleri - 4 saat", "Karbon sülfürden etkilenme tehlikesi bulunan işler - 6 saat", "Karbamatlı ve organik fosforlu insektisitlerin yapımı ve paketlenmesi işleri - 6 saat"],
         correct: 1,
         source: "2024-1-C",
-        explanation: "Yönetmelikte cıva ile yapılan bazı işlerde azami çalışma süresi 6 saat olarak düzenlenmiştir.
-        Bununla birlikte farklı kaynaklarda ve uygulamalarda cıva işlerinin alt başlıklarına göre süre farklılıkları yer alabildiğinden bu soru yoruma açık kabul edilmektedir.Ancak sınava göre yanlış vevap Cıva izabe fırınlarında görülen işler - 4 saat.",
+        explanation: "Yönetmelikte cıva ile yapılan bazı işlerde azami çalışma süresi 6 saat olarak düzenlenmiştir. Bununla birlikte farklı kaynaklarda ve uygulamalarda cıva işlerinin alt başlıklarına göre süre farklılıkları yer alabildiğinden bu soru yoruma açık kabul edilmektedir. Ancak sınava göre yanlış cevap Cıva izabe fırınlarında görülen işler - 4 saat.",
         profile: "isg_c",
         image: ""
     },
@@ -191,8 +189,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Yalnız I", "I ve II", "I ve III", "II ve III", "I, II ve III"],
         correct: 2,
         source: "2024-1-C",
-        explanation: "İş yeri hekiminin temel sorumlulukları arasında çalışma ortamının gözetimi ve sağlık gözetimi sonuçlarının değerlendirilmesi yer alır.
-        Her ne kadar acil durum hazırlık çalışmalarına katılım bazı kaynaklarda ekip çalışması kapsamında ele alınsa da, sınavda doğrudan hekimin asli görevi olarak kabul edilmediği için II numaralı ifade doğru seçenekler arasında değerlendirilmemiştir.",
+        explanation: "İş yeri hekiminin temel sorumlulukları arasında çalışma ortamının gözetimi ve sağlık gözetimi sonuçlarının değerlendirilmesi yer alır. Her ne kadar acil durum hazırlık çalışmalarına katılım bazı kaynaklarda ekip çalışması kapsamında ele alınsa da, sınavda doğrudan hekimin asli görevi olarak kabul edilmediği için II numaralı ifade doğru seçenekler arasında değerlendirilmemiştir.",
         profile: "isg_c",
         image: ""
     },
@@ -202,8 +199,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Yalnız I", "Yalnız III", "I ve II", "II ve III", "I, II ve III"],
         correct: 2,
         source: "2024-1-C",
-        explanation: "Solunum koruyucuların, oksijen yetersizliği veya kirli ortam havasında kullanıcıya solunabilir hava sağlayacak nitelikte olması gerekir.
-        III. ifadede yer alan “kullanım süresinin en az üçte ikisi” vurgusu, yönetmelikte bu şekilde açıkça tanımlanmadığından mevzuat metniyle birebir örtüşmemektedir. Bu nedenle sınav değerlendirmesinde III numaralı ifade doğru kabul edilmemiştir.",
+        explanation: "Solunum koruyucuların, oksijen yetersizliği veya kirli ortam havasında kullanıcıya solunabilir hava sağlayacak nitelikte olması gerekir. III. ifadede yer alan 'kullanım süresinin en az üçte ikisi' vurgusu, yönetmelikte bu şekilde açıkça tanımlanmadığından mevzuat metniyle birebir örtüşmemektedir. Bu nedenle sınav değerlendirmesinde III numaralı ifade doğru kabul edilmemiştir.",
         profile: "isg_c",
         image: ""
     },
@@ -413,9 +409,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Yalnız I", "Yalnız II", "I ve III", "II ve III", "I, II ve III"],
         correct: 2,
         source: "2024-1-C",
-        explanation: "Kan-beyin bariyeri özellikle yağda çözünen maddelere karşı geçirgendir ve bu durum merkezi sinir sistemine geçişi kolaylaştırabilir.
-        Ayrıca toksik maddelerin plazma proteinlerine bağlanması, dokulara dağılımını sınırlayıcı bir etki oluşturur.
-        Doku pH’sının dağılım üzerinde etkili olduğu bilindiğinden II numaralı ifade sınav kapsamında doğru kabul edilmemiştir.",
+        explanation: "Kan-beyin bariyeri özellikle yağda çözünen maddelere karşı geçirgendir ve bu durum merkezi sinir sistemine geçişi kolaylaştırabilir. Ayrıca toksik maddelerin plazma proteinlerine bağlanması, dokulara dağılımını sınırlayıcı bir etki oluşturur. Doku pH’sının dağılım üzerinde etkili olduğu bilindiğinden II numaralı ifade sınav kapsamında doğru kabul edilmemiştir.",
         profile: "isg_c",
         image: ""
     },
