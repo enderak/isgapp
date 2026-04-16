@@ -10,7 +10,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 2,
         source: "2024-1-C",
         explanation: "1982 Anayasası'na göre en az 100.000 seçmen tarafından aday gösterilebilir.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -20,7 +20,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 3,
         source: "2024-1-C",
         explanation: "İş Kanunu'na göre işi 1,5 yıldan 3 yıla kadar sürmüş olan işçiler için bildirim süresi 6 haftadır.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -30,7 +30,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 3,
         source: "2024-1-C",
         explanation: "Fazla çalışma ücreti, normal çalışma ücretinin %50 yükseltilmesiyle ödenir.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -40,7 +40,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 0,
         source: "2024-1-C",
         explanation: "Çok tehlikeli sınıfta eğitimler yılda en az bir kez tekrarlanır.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -50,7 +50,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 1,
         source: "2024-1-C",
         explanation: "Bahsedilen kurum ÇASGEM'dir.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -60,7 +60,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 2,
         source: "2024-1-C",
         explanation: "Çalışmalar mümkün olan en az sayıda çalışanla yapılmalıdır, bu yüzden II yanlıştır. I ve III doğrudur.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -70,7 +70,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 3,
         source: "2024-1-C",
         explanation: "Zarar verme potansiyeli 'Tehlike' olarak tanımlanır.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -80,7 +80,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 1,
         source: "2024-1-C",
         explanation: "İşletmeci çevre kirliliğinden kusuru oranında değil, kusursuz sorumluluk ilkesi gereği sorumludur.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -90,7 +90,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 4,
         source: "2024-1-C",
         explanation: "Sağlık hizmeti sunucuları meslek hastalığı tanısı koydukları vakaları Sosyal Güvenlik Kurumu'na bildirir, Sağlık Bakanlığına değil (veya süre/prosedür farklıdır). Cevap anahtarı E.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -100,7 +100,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 0,
         source: "2024-1-C",
         explanation: "Çocuk ve genç işçilerde yıllık ücretli izin süresi 20 günden az olamaz.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -110,7 +110,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 0,
         source: "2024-1-C",
         explanation: "6331 sayılı Kanun’a göre işin durdurulması kararına rağmen izinsiz şekilde çalıştırmaya devam eden işverene hapis cezası öngörülmüştür. Ancak uygulamada bu soruda itirazlar genellikle itiraz süresi ve itirazın yürütmeyi durdurup durdurmadığı konularının karıştırılmasından kaynaklanmaktadır. Buna rağmen mevzuat metni esas alındığında sınav cevabı doğru kabul edilmektedir.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -120,7 +120,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 1,
         source: "2024-1-C",
         explanation: "Yönetmelikte cıva ile yapılan bazı işlerde azami çalışma süresi 6 saat olarak düzenlenmiştir. Bununla birlikte farklı kaynaklarda ve uygulamalarda cıva işlerinin alt başlıklarına göre süre farklılıkları yer alabildiğinden bu soru yoruma açık kabul edilmektedir. Ancak sınava göre yanlış cevap Cıva izabe fırınlarında görülen işler - 4 saat.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -130,7 +130,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 1,
         source: "2024-1-C",
         explanation: "101-500 arası çalışan için 3 temsilci görevlendirilir. 350 çalışan bu aralıktadır.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -140,7 +140,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 2,
         source: "2024-1-C",
         explanation: "Bu durumda en az 1 yıllık sözleşme ücreti tutarında tazminata hükmedilir.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -150,7 +150,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 1,
         source: "2024-1-C",
         explanation: "Az tehlikeli sınıfta temel eğitim süresi en az 8 saattir.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -160,7 +160,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 1,
         source: "2024-1-C",
         explanation: "Az tehlikeli: 100 x 10dk = 1000dk. Tehlikeli: 150 x 20dk = 3000dk. Toplam: 4000 dakika.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -170,7 +170,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 4,
         source: "2024-1-C",
         explanation: "Hizmet sürelerinin birleştirilmesi veya aralıklarla belirlenmesi yönetmeliğe göre yanlıştır.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -180,7 +180,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 3,
         source: "2024-1-C",
         explanation: "A (Az Tehlikeli, 6 yıl): 2021 Ekim. B (Tehlikeli, 4 yıl): 2021 Kasım. C (Çok Tehlikeli, 2 yıl): 2020 Kasım. Sıralama: C, A, B.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -190,7 +190,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 2,
         source: "2024-1-C",
         explanation: "İş yeri hekiminin temel sorumlulukları arasında çalışma ortamının gözetimi ve sağlık gözetimi sonuçlarının değerlendirilmesi yer alır. Her ne kadar acil durum hazırlık çalışmalarına katılım bazı kaynaklarda ekip çalışması kapsamında ele alınsa da, sınavda doğrudan hekimin asli görevi olarak kabul edilmediği için II numaralı ifade doğru seçenekler arasında değerlendirilmemiştir.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -200,7 +200,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 2,
         source: "2024-1-C",
         explanation: "Solunum koruyucuların, oksijen yetersizliği veya kirli ortam havasında kullanıcıya solunabilir hava sağlayacak nitelikte olması gerekir. III. ifadede yer alan 'kullanım süresinin en az üçte ikisi' vurgusu, yönetmelikte bu şekilde açıkça tanımlanmadığından mevzuat metniyle birebir örtüşmemektedir. Bu nedenle sınav değerlendirmesinde III numaralı ifade doğru kabul edilmemiştir.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -210,7 +210,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 1,
         source: "2024-1-C",
         explanation: "Bu ölçüler 'Lifsi toz' tanımıdır.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -220,7 +220,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 0,
         source: "2024-1-C",
         explanation: "İnsanda ağır hastalığa neden olan, topluma yayılma riski bulunan ancak tedavisi olan etkenler Grup 3'tür.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -230,7 +230,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 3,
         source: "2024-1-C",
         explanation: "Erken tanı ve tarama testleri ikincil korunma (erken teşhis) kapsamındadır.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -240,7 +240,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 2,
         source: "2024-1-C",
         explanation: "İlk yardımcı belgesinin geçerlilik süresi 3 yıldır.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -250,7 +250,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 1,
         source: "2024-1-C",
         explanation: "Histoplazmozis bir mantar enfeksiyonudur.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -260,7 +260,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 2,
         source: "2024-1-C",
         explanation: "Stannozis kalay tozundan kaynaklanır. Küf mantarı tozu stannozis yapmaz.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -270,7 +270,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 3,
         source: "2024-1-C",
         explanation: "Metal dumanı ateşi belirtileri çok daha kısa sürede ortaya çıkar, 48 saat geçtir. II ve III doğrudur.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -280,7 +280,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 3,
         source: "2024-1-C",
         explanation: "Bu rehber ILO tarafından yayımlanmıştır.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -290,7 +290,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 4,
         source: "2024-1-C",
         explanation: "Yükümlülük süresi aşılmışsa Sosyal Sigorta Yüksek Sağlık Kurulu kararı gerekir.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -300,7 +300,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 0,
         source: "2024-1-C",
         explanation: "Şarbon etkeni Bacillus anthracis bakterisidir.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -310,7 +310,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 4,
         source: "2024-1-C",
         explanation: "Biyolojik etkenler alerji, enfeksiyon ve zoonotik hastalıklara yol açabilir.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -320,7 +320,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 0,
         source: "2024-1-C",
         explanation: "Manganez maruziyeti parkinsonizm tablosuna yol açabilir.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -330,7 +330,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 4,
         source: "2024-1-C",
         explanation: "Rubella, kadmiyum ve kurşun, üreme sağlığı üzerinde olumsuz etkilere sahiptir.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -340,7 +340,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 2,
         source: "2024-1-C",
         explanation: "Lyme hastalığının etkeni Borrelia burgdorferi bakterisidir, Trypanosoma cruzi değildir.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -350,7 +350,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 1,
         source: "2024-1-C",
         explanation: "Tanım 'Biyolojik etkenler'e aittir.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -360,7 +360,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 4,
         source: "2024-1-C",
         explanation: "Arsenik deri, akciğer ve mesane kanserine neden olabilir.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -370,7 +370,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 3,
         source: "2024-1-C",
         explanation: "Sterilizatör titreşim kaynağı değildir.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -380,7 +380,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 0,
         source: "2024-1-C",
         explanation: "KKD kullanımı öncelikli yöntem değildir; öncelik kaynağında ve ortamda koruma önlemleridir.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -390,7 +390,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 2,
         source: "2024-1-C",
         explanation: "Cevap anahtarına göre I ve III (İyonizan Radyasyon ve Formaldehit) lösemi etkenlerindendir.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -400,7 +400,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 2,
         source: "2024-1-C",
         explanation: "Benzen metaboliti olarak idrarda fenol bakılır.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -410,7 +410,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 2,
         source: "2024-1-C",
         explanation: "Kan-beyin bariyeri özellikle yağda çözünen maddelere karşı geçirgendir ve bu durum merkezi sinir sistemine geçişi kolaylaştırabilir. Ayrıca toksik maddelerin plazma proteinlerine bağlanması, dokulara dağılımını sınırlayıcı bir etki oluşturur. Doku pH’sının dağılım üzerinde etkili olduğu bilindiğinden II numaralı ifade sınav kapsamında doğru kabul edilmemiştir.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -420,7 +420,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 4,
         source: "2024-1-C",
         explanation: "Beslenme durumu toksik yanıtı, adaptasyonu ve ölçümleri etkiler. Hepsi doğrudur.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -430,7 +430,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 2,
         source: "2024-1-C",
         explanation: "Geçmiş kayıtlara dayalı olarak, etkene maruz kalan bir grubun zaman içindeki durumunun geriye dönük incelenmesi 'Retrospektif kohort' çalışmasıdır.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -440,7 +440,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 0,
         source: "2024-1-C",
         explanation: "Mevcut durumu, kişi, yer ve zaman özelliklerine göre ortaya koyan çalışmalar tanımlayıcı araştırmalardır.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -450,7 +450,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 2,
         source: "2024-1-C",
         explanation: "Odds Oranı = (a*d) / (b*c) = (80*60) / (40*20) = 4800 / 800 = 6.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -460,7 +460,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 4,
         source: "2024-1-C",
         explanation: "İş kazası ve meslek hastalığını SGK'ya bildirmek işverenin yükümlülüğüdür, diğer sağlık personelinin görevi değildir.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -470,7 +470,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 2,
         source: "2024-1-C",
         explanation: "Mobbing sadece üstten asta değil; asttan üste veya eşitler arasında da olabilir.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -480,7 +480,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 1,
         source: "2024-1-C",
         explanation: "İç ışınlanmada ikincil sınırlar 'Yıllık vücuda alınma sınırları' (ALI) cinsinden ifade edilir.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -490,7 +490,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 0,
         source: "2024-1-C",
         explanation: "Oda sıcaklığında sıvı olan metal cıvadır; tremor ve eretizm cıva zehirlenmesi belirtileridir.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     },
     {
@@ -500,7 +500,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         correct: 1,
         source: "2024-1-C",
         explanation: "Mental iş yükü, 'Bilişsel Ergonomi'nin konusudur.",
-        profile: "isg_c",
+        profile: "hekim",
         image: ""
     }
 ]);
