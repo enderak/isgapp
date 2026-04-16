@@ -3,17 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:;">
+    <!-- TEK CSP KALDI - TEST İÇİN GEÇİCİ OLARAK GENİŞLETİLDİ -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval' data: blob:; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; connect-src *;">
     
     <title>İSG Sınavmatik</title>
-    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="9b752a9d-71ae-48b8-9e57-2e2a2fc670b8" type="text/javascript" async></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XNTGQBXZ3Y"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XNTGQBXZ3Y');
-    </script>
+    <!-- Cookiebot and GA removed for local stability -->
+    <!-- <script id="Cookiebot" ... ></script> -->
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -29,7 +24,6 @@
             }
         }
     </script>
-    <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; position: fixed; top: 0; left: 0; right: 0; bottom: 0; height: 100dvh; overflow: hidden; user-select: none; }
@@ -58,6 +52,12 @@
             background-color: #1e293b; 
             border-color: #334155;
         }
+        @keyframes pulseSubtle {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.01); }
+            100% { transform: scale(1); }
+        }
+        .animate-pulse-subtle { animation: pulseSubtle 4s infinite ease-in-out; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
@@ -105,22 +105,94 @@
         </div>
     </div>
 
-    <script>window.SoruHavuzu = window.SoruHavuzu || [];</script>
-    <script src="sorular/2023-2-C.js" onerror="console.error('HATA: 2023-2-C.js yüklenemedi!')"></script>
-    <script src="sorular/2024-2-C.js" onerror="console.error('HATA: 2024-2-C.js yüklenemedi!')"></script>
-    <script src="sorular/2024-1-C.js" onerror="console.error('HATA: 2024-1-C.js yüklenemedi!')"></script>
-    <script src="sorular/2025-1-A.js" onerror="console.error('HATA: 2025-1-A.js yüklenemedi!')"></script>
-    <script src="sorular/2025-1-B.js" onerror="console.error('HATA: 2025-1-B.js yüklenemedi!')"></script>
-    <script src="sorular/2025-1-C.js" onerror="console.error('HATA: 2025-1-C.js yüklenemedi!')"></script>
-    <script src="sorular/Deneme-2024-1-C.js" onerror="console.error('HATA: Deneme-2024-1-C.js yüklenemedi!')"></script>
-    <script src="sorular/Deneme-2024-2-C.js" onerror="console.error('HATA: Deneme-2024-2-C.js yüklenemedi!')"></script>
-    <script src="sorular/Deneme-2025-1-A.js" onerror="console.error('HATA: Deneme-2025-1-A.js yüklenemedi!')"></script>
-    <script src="sorular/Deneme-2025-1-B.js" onerror="console.error('HATA: Deneme-2025-1-B.js yüklenemedi!')"></script>
-    <script src="sorular/Deneme-2025-1-C.js" onerror="console.error('HATA: Deneme-2025-1-C.js yüklenemedi!')"></script>
-    <script src="sorular/Deneme-2026-Tahmini-C.js" onerror="console.error('HATA: Deneme-2026-Tahmini-C.js yüklenemedi!')"></script>
-    <script src="sorular/Deneme-2026-Tahmini2-C.js" onerror="console.error('HATA: Deneme-2026-Tahmini2-C.js yüklenemedi!')"></script>
-    <script src="sorular/Deneme-2026-Tahmini3-C.js" onerror="console.error('HATA: Deneme-2026-Tahmini3-C.js yüklenemedi!')"></script>
-    <script src="sorular/Deneme-2026-Tahmini4-C.js" onerror="console.error('HATA: Deneme-2026-Tahmini4-C.js yüklenemedi!')"></script> <script>
+    <!-- ÇIKIŞ ONAY MODALI -->
+    <div id="exitModal" class="fixed inset-0 z-[110] hidden items-center justify-center modal-overlay p-4">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl w-full max-w-xs p-6 fade-in border border-slate-200 dark:border-slate-700 text-center">
+            <div class="w-16 h-16 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i data-lucide="log-out" class="w-8 h-8"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Sınavdan Çıkılsın mı?</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Mevcut ilerlemeniz kaydedilmeyecektir.</p>
+            
+            <div class="space-y-3">
+                <button onclick="renderStartScreen(); closeExitModal();" class="w-full py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-sm shadow-lg transition-all">
+                    Evet, Sınavdan Çık
+                </button>
+                <button onclick="closeExitModal()" class="w-full py-3 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-sm transition-all">
+                    Vazgeç, Devam Et
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIBRARIES AND MAIN LOGIC AT THE BOTTOM FOR BETTER PERFORMANCE -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+
+    <script>
+        window.SoruHavuzu = window.SoruHavuzu || [];
+        const LOADED_FILES = new Set();
+        const SOURCES_MANIFEST = [
+            { id: "2023-2-C", file: "2023-2-C.js", profile: "isg_c" },
+            { id: "2024-1-C", file: "2024-1-C.js", profile: "isg_c" },
+            { id: "2024-2-C", file: "2024-2-C.js", profile: "isg_c" },
+            { id: "2025-1-A", file: "2025-1-A.js", profile: "isg_a" },
+            { id: "2025-1-B", file: "2025-1-B.js", profile: "isg_b" },
+            { id: "2025-1-C", file: "2025-1-C.js", profile: "isg_c" },
+            { id: "Deneme-2024-1-C", file: "Deneme-2024-1-C.js", profile: "isg_c" },
+            { id: "Deneme-2024-2-C", file: "Deneme-2024-2-C.js", profile: "isg_c" },
+            { id: "Deneme-2025-1-A", file: "Deneme-2025-1-A.js", profile: "isg_a" },
+            { id: "Deneme-2025-1-B", file: "Deneme-2025-1-B.js", profile: "isg_b" },
+            { id: "Deneme-2025-1-C", file: "Deneme-2025-1-C.js", profile: "isg_c" },
+            { id: "Deneme-2026-Tahmini-C", file: "Deneme-2026-Tahmini-C.js", profile: "isg_c" },
+            { id: "Deneme-2026-Tahmini2-C", file: "Deneme-2026-Tahmini2-C.js", profile: "isg_c" },
+            { id: "Deneme-2026-Tahmini3-C", file: "Deneme-2026-Tahmini3-C.js", profile: "isg_c" },
+            { id: "Deneme-2026-Tahmini4-C", file: "Deneme-2026-Tahmini4-C.js", profile: "isg_c" },
+            { id: "Deneme-2024-Hekim", file: "Deneme-2024-Hekim.js", profile: "hekim" }
+        ];
+
+        // --- HELPER: SAFE LUCIDE ---
+        function safeLucide() {
+            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                try {
+                    lucide.createIcons();
+                    // Dashbord'daki soru sayısını güncelle (eğer ordaysak)
+                    const countEl = document.getElementById('totalQCount');
+                    if (countEl) countEl.innerText = window.SoruHavuzu.length + " Soru";
+                } catch (e) {
+                    console.warn("Lucide/UI update error:", e);
+                }
+            }
+        }
+
+        const PENDING_LOADS = new Map();
+        async function loadQuestionFile(filename) {
+            if (LOADED_FILES.has(filename)) return true;
+            if (PENDING_LOADS.has(filename)) return PENDING_LOADS.get(filename);
+            
+            const loadPromise = new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = `sorular/${filename}`;
+                script.async = true; 
+                script.onload = () => {
+                    LOADED_FILES.add(filename);
+                    PENDING_LOADS.delete(filename);
+                    console.log(`Script Ready: ${filename}`);
+                    resolve(true);
+                };
+                script.onerror = () => {
+                    PENDING_LOADS.delete(filename);
+                    reject(new Error(`Dosya yüklenemedi: ${filename}`));
+                };
+                document.body.appendChild(script);
+            });
+            
+            PENDING_LOADS.set(filename, loadPromise);
+            return loadPromise;
+        }
+    </script>
+
+    <script>
         // --- ADMIN E-POSTA ADRESİ (DÜZELTİLDİ) ---
         const ADMIN_EMAIL = "isgapp@proton.me"; 
         // -----------------------------------------
@@ -170,6 +242,70 @@
         let touchStartX = 0;
         let fontLevel = 1; 
 
+        // Sınav Sayacı Ayarları
+        let countdownVisible = localStorage.getItem('isg_countdown_visible') !== 'false';
+        let rankVisible = localStorage.getItem('isg_rank_visible') !== 'false';
+        const EXAM_DATE = new Date('2026-05-16T10:00:00');
+
+        const QUOTES = [
+            "Bugünün çalışması, yarının başarısıdır.",
+            "Düzenli çalışma, zekayı aşar.",
+            "Küçük adımlar, büyük sonuçlar doğurur.",
+            "Başarı, her gün tekrarlanan küçük disiplinlerin toplamıdır.",
+            "Bilgi güçtür, ancak uygulanan bilgi ölümsüzdür.",
+            "Yorulunca dinlenmeyi öğren, bırakmayı değil.",
+            "Gelecek, bugünden hazırlananlara aittir.",
+            "Zamanını yönetemeyen, geleceğini yönetemez.",
+            "En iyi hazırlık, elinden gelenin en iyisini yapmaktır.",
+            "Odaklanma, başarının gizli anahtarıdır.",
+            "Sakin ol ve sadece çalışmaya devam et.",
+            "Sınav günü zafer, hazırlık günlerinde kazanılır."
+        ];
+
+        function getDailyContent() {
+            const now = new Date();
+            const month = now.getMonth() + 1; // 0-indexed
+            const day = now.getDate();
+
+            if (day === 23 && month === 4) return "23 Nisan Ulusal Egemenlik ve Çocuk Bayramı Kutlu Olsun!";
+            if (day === 1 && month === 5) return "1 Mayıs Emek ve Dayanışma Günü Kutlu Olsun!";
+            if (day === 19 && month === 5) return "19 Mayıs Atatürk'ü Anma, Gençlik ve Spor Bayramı Kutlu Olsun!";
+            if (day === 30 && month === 8) return "30 Ağustos Zafer Bayramı Kutlu Olsun!";
+            if (day === 29 && month === 10) return "29 Ekim Cumhuriyet Bayramı Kutlu Olsun!";
+
+            // Pick a quote based on the day of the year
+            const start = new Date(now.getFullYear(), 0, 0);
+            const diff = now - start;
+            const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
+            return QUOTES[dayOfYear % QUOTES.length];
+        }
+
+        function getCountdownData() {
+            const now = new Date();
+            const diff = EXAM_DATE - now;
+            if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0, active: false };
+            
+            return {
+                days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+                hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
+                seconds: Math.floor((diff % (1000 * 60)) / 1000),
+                active: true
+            };
+        }
+
+        function toggleCountdown() {
+            countdownVisible = !countdownVisible;
+            localStorage.setItem('isg_countdown_visible', countdownVisible);
+            renderStartScreen();
+        }
+
+        function toggleRankCard() {
+            rankVisible = !rankVisible;
+            localStorage.setItem('isg_rank_visible', rankVisible);
+            renderStartScreen();
+        }
+
         // Geri tuşu kontrolü
         window.addEventListener('popstate', (e) => {
             if (currentScreen === 'quiz' && !isReviewMode) {
@@ -187,6 +323,32 @@
                 document.documentElement.classList.add('dark');
             }
         }
+
+        function initEventListeners() {
+            // Swipe Listeners (Only Once)
+            let touchStartX = 0;
+            app.addEventListener('touchstart', e => { 
+                touchStartX = e.changedTouches[0].screenX; 
+            }, {passive: true});
+            
+            app.addEventListener('touchend', e => {
+                if (currentScreen !== 'quiz') return;
+                const touchEndX = e.changedTouches[0].screenX;
+                if (touchEndX < touchStartX - 100) nextQ();
+                if (touchEndX > touchStartX + 100) prevQ();
+            });
+
+            // Keyboard Listeners
+            document.addEventListener('keydown', (e) => {
+                if (currentScreen !== 'quiz') return;
+                if (e.key >= '1' && e.key <= '5') selectAnswer(parseInt(e.key) - 1);
+                if (e.key === 'ArrowRight') nextQ();
+                if (e.key === 'ArrowLeft') prevQ();
+                if (e.key.toLowerCase() === 'm') toggleBookmark();
+                if (e.key === 'Escape') { closeImageModal(); closeReportModal(); }
+            });
+        }
+
         function toggleTheme() {
             document.documentElement.classList.toggle('dark');
             localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
@@ -223,6 +385,17 @@
         function closeReportModal() {
             document.getElementById('reportModal').classList.add('hidden');
             document.getElementById('reportModal').classList.remove('flex');
+        }
+
+        function openExitModal() {
+            document.getElementById('exitModal').classList.remove('hidden');
+            document.getElementById('exitModal').classList.add('flex');
+            safeLucide();
+        }
+
+        function closeExitModal() {
+            document.getElementById('exitModal').classList.add('hidden');
+            document.getElementById('exitModal').classList.remove('flex');
         }
 
         function sendReportEmail() {
@@ -266,21 +439,15 @@
             }
         }
 
-        document.addEventListener('keydown', (e) => {
-            if (currentScreen !== 'quiz') return;
-            if (e.key >= '1' && e.key <= '5') selectAnswer(parseInt(e.key) - 1);
-            if (e.key === 'ArrowRight') nextQ();
-            if (e.key === 'ArrowLeft') prevQ();
-            if (e.key.toLowerCase() === 'm') toggleBookmark();
-            if (e.key === 'Escape') { closeImageModal(); closeReportModal(); }
-        });
+        // Remove global keydown if it exists outside initEventListeners
 
         // --- EKRAN: BAŞLANGIÇ ---
         function renderStartScreen() {
             currentScreen = 'start';
             isReviewMode = false;
+            if(timerInterval) clearInterval(timerInterval);
             
-            history.pushState(null, null, window.location.pathname);
+            history.pushState({ screen: 'start' }, null, window.location.pathname);
             
             setTimeout(() => { 
                 lucide.createIcons();
@@ -309,6 +476,8 @@
                 progressPercent = Math.min(100, (current / diff) * 100);
                 progressText = `${nextRank.title} için ${nextRank.min - totalCorrectAllTime} doğru kaldı`;
             }
+
+            const dailyMsg = getDailyContent();
 
             const lastExams = historyData.slice(0, 3).map(h => `
                 <div class="flex justify-between items-center p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-800 mb-2 text-xs">
@@ -345,7 +514,38 @@
 
                     <div class="flex-1 overflow-y-auto p-5 scroller space-y-6">
                         
+                        ${countdownVisible ? `
+                        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-red-600 to-rose-500 p-5 text-white shadow-lg shadow-rose-200 dark:shadow-none animate-pulse-subtle">
+                            <button onclick="toggleCountdown()" class="absolute top-2 right-2 p-1.5 hover:bg-white/20 rounded-lg transition-colors">
+                                <i data-lucide="eye-off" class="w-4 h-4 text-white/70"></i>
+                            </button>
+                            <div class="flex items-center gap-4 relative z-10">
+                                <div class="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md flex flex-col items-center justify-center border border-white/30">
+                                    <div class="text-xl font-black">${getCountdownData().days}</div>
+                                    <div class="text-[8px] uppercase font-bold text-white/80">Gün</div>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="text-[10px] font-bold uppercase tracking-widest text-white/70 mb-0.5">İSG SINAVI (16 MAYIS)</div>
+                                    <h4 class="text-xs font-black leading-tight italic opacity-90">"${dailyMsg}"</h4>
+                                </div>
+                            </div>
+                            <div class="absolute -right-4 -bottom-4 opacity-10 rotate-12">
+                                <i data-lucide="timer" class="w-24 h-24"></i>
+                            </div>
+                        </div>
+                        ` : `
+                        <div class="flex justify-end -mb-4">
+                            <button onclick="toggleCountdown()" class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-bold text-slate-500 flex items-center gap-1.5 hover:bg-slate-200 transition-all border border-slate-200 dark:border-slate-700">
+                                <i data-lucide="eye" class="w-3.5 h-3.5"></i> Sayacı Göster
+                            </button>
+                        </div>
+                        `}
+
+                        ${rankVisible ? `
                         <div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 shadow-sm relative overflow-hidden">
+                            <button onclick="toggleRankCard()" class="absolute top-2 right-2 p-1 text-slate-300 hover:text-slate-500">
+                                <i data-lucide="eye-off" class="w-3.5 h-3.5"></i>
+                            </button>
                             <div class="flex items-center gap-4 relative z-10">
                                 <div class="w-12 h-12 rounded-full bg-${currentRank.color}-100 dark:bg-${currentRank.color}-900/30 flex items-center justify-center text-${currentRank.color}-600 dark:text-${currentRank.color}-400">
                                     <i data-lucide="${currentRank.icon}" class="w-6 h-6"></i>
@@ -361,23 +561,29 @@
                             </div>
                             <div class="text-[9px] text-right text-slate-400 mt-1">${progressText}</div>
                         </div>
+                        ` : `
+                        <div class="flex justify-end -mb-4">
+                            <button onclick="toggleRankCard()" class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-bold text-slate-500 flex items-center gap-1.5 hover:bg-slate-200 transition-all border border-slate-200 dark:border-slate-700">
+                                <i data-lucide="trending-up" class="w-3.5 h-3.5"></i> Seviyeyi Göster
+                            </button>
+                        </div>
+                        `}
 
                         <div class="grid grid-cols-2 gap-3">
                             <div class="relative overflow-hidden rounded-xl bg-gradient-to-br from-primary-600 to-primary-800 p-4 text-white shadow-lg shadow-primary-200 dark:shadow-none">
                                 <div class="relative z-10">
                                     <div class="text-primary-100 text-[10px] font-medium mb-1 uppercase tracking-wider">Soru Havuzu</div>
-                                    <div class="text-2xl font-black">${totalQ}</div>
+                                    <div class="text-2xl font-black" id="totalQCount">${totalQ} Soru</div>
                                 </div>
                                 <div class="absolute bottom-2 right-2 opacity-20"><i data-lucide="database" class="w-8 h-8"></i></div>
                             </div>
                             
-                            <div onclick="startFavoritesQuiz()" class="relative overflow-hidden rounded-xl bg-gradient-to-br from-yellow-500 to-yellow-600 p-4 text-white shadow-lg shadow-yellow-200 dark:shadow-none cursor-pointer hover:scale-95 transition-transform">
+                            <div onclick="openSearch()" class="relative overflow-hidden rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-600 p-4 text-white shadow-lg shadow-indigo-200 dark:shadow-none cursor-pointer hover:scale-95 transition-transform">
                                 <div class="relative z-10">
-                                    <div class="text-yellow-100 text-[10px] font-medium mb-1 uppercase tracking-wider">Favori Sorular</div>
-                                    <div class="text-2xl font-black">${favCount}</div>
+                                    <div class="text-indigo-100 text-[10px] font-medium mb-1 uppercase tracking-wider">Soru Bankası</div>
+                                    <div class="text-2xl font-black">ARA</div>
                                 </div>
-                                <div class="absolute bottom-2 right-2 opacity-20"><i data-lucide="star" class="w-8 h-8"></i></div>
-                                ${favCount > 0 ? '<div class="absolute bottom-3 right-12 text-[10px] bg-white/20 px-2 py-0.5 rounded">Çöz</div>' : ''}
+                                <div class="absolute bottom-2 right-2 opacity-20"><i data-lucide="search" class="w-8 h-8"></i></div>
                             </div>
                         </div>
 
@@ -450,17 +656,14 @@
             const profile = activeProfile;
             const select = document.getElementById('sourceSelect');
             
-            const allSources = [...new Set(window.SoruHavuzu.map(q => q.source))].sort().reverse();
             const isISG = ['isg_a', 'isg_b', 'isg_c'].includes(profile);
 
-            const filteredSources = allSources.filter(sourceName => {
-                const sampleQ = window.SoruHavuzu.find(q => q.source === sourceName);
-                if (!sampleQ) return false;
-                if (sampleQ.profile === 'ortak' || sampleQ.profile === 'igu') return true;
-                if (sampleQ.profile === profile) return true;
-                if (isISG && sampleQ.profile === 'igu') return true;
+            const filteredSources = SOURCES_MANIFEST.filter(m => {
+                if (m.profile === 'ortak' || m.profile === 'igu') return true;
+                if (m.profile === profile) return true;
+                if (isISG && m.profile === 'igu') return true;
                 return false;
-            });
+            }).map(m => m.id).sort().reverse();
 
             let html = `
                 <option value="KARMA_DENEME" class="font-bold text-indigo-600">🎲 Karma Deneme (50 Soru)</option>
@@ -486,15 +689,44 @@
             }
         }
 
-        function startCustomQuiz() {
+        async function startCustomQuiz() {
             activeProfile = document.getElementById('profileSelect').value;
             const source = document.getElementById('sourceSelect').value;
             const category = document.getElementById('categorySelect').value;
+            const eduRequested = document.getElementById('eduToggle').checked;
             
-            isEduMode = document.getElementById('eduToggle').checked;
+            app.innerHTML = `
+                <div class="flex items-center justify-center h-full"> ... </div>
+            `;
+            setTimeout(() => safeLucide(), 0);
+
+            try {
+                if (source === 'KARMA_DENEME' || source === 'KARMA_CIKMIS') {
+                    // Tüm ilgili dosyaları yükle
+                    const filesToLoad = SOURCES_MANIFEST.filter(m => {
+                        const isISG = ['isg_a', 'isg_b', 'isg_c'].includes(activeProfile);
+                        const matchProfile = m.profile === activeProfile || (isISG && m.profile === 'igu') || m.profile === 'ortak';
+                        const matchType = source === 'KARMA_DENEME' ? m.id.includes('Deneme') : !m.id.includes('Deneme');
+                        return matchProfile && matchType;
+                    });
+                    await Promise.all(filesToLoad.map(m => loadQuestionFile(m.file)));
+                } else {
+                    const manifest = SOURCES_MANIFEST.find(m => m.id === source);
+                    if (manifest) await loadQuestionFile(manifest.file);
+                }
+            } catch (err) {
+                alert("Dosya yükleme hatası: " + err.message);
+                renderStartScreen();
+                return;
+            }
+
+            isEduMode = eduRequested;
             isTimerActive = !isEduMode;
             timeRemaining = 75 * 60;
+            userAnswers = {};
+            currentIndex = 0;
             
+            console.log("Sınav Hazırlığı Başlıyor (Havuz Boyutu: " + window.SoruHavuzu.length + ")");
             prepareQuizQuestions(source, activeProfile, category, 50);
         }
 
@@ -512,9 +744,13 @@
         }
 
         function prepareQuizQuestions(source, profile, category, count) {
-            currentQuestions = [];
-            let pool = window.SoruHavuzu;
+            try {
+                console.log("prepareQuizQuestions Tetiklendi. Havuz:", window.SoruHavuzu.length);
+                currentQuestions = [];
+                let pool = window.SoruHavuzu;
+                console.log("Pool initialized, size:", pool.length);
             const isISG = ['isg_a', 'isg_b', 'isg_c'].includes(profile);
+            console.log("isISG check:", isISG, "Profile:", profile);
 
             let filteredPool = pool.filter(q => {
                 if (q.profile === 'ortak' || !q.profile) return true;
@@ -522,6 +758,7 @@
                 if (isISG && q.profile === 'igu') return true;
                 return false;
             });
+            console.log("Filtered pool size after profile filter:", filteredPool.length);
 
             if (source === 'KARMA_DENEME') {
                 filteredPool = filteredPool.filter(q => q.source.includes('Deneme'));
@@ -537,6 +774,7 @@
 
             if (filteredPool.length === 0) { 
                 alert("Seçilen kriterlere uygun soru bulunamadı!"); 
+                renderStartScreen();
                 return; 
             }
 
@@ -545,11 +783,13 @@
                 for (const [cat, num] of Object.entries(distribution)) {
                     let catQuestions = filteredPool.filter(q => q.category === cat);
                     if (catQuestions.length > 0) {
-                        while(catQuestions.length < num) { 
+                        // Güvenli çoğaltma (Sonsuz döngü engellendi)
+                        let targetCount = Math.min(num, 50); 
+                        while(catQuestions.length < targetCount) { 
                             catQuestions.push(catQuestions[Math.floor(Math.random() * catQuestions.length)]); 
                         }
                         catQuestions.sort(() => Math.random() - 0.5);
-                        currentQuestions.push(...catQuestions.slice(0, num));
+                        currentQuestions.push(...catQuestions.slice(0, targetCount));
                     }
                 }
             } else {
@@ -564,10 +804,17 @@
 
             userAnswers = {};
             currentIndex = 0;
+            console.log("Ready to start quiz. Questions count:", currentQuestions.length);
             if (isTimerActive) startTimer();
             
             history.pushState({ screen: 'quiz' }, null, window.location.pathname);
+            console.log("Calling renderQuiz...");
             renderQuiz();
+            } catch (err) {
+                console.error("prepareQuizQuestions HATASI:", err);
+                alert("Sınav başlatılırken bir hata oluştu: " + err.message);
+                renderStartScreen();
+            }
         }
 
         function startTimer() {
@@ -594,15 +841,17 @@
 
         // --- SINAV EKRANI ---
         function renderQuiz() {
-            currentScreen = 'quiz';
-            
-            if (!currentQuestions[currentIndex]) {
-                console.error("Soru bulunamadı!");
-                finishQuiz();
-                return;
-            }
+            try {
+                console.log("renderQuiz Tetiklendi, Index:", currentIndex);
+                currentScreen = 'quiz';
+                
+                if (!currentQuestions[currentIndex]) {
+                    console.error("Soru bulunamadı!");
+                    finishQuiz();
+                    return;
+                }
 
-            setTimeout(() => lucide.createIcons(), 0);
+            if (typeof lucide !== 'undefined') setTimeout(() => lucide.createIcons(), 0);
             
             const q = currentQuestions[currentIndex];
             const isAnswered = userAnswers[currentIndex] !== undefined;
@@ -657,8 +906,13 @@
             if ((isEduMode && isAnswered) || isReviewMode) {
                 explanationHtml = `
                     <div class="mt-4 p-4 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 rounded-r-xl fade-in">
-                        <div class="flex items-center gap-2 mb-1 text-blue-700 dark:text-blue-400 font-bold text-xs uppercase tracking-wider">
-                            <i data-lucide="info" class="w-3 h-3"></i> Açıklama
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center gap-2 text-blue-700 dark:text-blue-400 font-bold text-xs uppercase tracking-wider">
+                                <i data-lucide="info" class="w-3 h-3"></i> Açıklama
+                            </div>
+                            <button onclick="askAI()" class="flex items-center gap-1.5 px-2 py-1 bg-white dark:bg-slate-800 border border-blue-200 dark:border-blue-700 rounded-md text-[10px] font-bold text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors shadow-sm">
+                                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> AI ile Detaylandır
+                            </button>
                         </div>
                         <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">${q.explanation || 'Açıklama bulunmuyor.'}</p>
                     </div>
@@ -671,7 +925,9 @@
             app.innerHTML = `
                 <div class="h-14 px-4 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between shrink-0 z-20">
                     <div class="flex items-center gap-2">
-                        <button onclick="if(confirm('Çıkış yapılsın mı?')) renderStartScreen()" class="text-slate-400 hover:text-red-500 transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
+                        <button onclick="event.stopPropagation(); openExitModal();" class="p-2 -ml-2 text-slate-400 hover:text-red-500 transition-colors z-50">
+                            <i data-lucide="x" class="w-5 h-5"></i>
+                        </button>
                         <div class="flex flex-col">
                             <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Soru</span>
                             <span class="text-sm font-black text-slate-700 dark:text-slate-200">${currentIndex + 1} <span class="text-slate-300 font-normal">/ ${currentQuestions.length}</span></span>
@@ -730,14 +986,9 @@
                     </button>
                 </div>
             `;
-
-            const content = document.getElementById('quizContent');
-            content.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX);
-            content.addEventListener('touchend', e => {
-                let touchEndX = e.changedTouches[0].screenX;
-                if (touchEndX < touchStartX - 70) nextQ();
-                if (touchEndX > touchStartX + 70) prevQ();
-            });
+            } catch (err) {
+                console.error("renderQuiz HATASI:", err);
+            }
         }
 
         function selectAnswer(i) {
@@ -863,7 +1114,12 @@
                     <div class="p-6 space-y-4">
                         <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 shadow-sm">
                             <h4 class="text-xs font-bold uppercase text-slate-400 mb-3 flex items-center gap-2"><i data-lucide="pie-chart" class="w-4 h-4"></i> Konu Karnesi</h4>
-                            ${analysisHtml}
+                            <div class="mb-6 h-64">
+                                <canvas id="resultChart"></canvas>
+                            </div>
+                            <div class="space-y-3">
+                                ${analysisHtml}
+                            </div>
                         </div>
 
                         <button onclick="shareResult('${score}', ${correct}, ${wrong})" class="w-full py-3 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-xl font-bold text-sm flex items-center justify-center gap-2">
@@ -882,7 +1138,57 @@
                     </div>
                 </div>
             `;
-            setTimeout(() => lucide.createIcons(), 0);
+            setTimeout(() => {
+                lucide.createIcons();
+                renderResultChart(topicStats);
+            }, 50);
+        }
+
+        function renderResultChart(stats) {
+            const canvas = document.getElementById('resultChart');
+            if(!canvas) return;
+
+            if (typeof Chart === 'undefined') {
+                canvas.parentElement.innerHTML = '<div class="flex items-center justify-center h-full text-slate-400 text-xs italic p-10 text-center">Grafik kütüphanesi yüklenemediğinden başarı grafiği gösterilemiyor.</div>';
+                return;
+            }
+
+            const ctx = canvas.getContext('2d');
+            const labels = Object.keys(stats);
+            const data = labels.map(l => Math.round((stats[l].correct / stats[l].total) * 100));
+            
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Başarı %',
+                        data: data,
+                        fill: true,
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                        borderColor: 'rgb(59, 130, 246)',
+                        pointBackgroundColor: 'rgb(59, 130, 246)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgb(59, 130, 246)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { display: true },
+                            suggestedMin: 0,
+                            suggestedMax: 100,
+                            ticks: { display: false }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
         }
 
         function startReviewMode() {
@@ -891,10 +1197,164 @@
             renderQuiz();
         }
 
-        window.onload = function() {
+        // --- YENİ: SORU ARAMA (SEARCH) ---
+        async function openSearch() {
+            app.innerHTML = `
+                <div class="flex items-center justify-center h-full">
+                    <div class="flex flex-col items-center animate-pulse">
+                        <i data-lucide="loader-2" class="w-10 h-10 text-primary-600 animate-spin mb-3"></i>
+                        <div class="text-sm font-medium text-slate-400">Soru Bankası Hazırlanıyor...</div>
+                    </div>
+                </div>
+            `;
+            setTimeout(() => lucide.createIcons(), 0);
+
+            try {
+                // Tüm dosyaları yükle (Eğer daha önce yüklenmediyse)
+                await Promise.all(SOURCES_MANIFEST.map(m => loadQuestionFile(m.file)));
+            } catch (err) {
+                alert("Banka yüklenirken hata oluştu.");
+            }
+
+            renderSearchScreen();
+        }
+
+        function renderSearchScreen() {
+            currentScreen = 'search';
+            app.innerHTML = `
+                <div class="flex flex-col h-full bg-slate-50 dark:bg-slate-950">
+                    <div class="p-4 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-sm">
+                        <div class="flex items-center gap-3 mb-4">
+                            <button onclick="renderStartScreen()" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors text-slate-400">
+                                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                            </button>
+                            <h2 class="text-lg font-bold text-slate-800 dark:text-white">Soru Bankası</h2>
+                        </div>
+                        <div class="relative">
+                            <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"></i>
+                            <input type="text" id="searchInput" oninput="performSearch()" placeholder="Soru veya konu ara..." class="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm outline-none focus:ring-2 focus:ring-primary-500 transition-all">
+                        </div>
+                    </div>
+                    <div id="searchResults" class="flex-1 overflow-y-auto p-4 scroller space-y-3">
+                        <div class="text-center py-20 text-slate-400">
+                            <i data-lucide="search" class="w-12 h-12 mx-auto mb-3 opacity-20"></i>
+                            <p class="text-sm">Merak ettiğiniz bir konuyu arayın...</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            setTimeout(() => lucide.createIcons(), 0);
+            document.getElementById('searchInput').focus();
+        }
+
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const resultsBox = document.getElementById('searchResults');
+            
+            if (query.length < 2) {
+                resultsBox.innerHTML = `<div class="text-center py-20 text-slate-400"><p class="text-sm">En az 2 karakter girin...</p></div>`;
+                return;
+            }
+
+            const matches = window.SoruHavuzu.filter(q => 
+                q.text.toLowerCase().includes(query) || 
+                q.category.toLowerCase().includes(query) ||
+                q.source.toLowerCase().includes(query)
+            ).slice(0, 50);
+
+            if (matches.length === 0) {
+                resultsBox.innerHTML = `<div class="text-center py-20 text-slate-400"><p class="text-sm">Sonuç bulunamadı.</p></div>`;
+                return;
+            }
+
+            resultsBox.innerHTML = matches.map(m => `
+                <div class="p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm hover:border-primary-500 transition-all cursor-pointer group" onclick="viewSingleQuestion('${encodeURIComponent(JSON.stringify(m))}')">
+                    <div class="flex gap-2 mb-2">
+                        <span class="text-[9px] font-bold px-1.5 py-0.5 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded uppercase border border-blue-100 dark:border-blue-800">${m.category}</span>
+                        <span class="text-[9px] font-bold px-1.5 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 rounded uppercase border border-slate-200 dark:border-slate-700">${m.source}</span>
+                    </div>
+                    <p class="text-xs text-slate-700 dark:text-slate-300 line-clamp-2 leading-relaxed font-medium">${m.text}</p>
+                </div>
+            `).join('');
+        }
+
+        function viewSingleQuestion(encodedQ) {
+            const q = JSON.parse(decodeURIComponent(encodedQ));
+            currentQuestions = [q];
+            currentIndex = 0;
+            isReviewMode = true;
+            renderQuiz();
+        }
+
+        // --- YENİ: AI AÇIKLAMA ---
+        function askAI() {
+            const q = currentQuestions[currentIndex];
+            const appDiv = document.getElementById('app');
+            
+            const modal = document.createElement('div');
+            modal.id = "aiModal";
+            modal.className = "fixed inset-0 z-[110] flex items-end sm:items-center justify-center modal-overlay p-0 sm:p-4 fade-in";
+            modal.innerHTML = `
+                <div class="bg-white dark:bg-slate-900 w-full max-w-lg rounded-t-3xl sm:rounded-3xl shadow-2xl flex flex-col max-h-[90vh] overflow-hidden border-t sm:border border-slate-200 dark:border-slate-800">
+                    <div class="p-4 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center bg-blue-50/50 dark:bg-blue-950/20">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-200 dark:shadow-none">
+                                <i data-lucide="sparkles" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold text-slate-800 dark:text-white">AI Derin Analiz</h3>
+                                <p class="text-[10px] text-blue-600 dark:text-blue-400 font-bold uppercase tracking-widest">Akıllı Yardımcı</p>
+                            </div>
+                        </div>
+                        <button onclick="document.getElementById('aiModal').remove()" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full text-slate-400"><i data-lucide="x" class="w-5 h-5"></i></button>
+                    </div>
+                    
+                    <div class="flex-1 overflow-y-auto p-6 scroller space-y-6">
+                        <div class="space-y-2">
+                            <div class="text-[10px] font-black text-slate-400 uppercase tracking-wider">Konu Özeti</div>
+                            <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800 text-sm leading-relaxed text-slate-700 dark:text-slate-300 italic">
+                                "${q.text.substring(0, 150)}..."
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="flex gap-3">
+                                <div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 shrink-0 mt-1"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+                                <div>
+                                    <div class="text-xs font-bold text-slate-800 dark:text-white mb-1">Doğru Cevap Analizi</div>
+                                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">${q.explanation}</p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-3">
+                                <div class="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 shrink-0 mt-1"><i data-lucide="lightbulb" class="w-3.5 h-3.5"></i></div>
+                                <div>
+                                    <div class="text-xs font-bold text-slate-800 dark:text-white mb-1">Sınav İpucu</div>
+                                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Bu soru genellikle <b>${q.category}</b> başlığı altında karşımıza çıkar. ${q.category === 'Mevzuat' ? 'Yönetmelik maddelerindeki sayısal verilere (gün, ay, yıl) dikkat etmelisin.' : 'Teknik terimlerin tanımlarını iyi bilmek bu tür soruları çözmeni kolaylaştırır.'}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white shadow-xl shadow-blue-100 dark:shadow-none">
+                            <div class="flex items-center gap-2 mb-2 font-bold text-xs uppercase"><i data-lucide="book-open" class="w-3 h-3"></i> İlgili Mevzuat / Bilgi</div>
+                            <p class="text-xs leading-relaxed opacity-90">Bu konuyla ilgili daha fazla bilgi için <b>İSG Temel Mevzuat</b> dökümanlarını inceleyebilirsiniz.</p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900">
+                        <button onclick="document.getElementById('aiModal').remove()" class="w-full py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-bold text-sm text-slate-600 dark:text-slate-300 shadow-sm">Anladım, Teşekkürler</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            setTimeout(() => lucide.createIcons(), 0);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
             initTheme();
+            initEventListeners();
             renderStartScreen();
-        };
+        });
     </script>
 </body>
 </html>
