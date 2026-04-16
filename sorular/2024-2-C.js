@@ -19,7 +19,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Yalnız I", "Yalnız III", "I ve II", "II ve III", "I, II ve III"],
         correct: 0,
         source: "2024-2-C",
-        explanation: "PDF cevap anahtarı: A (Yalnız I). Yaşlılık sigortasından sağlanan haklar arasında toptan ödeme veya aylık bağlanması bulunur.",
+        explanation: "Yaşlılık sigortasından sağlanan haklar arasında toptan ödeme veya aylık bağlanması bulunur. Cenaze ödeneği iş kazası, meslek hastalığı veya hastalık/malullük sigortası kollarından sağlanır.",
         profile: "isg_c",
         image: ""
     },
@@ -39,7 +39,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Şikâyetin işçi tarafından yapılması", "Şikâyetin kamuoyuna duyurulması", "Soruşturma komisyonu oluşturulması", "Hükümetin açıklama yapmaya davet edilmesi", "Şikâyetin Uluslararası Çalışma Bürosuna yapılması"],
         correct: 0,
         source: "2024-2-C",
-        explanation: "ILO Anayasası’na göre sözleşme ihlali şikayetleri hükümetler veya işçi/işveren kuruluşları tarafından yapılabilir, ancak bireysel işçi şikayeti doğrudan yapılamaz.",
+        explanation: "ILO Anayasası’na göre sözleşme ihlali şikayetleri hükümetler veya işçi/işveren kuruluşları tarafından yapılabilir; bireysel olarak bir işçi doğrudan şikayet yapamaz.",
         profile: "isg_c",
         image: ""
     },
@@ -49,7 +49,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["İletişimin artması", "İş birliğinin artması", "Kontrol faaliyetlerinin artması", "Güvenlik kurallarına uyulması", "Personel devir hızının artması"],
         correct: 4,
         source: "2024-2-C",
-        explanation: "Personel devir hızının artması olumsuz bir gösterge olup güvenlik kültüründe zayıflığa işaret eder.",
+        explanation: "Personel devir hızının (işten ayrılma ve yeni işe alım sirkülasyonunun) artması olumsuz bir göstergedir ve kurumsal aidiyetin zayıf olduğuna işaret eder.",
         profile: "isg_c",
         image: ""
     },
@@ -59,7 +59,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Yalnız I", "Yalnız II", "Yalnız III", "I ve II", "I ve III"],
         correct: 4,
         source: "2024-2-C",
-        explanation: "PDF cevap anahtarı: E (I ve III). Lüks (aydınlanma şiddeti) ve Candela (ışık şiddeti) aydınlatma birimleridir. Sone ise ses yüksekliği birimidir.",
+        explanation: "Lüks (aydınlanma şiddeti) ve Candela (ışık şiddeti) aydınlatma birimleridir. Sone ise ses yüksekliği (gürültü) birimidir.",
         profile: "isg_c",
         image: ""
     },
@@ -69,7 +69,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["31 Aralık 2022", "31 Aralık 2023", "31 Mart 2024", "31 Aralık 2025", "31 Mart 2025"],
         correct: 2,
         source: "2024-2-C",
-        explanation: "PDF cevap anahtarı: C (31 Mart 2024). İlkyardım Yönetmeliği'ne göre belge 3 yıl geçerlidir ve son 6 ay içinde güncelleme eğitimi alınmalıdır. 01 Ocak 2021'de alınan belge 31 Aralık 2023'te sona erer, ancak PDF anahtarı 31 Mart 2024 olarak işaretlenmiştir.",
+        explanation: "İlkyardım Yönetmeliği'ne göre belge 3 yıl geçerlidir ve belge süresi bitimini takiben en geç 3 ay içerisinde güncelleme eğitimi alınmalıdır (01 Ocak 2021 + 3 Yıl + 3 Ay = 31 Mart 2024).",
         profile: "isg_c",
         image: ""
     },
@@ -79,7 +79,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Yalnız I", "Yalnız III", "I ve II", "II ve III", "I, II ve III"],
         correct: 3,
         source: "2024-2-C",
-        explanation: "PDF cevap anahtarı: D (II ve III). Yönetmelikte hafif iş tanımı yapılırken çocuğun okula devamı ve mesleki eğitim durumu dikkate alınır.",
+        explanation: "Yönetmelikte hafif iş tanımı yapılırken çocuğun gelişimi ile okula devamı ve mesleki eğitim durumu dikkate alınır, ücret bir kriter değildir.",
         profile: "isg_c",
         image: ""
     },
@@ -89,7 +89,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Tetkik", "Önleme", "Düzeltici faaliyet", "Sürekli iyileştirme", "Dokümante edilmiş bilgi"],
         correct: 2,
         source: "2024-2-C",
-        explanation: "TS ISO 45001’de düzeltici faaliyet, uygunsuzluğun nedenini ortadan kaldırmak ve tekrarını önlemek için yapılan faaliyettir.",
+        explanation: "TS ISO 45001’de düzeltici faaliyet, uygunsuzluğun ana nedenini ortadan kaldırmak ve tekrarını önlemek için yapılan planlı faaliyetlerdir.",
         profile: "isg_c",
         image: ""
     },
@@ -99,7 +99,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["2", "3", "4", "5", "6"],
         correct: 4,
         source: "2024-2-C",
-        explanation: "Yönetmeliğe göre az tehlikeli iş yerlerinde acil durum planı en geç 6 yılda bir yenilenir.",
+        explanation: "Acil durum planları Çok Tehlikeli sınıfta 2, Tehlikeli sınıfta 4, Az Tehlikeli sınıfta ise en geç 6 yılda bir yenilenir.",
         profile: "isg_c",
         image: ""
     },
@@ -109,7 +109,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["10", "20", "30", "40", "50"],
         correct: 0,
         source: "2024-2-C",
-        explanation: "5510 sayılı Kanun’a göre meslekte kazanma gücü kaybı en az %10 olmalıdır.",
+        explanation: "5510 sayılı Kanun’a göre meslekte kazanma gücü kaybı oranı en az %10 olan sigortalıya sürekli iş göremezlik geliri bağlanır.",
         profile: "isg_c",
         image: ""
     },
@@ -119,7 +119,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["İş yeri ekipmanlarının temizliğini yapmak", "İş yerinde termal konfor şartlarını sağlamak", "Çalışanın kıdemine göre barınma sağlamak", "Acil çıkış yollarını kullanılabilir durumda tutmak", "İş yeri eklentilerinde yeterli aydınlatma sağlamak"],
         correct: 2,
         source: "2024-2-C",
-        explanation: "Çalışanın kıdemine göre barınma sağlamak yönetmelikte yer alan bir yükümlülük değildir.",
+        explanation: "İşverenin çalışanlara barınma sağlarken kıdemlerini dikkate alma gibi bir yasal yükümlülüğü bulunmamaktadır.",
         profile: "isg_c",
         image: ""
     },
@@ -129,7 +129,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["İSG talimatları ile çalışma izin prosedürlerini hazırlamak", "İSG yönünden risk değerlendirmesini yapmak veya yaptırmak", "İş yerinde yangın veya patlamaların önlenmesi için işverene önerilerde bulunmak", "Meydana gelen iş kazalarının nedenlerinin araştırılmasıyla ilgili çalışmalar yapmak", "İSG mevzuatı gereği yapılması gereken periyodik bakımları planlamak"],
         correct: 1,
         source: "2024-2-C",
-        explanation: "PDF cevap anahtarı: B (Risk değerlendirmesi yapmak/yaptırmak). Ancak bu şık mantıken uzmanın görevi olduğu için şaşırtıcıdır. PDF anahtarına sadık kalınmıştır.",
+        explanation: "Risk değerlendirmesini yapmak veya yaptırmak doğrudan İŞVERENİN yükümlülüğüdür. İş güvenliği uzmanının görevi bu çalışmalara 'katılmak' ve 'rehberlik etmektir'.",
         profile: "isg_c",
         image: ""
     },
@@ -149,7 +149,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["5", "10", "15", "20", "25"],
         correct: 1,
         source: "2024-2-C",
-        explanation: "Yönetmeliğe göre bir kişi en fazla 10 kg patlayıcı madde taşıyabilir.",
+        explanation: "Yönetmeliğe göre bir kişi ateşleme amacıyla en fazla 10 kg patlayıcı madde taşıyabilir.",
         profile: "isg_c",
         image: ""
     },
@@ -159,7 +159,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Yalnız I", "Yalnız II", "I ve III", "II ve III", "I, II ve III"],
         correct: 1,
         source: "2024-2-C",
-        explanation: "PDF cevap anahtarı: B (Yalnız II). Genel havalandırma sisteminin bakımı yılda bir yapılmalıdır. Duman ve kötü kokular için ek mekanik havalandırma gerekebilir.",
+        explanation: "Genel havalandırma sisteminin bakımı iki yılda bir değil, yılda en az bir kez yapılmalıdır. Ayrıca duman ve kötü kokular için lokal/mekanik havalandırma kurulması gerekebilir. Sadece II. ifade doğrudur.",
         profile: "isg_c",
         image: ""
     },
@@ -169,7 +169,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Yalnız I", "Yalnız II", "I ve III", "II ve III", "I, II ve III"],
         correct: 1,
         source: "2024-2-C",
-        explanation: "PDF cevap anahtarı: B (Yalnız II). Yönetmelik, balıkçı tekneleri ve maden/petrol/gaz çıkarma işlerinde uygulanmaz. Kimyasal üretim yapan iş yerlerinde uygulanır.",
+        explanation: "Balıkçı tekneleri ile maden, petrol ve gaz çıkarma iş yerleri bu yönetmeliğin kapsamı dışındadır. Sadece kimyasal üretim tesisleri kapsama girer.",
         profile: "isg_c",
         image: ""
     },
@@ -179,7 +179,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Kullanılacağı ortam", "Tasarımının giyecek kişiye uygun olması", "Amacı dışında kullanılabileceği diğer durumlar", "Kullanımı konusunda personelin eğitim durumu", "Zararlı maddelerin geçmesine karşı dayanıklılığı"],
         correct: 2,
         source: "2024-2-C",
-        explanation: "KKD seçiminde amacı dışında kullanım dikkate alınmaz, doğru kullanım ve uygunluk önemlidir.",
+        explanation: "KKD seçiminde ürünün amacı dışında nerelerde kullanılabileceği dikkate alınmaz; önemli olan doğru işe ve kişiye uygun olmasıdır.",
         profile: "isg_c",
         image: ""
     },
@@ -189,7 +189,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Sedye", "Asılı yük", "Dokunma", "Güvenlik duşu", "Yetkisiz kimse giremez"],
         correct: 1,
         source: "2024-2-C",
-        explanation: "Asılı yük, uyarı işareti ile belirtilir (sarı zemin, siyah piktogram).",
+        explanation: "Asılı yük, sarı zemin üzerine siyah üçgen şeklindeki 'Uyarı' işareti ile belirtilir.",
         profile: "isg_c",
         image: ""
     },
@@ -199,7 +199,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Yalnız I", "Yalnız III", "I ve II", "II ve III", "I, II ve III"],
         correct: 1,
         source: "2024-2-C",
-        explanation: "PDF cevap anahtarı: B (Yalnız III). Resmi cevap sadece III. öncülü doğru kabul etmektedir.",
+        explanation: "Risk bir hasar 'kaynağı' değil, tehlikenin gerçekleşme 'ihtimalidir' (I yanlış). Çalışma alanı değil 'Tehlikeli Bölge' kişinin riske maruz kaldığı yerdir (II yanlış). Sadece III. tanım doğrudur.",
         profile: "isg_c",
         image: ""
     },
@@ -209,7 +209,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Yükün çok büyük olması", "Yükün kavranılmasının zor olması", "Yükün içindekilerin yer değiştirmesi", "Yükün, vücudun eğilmesini gerektiren bir konuma sahip olması", "Yükün, uygun olmayan kişisel koruyucu donanım kullanılarak taşınması"],
         correct: 4,
         source: "2024-2-C",
-        explanation: "Uygun olmayan KKD kullanımı yükün özelliği değil, çalışanın davranışı ve ekipman seçimi ile ilgilidir.",
+        explanation: "Uygun olmayan KKD kullanılması çalışanın davranışı ve donanım seçimiyle ilgilidir, taşınan yükün fiziksel bir özelliği değildir.",
         profile: "isg_c",
         image: ""
     },
@@ -219,7 +219,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Yalnız I", "Yalnız II", "I ve III", "II ve III", "I, II ve III"],
         correct: 4,
         source: "2024-2-C",
-        explanation: "Tüm seçenekler acil durum tanımı kapsamındadır.",
+        explanation: "Salgın hastalık, zehirlenme veya kimyasal yayılım gibi durumların tamamı Acil Durum Yönetmeliği kapsamında değerlendirilir.",
         profile: "isg_c",
         image: ""
     },
@@ -229,7 +229,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Sağlam yapıda olur.", "İlave bir tehlikeye sebep olmayacak özellikte olur.", "Kolayca yerinden çıkarılabilecek özellikte olur.", "Tehlike bölgesinden yeterli uzaklıkta bulunur.", "Ekipmanın görülmesi gereken operasyon noktalarına engel olmayacak özellikte olur."],
         correct: 2,
         source: "2024-2-C",
-        explanation: "Koruyucular kolayca yerinden çıkarılamaz, ancak bakım ve kontrol için sökülebilir olmalıdır.",
+        explanation: "Koruyucular kolayca yerinden çıkarılamaz veya devre dışı bırakılamaz nitelikte olmalıdır.",
         profile: "isg_c",
         image: ""
     },
@@ -239,7 +239,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["TWA", "STEL", "CAS", "ILO", "EINECS"],
         correct: 1,
         source: "2024-2-C",
-        explanation: "STEL (Short Term Exposure Limit) 15 dakikalık süre için maruziyet üst sınır değeridir.",
+        explanation: "STEL (Short Term Exposure Limit), 15 dakikalık kısa süreli maruziyet sınır değerini ifade eder.",
         profile: "isg_c",
         image: ""
     },
@@ -249,7 +249,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["6 ay", "1 yıl", "5 yıl", "15 yıl", "40 yıl"],
         correct: 4,
         source: "2024-2-C",
-        explanation: "Uzun kuluçka dönemi olan hastalıklar (örn: HIV, hepatit) için kayıtlar 40 yıl saklanmalıdır.",
+        explanation: "Uzun kuluçka dönemli hastalıklar ve kalıcı/gizli enfeksiyonlara yol açan biyolojik etken kayıtları 40 yıl boyunca saklanır.",
         profile: "isg_c",
         image: ""
     },
@@ -265,7 +265,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         ],
         correct: 4,
         source: "2024-2-C",
-        explanation: "Çocuk, genç ve gebe çalışanlar için periyodik muayene sıklığı altı ayda bir değil, yılda birdir.",
+        explanation: "Çocuk, genç ve gebe çalışanlar için periyodik muayene sıklığı altı ayda bir değil, en geç 1 (bir) yılda bir tekrarlanır.",
         profile: "isg_c",
         image: ""
     },
@@ -275,7 +275,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Yalnız II", "Yalnız III", "I ve II", "I ve III", "II ve III"],
         correct: 2,
         source: "2024-2-C",
-        explanation: "İşe giriş ve periyodik muayeneler sağlık gözetimi kapsamındadır. Kaynakta kontrol çalışmaları ise çevresel ölçümlerle ilgilidir.",
+        explanation: "İşe giriş ve periyodik muayeneler sağlık gözetimi kapsamındadır. Kaynakta kontrol çalışmaları ise tıbbi değil, mühendislik (teknik) tedbirlerdir.",
         profile: "isg_c",
         image: ""
     },
@@ -285,7 +285,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["A Grubu", "B Grubu", "C Grubu", "D Grubu", "E Grubu"],
         correct: 0,
         source: "2024-2-C",
-        explanation: "Kadmiyum ve bileşikleri A grubu (kimyasal nedenli meslek hastalıkları) içindedir.",
+        explanation: "Kadmiyum ve bileşikleri A grubu (Kimyasal Maddelerle Olan Meslek Hastalıkları) listesinde yer alır.",
         profile: "isg_c",
         image: ""
     },
@@ -295,7 +295,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Sosyal Güvenlik Kurumu Sağlık Kurulu", "Sosyal Sigorta Yüksek Sağlık Kurulu", "Dosya hazırlama yetkisi olan hastanelerin sağlık kurulları", "Meslek hastalıkları hastanesi sağlık kurulları", "İş sağlığı ve güvenliği kurulları"],
         correct: 1,
         source: "2024-2-C",
-        explanation: "Sosyal Sigorta Yüksek Sağlık Kurulu kararı ile yükümlülük süresi aşılmış olsa bile meslek hastalığı sayılabilir.",
+        explanation: "Yükümlülük süresinin aşılması durumunda meslek hastalığı kararını veren merci Sosyal Sigorta Yüksek Sağlık Kuruludur.",
         profile: "isg_c",
         image: ""
     },
@@ -305,7 +305,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Kişisel gelişim için desteğin yetersizliği", "Çalışanın iş yerinde atıl kalması", "Terfilerin belli bir sistematiğinin olması", "Kararlara katılım hakkı verilmemesi", "İş güvencesizliği"],
         correct: 2,
         source: "2024-2-C",
-        explanation: "Terfilerin belli bir sistematiğinin olması olumlu bir durum olup psikososyal risk oluşturmaz.",
+        explanation: "Terfilerin belli ve adil bir sistematiğe sahip olması psikososyal riski azaltan olumlu bir durumdur.",
         profile: "isg_c",
         image: ""
     },
@@ -315,7 +315,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Yalnız II", "I ve II", "I ve III", "II ve III", "I, II ve III"],
         correct: 4,
         source: "2024-2-C",
-        explanation: "Mikroorganizmalar zoonotik hastalıklara, alerjik reaksiyonlara ve toksik etkilere neden olabilir.",
+        explanation: "Mikroorganizmalara maruziyet hem hayvanlardan bulaşan (zoonotik) hastalıklara, hem alerjilere hem de toksin üreten bakteriler sebebiyle toksik tablolara neden olabilir.",
         profile: "isg_c",
         image: ""
     },
@@ -325,7 +325,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["10", "15", "20", "30", "40"],
         correct: 3,
         source: "2024-2-C",
-        explanation: "Karayolları Trafik Yönetmeliği’ne göre traktörler için azami hız sınırı 30 km/saat’tir.",
+        explanation: "Karayolları Trafik Yönetmeliği’ne göre traktörler için belirlenen azami hız sınırı 30 km/saat’tir.",
         profile: "isg_c",
         image: ""
     },
@@ -335,7 +335,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["0,5", "1,15", "2,5", "5", "6,25"],
         correct: 3,
         source: "2024-2-C",
-        explanation: "El-kol titreşimi için günlük maruziyet sınır değeri 5 m/s²’dir.",
+        explanation: "El-kol titreşimi için eylem değeri 2.5 m/s², sınır değeri ise 5 m/s² olarak belirlenmiştir.",
         profile: "isg_c",
         image: ""
     },
@@ -345,7 +345,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Sievert", "Joule", "Curie", "Elektronvolt", "Gray"],
         correct: 2,
         source: "2024-2-C",
-        explanation: "Aktivite birimi Becquerel (Bq) veya Curie (Ci)’dir.",
+        explanation: "Radyoaktif aktivite birimi Curie (Ci) veya Becquerel'dir (Bq). Sievert ve Gray ise doz birimleridir.",
         profile: "isg_c",
         image: ""
     },
@@ -355,7 +355,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Yalnız I", "Yalnız II", "Yalnız III", "I ve II", "I ve III"],
         correct: 3,
         source: "2024-2-C",
-        explanation: "I ve II doğrudur. III yanlıştır; manometre ayar vidası ventiller açılmadan önce tam olarak açık bırakılmalıdır.",
+        explanation: "Tüpler açılırken manometre ayar vidaları tam sıkılmış değil, serbest/açık konumda bırakılmalıdır (III yanlış). Yağdan uzak tutulması ve donmanın ılık suyla çözülmesi doğrudur.",
         profile: "isg_c",
         image: ""
     },
@@ -365,17 +365,17 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["3000", "2500", "2000", "1500", "1000"],
         correct: 4,
         source: "2024-2-C",
-        explanation: "Alçak gerilim, 1000 V’a kadar olan gerilimlerdir.",
+        explanation: "Mevzuata göre etkin değeri 1000 Volt (1 kV) ve altı olan tesisler alçak gerilim tesisleridir.",
         profile: "isg_c",
         image: ""
     },
     {
         category: "Teknik",
-        text: "37. TS 5-1 Standardı’na göre doğrultma, düzeltme ve benzeri işlerde çekiclerin kullanılmadığı yerlerde kullanılan ve metal, ahşap, plastik, plastik vb. malzemeden yapılan el aleti aşağıdakilerden hangisidir?",
+        text: "37. TS 5-1 Standardı’na göre doğrultma, düzeltme ve benzeri işlerde çekiçlerin kullanılmadığı yerlerde kullanılan ve metal, ahşap, plastik, plastik vb. malzemeden yapılan el aleti aşağıdakilerden hangisidir?",
         options: ["Kerpeten", "Tokmak", "Kama", "Vida", "Murç"],
         correct: 1,
         source: "2024-2-C",
-        explanation: "Tokmak, çekiç yerine kullanılan bir el aletidir.",
+        explanation: "Vurma ve düzeltme işlerinde çekiç yerine hasar vermemek için ahşap veya plastik tokmaklar kullanılır.",
         profile: "isg_c",
         image: ""
     },
@@ -385,7 +385,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Yalnız I", "Yalnız II", "Yalnız III", "I ve II", "II ve III"],
         correct: 4,
         source: "2024-2-C",
-        explanation: "Keser hem kesme hem de çivi çıkarma işlerinde kullanılır ve tek elle kullanılır.",
+        explanation: "Keser kalın metal kesmek için kullanılmaz. Çivi çakmak/çıkarmak için tek elle kullanılan bir alettir.",
         profile: "isg_c",
         image: ""
     },
@@ -399,7 +399,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         ],
         correct: 0,
         source: "2024-2-C",
-        explanation: "Kaldırma liftleri için periyodik kontrol azami süresi 1 yıldır.",
+        explanation: "Kaldırma ve iletme ekipmanları standartlarda aksi belirtilmediği sürece yılda 1 kez periyodik kontrole tabi tutulur.",
         profile: "isg_c",
         image: ""
     },
@@ -409,7 +409,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Asgari çalışma sıcaklığı", "Azami çalışma sıcaklığı", "Asgari çalışma basıncı", "Azami çalışma basıncı", "Kabın kapasitesi"],
         correct: 2,
         source: "2024-2-C",
-        explanation: "Asgari çalışma basıncı değil, azami çalışma basıncı belirtilmelidir.",
+        explanation: "Veri plakalarında kabın dayanabileceği 'Azami çalışma basıncı' belirtilir, asgari basıncın belirtilmesine gerek yoktur.",
         profile: "isg_c",
         image: ""
     },
@@ -419,7 +419,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Benzen", "Formaldehit", "Toluen", "Karbon dioksit", "Etilbenzen"],
         correct: 3,
         source: "2024-2-C",
-        explanation: "Karbon dioksit (CO2) uçucu organik bileşik değildir; inorganik bir gazdır.",
+        explanation: "Karbon dioksit (CO2) yapısında karbon bulundurmasına rağmen inorganik bir gazdır, VOC (uçucu organik bileşik) değildir.",
         profile: "isg_c",
         image: ""
     },
@@ -429,17 +429,17 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Metil alkol", "Toluen", "Asbest", "Asetik asit", "Benzen"],
         correct: 2,
         source: "2024-2-C",
-        explanation: "Asbest lifli yapıda olup pnömokonyoza (asbestoz) neden olur.",
+        explanation: "Asbest, lifli (fibroz) yapıda bir silikat mineralidir ve akciğerde asbestozis (pnömokonyoz) hastalığına neden olur.",
         profile: "isg_c",
         image: ""
     },
     {
         category: "Teknik",
-        text: "43. Bir kimyasal maddeye ait güvenlik bilgi formuyla ilgili aşağıdaki ifadelerden hangileri doğrudur?\nI. Kimyasal maddenin yanma özellikleriyle ilgili bilgileri içerir.\nII. Kişisel korunma yöntemlerini içerir.\nIII. Kimyasal maddenin yıllık üretim miktarı bilgilerini içerir.",
+        text: "43. Bir kimyasal maddeye ait güvenlik bilgi formuyla (GBF) ilgili aşağıdaki ifadelerden hangileri doğrudur?\nI. Kimyasal maddenin yanma özellikleriyle ilgili bilgileri içerir.\nII. Kişisel korunma yöntemlerini içerir.\nIII. Kimyasal maddenin yıllık üretim miktarı bilgilerini içerir.",
         options: ["Yalnız I", "I ve II", "I ve III", "II ve III", "I, II ve III"],
         correct: 1,
         source: "2024-2-C",
-        explanation: "GBF’de yanma özellikleri ve kişisel korunma yöntemleri bulunur, ancak yıllık üretim miktarı bulunmaz.",
+        explanation: "GBF formlarında sağlık, güvenlik, yanma, ilk yardım ve KKD bilgileri bulunur. Üretim veya satış miktarı gibi ticari bilgiler bulunmaz.",
         profile: "isg_c",
         image: ""
     },
@@ -449,7 +449,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Parlama noktasının düşük olması", "Kaynama noktasının yüksek olması", "Buharlaşma hızının düşük olması", "Sudaki çözünürlüğünün yüksek olması", "Viskozitesinin yüksek olması"],
         correct: 0,
         source: "2024-2-C",
-        explanation: "Parlama noktası düşük olan sıvılar daha kolay alev alır.",
+        explanation: "Bir sıvının parlama noktası ne kadar düşükse, oharlaşıp tutuşması o kadar kolay olur.",
         profile: "isg_c",
         image: ""
     },
@@ -457,9 +457,9 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         category: "Teknik",
         text: "45. Etiketinde BC tozlu ibaresi olan taşınabilir söndürme cihazlarıyla ilgili aşağıdaki ifadelerden hangileri doğrudur?\nI. Benzin ve motorin gibi sıvı madde yangınının söndürülmesinde kullanılabilir.\nII. Sodyum ve potasyum gibi yanabilen metal yangınının söndürülmesinde kullanılabilir.\nIII. Hava gazı ve hidrojen gibi yanıcı gaz madde yangınının söndürülmesinde kullanılabilir.",
         options: ["Yalnız I", "Yalnız II", "Yalnız III", "I ve II", "I ve III"],
-        correct: 0,
+        correct: 4,
         source: "2024-2-C",
-        explanation: "BC tozlu söndürücüler sıvı ve gaz yangınlarında (B ve C sınıfı) kullanılır, metal yangınlarında (D sınıfı) kullanılmaz.",
+        explanation: "B Sınıfı sıvı yangınlarını, C Sınıfı gaz yangınlarını temsil eder. Metal yangınları (Sodyum vb.) D sınıfıdır ve özel D tozu ile söndürülür.",
         profile: "isg_c",
         image: ""
     },
@@ -475,7 +475,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         ],
         correct: 0,
         source: "2024-2-C",
-        explanation: "PDF cevap anahtarı: A (En az 30 dakika). Yönetmeliğe göre süre en az 60 dakika olmalıdır, dolayısıyla A şıkkı yanlıştır ve sorunun cevabıdır.",
+        explanation: "Yönetmeliğe göre acil durum yönlendirmesinin çalışma süresi en az 60 dakika olmalıdır, dolayısıyla 30 dakika ifadesi yanlıştır.",
         profile: "isg_c",
         image: ""
     },
@@ -485,7 +485,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["5", "15", "25", "35", "45"],
         correct: 2,
         source: "2024-2-C",
-        explanation: "Sınıf B kenar koruma sisteminde yatay açıklık 35 cm ise düşey açıklık en fazla 25 cm olabilir.",
+        explanation: "Sınıf B kenar koruma sisteminde yatay açıklık 35 cm ise düşey açıklık en fazla 25 cm olarak hesaplanmalıdır.",
         profile: "isg_c",
         image: ""
     },
@@ -495,17 +495,17 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Yalnız I", "Yalnız III", "I ve II", "II ve III", "I, II ve III"],
         correct: 4,
         source: "2024-2-C",
-        explanation: "Ergonomi fizyolojik, psikolojik ve organizasyonel faktörleri bütünsel olarak değerlendirir.",
+        explanation: "Ergonomi insanı merkeze alır; fiziksel kapasiteyi, psikolojik durumu ve iş organizasyonunu bütünsel olarak değerlendirir.",
         profile: "isg_c",
         image: ""
     },
     {
         category: "Teknik",
-        text: "49. Yapı İşlerinde Yüksekte Çalışmalarda İş Sağlığı ve Güvenliği Uygulama Rehberi’ne göre aşağıdaki güvenlik ağı sistemlerinden hangisi T tipidir?",
-        options: ["A", "B", "C", "D", "E"],
+        text: "49. Yapı İşlerinde Yüksekte Çalışmalarda İş Sağlığı ve Güvenliği Uygulama Rehberi’ne göre yatay kullanım için konsol taşıyıcılara bağlanan güvenlik ağı sistemi aşağıdakilerden hangisidir?",
+        options: ["Sistem S (Kenar kordonlu ağ)", "Sistem T (Konsola bağlanan ağ)", "Sistem U (Destek yapısına bağlanan ağ)", "Sistem V (Sehpa tipi ağ)", "Sistem Y (Dikey ağ)"],
         correct: 1,
         source: "2024-2-C",
-        explanation: "PDF cevap anahtarı: B. T tipi güvenlik ağı, yatay düzlemde kurulan ve düşmeyi durduran ağ tipidir. Görsel olmadan metinle ifade edilmiştir.",
+        explanation: "Yatay düzlemde kurulan ve binaların dış cephesinde konsollara bağlanan düşmeyi durdurucu ağ tipi Sistem T'dir.",
         profile: "isg_c",
         image: ""
     },
@@ -521,7 +521,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         ],
         correct: 2,
         source: "2024-2-C",
-        explanation: "Mola sırasında farklı bir iş yaptırmak dinlenme amacını bozar, bu nedenle yanlıştır.",
+        explanation: "Mola sırasında çalışana 'farklı bir iş yaptırmak' dinlenmeyi engeller ve molanın amacına aykırıdır.",
         profile: "isg_c",
         image: ""
     }
