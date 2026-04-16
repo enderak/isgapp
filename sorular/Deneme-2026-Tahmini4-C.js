@@ -279,7 +279,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         options: ["Yasaklama", "Uyarı", "Emredici", "Acil Çıkış", "Yangınla Mücadele"],
         correct: 2,
         source: "Deneme-2026-Tahmini4-C",
-        explanation: "Mavi renk (örneğin 'Baret Tak') emredici işaretlerde kullanılır.",
+        explanation: "Mavi renk, bir eylemin zorunlu olduğunu bildiren 'Emredici' işaretlerde kullanılır (örneğin görseldeki 'Eldiven Giy' zorunluluğu gibi).",
         profile: "isg_c",
         image: "img/eldiven.jpg"
     },
