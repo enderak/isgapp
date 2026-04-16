@@ -473,13 +473,13 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
     },
     {
         category: "Güvenlik İşaretleri",
-        text: "48. Elektrik tehlikesine karşı uyarmak amacıyla kullanılan işaretin anlamı gereği aşağıdaki şekillerden hangisi çizilir? (Soru temsili oluşturulmuştur)",
-        options: ["Elektrik tehlikesi levhası", "Kuvvetli manyetik alan", "Lazer ışını", "Zehirli madde", "Radyoaktif madde"],
+        text: "48. Sağlık ve Güvenlik İşaretleri Yönetmeliği'ne göre yukarıdaki işaret levhasının anlamı nedir?",
+        options: ["Elektrik tehlikesi", "Kuvvetli manyetik alan", "Lazer ışını", "Zehirli madde", "Radyoaktif madde"],
         correct: 0,
         source: "2023-Aralık Hekim",
-        explanation: "Metinde seçenekler yer almadığı için bu şekilde düzenlenmiştir. Orijinal cevap elektrik tehlikesi işaretidir.",
+        explanation: "Görsel, elektrik tehlikesine karşı uyarı amacıyla kullanılan standart levhadır.",
         profile: "hekim",
-        image: ""
+        image: "data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='yellow' stroke='black' stroke-width='5' stroke-linejoin='round' d='M50,10 L90,80 L10,80 Z'/%3E%3Cpath d='M52,25 L42,50 L50,50 L46,72 L60,46 L50,46 Z' fill='black'/%3E%3C/svg%3E"
     },
     {
         category: "Toksikoloji",
