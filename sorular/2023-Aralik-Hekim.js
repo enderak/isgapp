@@ -153,13 +153,13 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
     },
     {
         category: "Güvenlik İşaretleri",
-        text: "16. Sağlık ve Güvenlik İşaretleri Yönetmeliği'ne göre (İyonize olmayan radyasyon işareti) işaret levhasının anlamı nedir?",
+        text: "16. Sağlık ve Güvenlik İşaretleri Yönetmeliği'ne göre yukarıdaki işaret levhasının anlamı nedir?",
         options: ["İyonlaştırıcı olmayan radyasyon", "Kuvvetli manyetik alan", "Lazer ışını", "Biyolojik risk", "Radyoaktif madde"],
         correct: 0,
         source: "2023-Aralık Hekim",
-        explanation: "NOT: Orijinal sorudaki resim iyonlaştırıcı olmayan radyasyon ibaresidir.",
+        explanation: "",
         profile: "hekim",
-        image: ""
+        image: "data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='yellow' stroke='black' stroke-width='5' stroke-linejoin='round' d='M50,10 L90,80 L10,80 Z'/%3E%3Cpolygon points='48,60 52,60 55,75 45,75' fill='black'/%3E%3Ccircle cx='50' cy='56' r='3' fill='black'/%3E%3Cpath d='M43,48 Q35,46 35,56 T43,64 M57,48 Q65,46 65,56 T57,64 M37,42 Q25,38 25,56 T37,70 M63,42 Q75,38 75,56 T63,70' fill='none' stroke='black' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E"
     },
     {
         category: "Risk Değerlendirmesi",
