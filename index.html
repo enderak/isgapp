@@ -450,6 +450,28 @@
             setTimeout(() => { 
                 lucide.createIcons();
                 updateSourceList(); 
+                
+                // Animasyonlu Havalı Soru Sayacı
+                const qCountEl = document.getElementById('totalQCount');
+                if(qCountEl) {
+                    const startCount = 650;
+                    const targetCount = 750;
+                    const duration = 1500; // 1.5 saniye
+                    const startTime = performance.now();
+                    
+                    function updateCounter(currentTime) {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        // Ease-out efekti (yavaşlayarak biter)
+                        const easeOut = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+                        const currentVal = Math.floor(startCount + (targetCount - startCount) * easeOut);
+                        
+                        qCountEl.innerText = currentVal + "+ Soru";
+                        
+                        if (progress < 1) requestAnimationFrame(updateCounter);
+                    }
+                    requestAnimationFrame(updateCounter);
+                }
             }, 0);
 
             const totalQ = window.SoruHavuzu.length;
