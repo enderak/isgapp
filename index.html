@@ -17,7 +17,10 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: {"50":"#ecfdf5","100":"#d1fae5","200":"#a7f3d0","300":"#6ee7b7","400":"#34d399","500":"#10b981","600":"#059669","700":"#047857","800":"#065f46","900":"#064e3b","950":"#022c22"}
+                        primary: {
+                            50: "var(--p50)", 100: "var(--p100)", 200: "var(--p200)", 300: "var(--p300)", 400: "var(--p400)",
+                            500: "var(--p500)", 600: "var(--p600)", 700: "var(--p700)", 800: "var(--p800)", 900: "var(--p900)", 950: "var(--p950)"
+                        }
                     },
                     fontFamily: { sans: ['Inter', 'sans-serif'] }
                 }
@@ -26,6 +29,10 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --p50: #ecfdf5; --p100: #d1fae5; --p200: #a7f3d0; --p300: #6ee7b7; --p400: #34d399;
+            --p500: #10b981; --p600: #059669; --p700: #047857; --p800: #065f46; --p900: #064e3b; --p950: #022c22;
+        }
         body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; position: fixed; top: 0; left: 0; right: 0; bottom: 0; height: 100dvh; overflow: hidden; user-select: none; }
         .scroller { -webkit-overflow-scrolling: touch; }
         .scroller::-webkit-scrollbar { width: 3px; }
@@ -77,6 +84,27 @@
                 <i data-lucide="x" class="w-8 h-8"></i>
             </button>
             <img id="modalImage" src="" class="max-w-full max-h-[85vh] rounded-lg shadow-2xl object-contain bg-white">
+        </div>
+    </div>
+
+    <div id="themeModal" class="fixed inset-0 z-[120] hidden items-center justify-center modal-overlay p-4">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl w-full max-w-sm p-6 fade-in border border-slate-200 dark:border-slate-700">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-black text-slate-800 dark:text-white flex items-center gap-2">
+                    <i data-lucide="palette" class="w-6 h-6 text-primary-600"></i> Tema Seçimi
+                </h3>
+                <button onclick="closeThemeModal()" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+                    <i data-lucide="x" class="w-6 h-6 text-slate-400"></i>
+                </button>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-3" id="themeList">
+                <!-- Temalar buraya dinamik gelecek -->
+            </div>
+            
+            <div class="mt-6 p-4 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-100 dark:border-slate-700">
+                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest text-center">İSG Sınavmatik Kişiselleştirme</p>
+            </div>
         </div>
     </div>
 
@@ -529,9 +557,14 @@
                         <div>
                             <h1 class="text-2xl font-black text-slate-800 dark:text-white tracking-tight">İSG <span class="text-primary-600">SINAVMATİK</span></h1>
                         </div>
-                        <button onclick="toggleTheme()" class="p-2.5 rounded-full bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all">
-                            <i data-lucide="${document.documentElement.classList.contains('dark') ? 'sun' : 'moon'}" class="w-5 h-5"></i>
-                        </button>
+                        <div class="flex items-center gap-2">
+                            <button onclick="openThemeModal()" class="p-2.5 rounded-full bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all">
+                                <i data-lucide="palette" class="w-5 h-5"></i>
+                            </button>
+                            <button onclick="toggleTheme()" class="p-2.5 rounded-full bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all">
+                                <i data-lucide="${document.documentElement.classList.contains('dark') ? 'sun' : 'moon'}" class="w-5 h-5"></i>
+                            </button>
+                        </div>
                     </div>
 
                     <div class="flex-1 overflow-y-auto p-5 scroller space-y-6">
@@ -1288,12 +1321,7 @@
                 resultsBox.innerHTML = `<div class="text-center py-20 text-slate-400"><p class="text-sm">Sonuç bulunamadı.</p></div>`;
                 return;
             }
-
-            resultsBox.innerHTML = matches.map(m => `
-                <div class="p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm hover:border-primary-500 transition-all cursor-pointer group" onclick="viewSingleQuestion('${encodeURIComponent(JSON.stringify(m))}')">
-                    <div class="flex gap-2 mb-2">
-                        <span class="text-[9px] font-bold px-1.5 py-0.5 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded uppercase border border-blue-100 dark:border-blue-800">${m.category}</span>
-                        <span class="text-[9px] font-bold px-1.5 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 rounded uppercase border border-slate-200 dark:border-slate-700">${m.source}</span>
+                            <span class="text-[9px] font-bold px-1.5 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 rounded uppercase border border-slate-200 dark:border-slate-700">${m.source}</span>
                     </div>
                     <p class="text-xs text-slate-700 dark:text-slate-300 line-clamp-2 leading-relaxed font-medium">${m.text}</p>
                 </div>
@@ -1308,11 +1336,8 @@
             renderQuiz();
         }
 
-        // --- YENİ: AI AÇIKLAMA ---
         function askAI() {
             const q = currentQuestions[currentIndex];
-            const appDiv = document.getElementById('app');
-            
             const modal = document.createElement('div');
             modal.id = "aiModal";
             modal.className = "fixed inset-0 z-[110] flex items-end sm:items-center justify-center modal-overlay p-0 sm:p-4 fade-in";
@@ -1330,7 +1355,6 @@
                         </div>
                         <button onclick="document.getElementById('aiModal').remove()" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full text-slate-400"><i data-lucide="x" class="w-5 h-5"></i></button>
                     </div>
-                    
                     <div class="flex-1 overflow-y-auto p-6 scroller space-y-6">
                         <div class="space-y-2">
                             <div class="text-[10px] font-black text-slate-400 uppercase tracking-wider">Konu Özeti</div>
@@ -1338,7 +1362,6 @@
                                 "${q.text.substring(0, 150)}..."
                             </div>
                         </div>
-
                         <div class="space-y-4">
                             <div class="flex gap-3">
                                 <div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 shrink-0 mt-1"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
@@ -1347,7 +1370,6 @@
                                     <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">${q.explanation}</p>
                                 </div>
                             </div>
-
                             <div class="flex gap-3">
                                 <div class="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 shrink-0 mt-1"><i data-lucide="lightbulb" class="w-3.5 h-3.5"></i></div>
                                 <div>
@@ -1356,13 +1378,11 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="p-4 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white shadow-xl shadow-blue-100 dark:shadow-none">
                             <div class="flex items-center gap-2 mb-2 font-bold text-xs uppercase"><i data-lucide="book-open" class="w-3 h-3"></i> İlgili Mevzuat / Bilgi</div>
                             <p class="text-xs leading-relaxed opacity-90">Bu konuyla ilgili daha fazla bilgi için <b>İSG Temel Mevzuat</b> dökümanlarını inceleyebilirsiniz.</p>
                         </div>
                     </div>
-
                     <div class="p-4 border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900">
                         <button onclick="document.getElementById('aiModal').remove()" class="w-full py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-bold text-sm text-slate-600 dark:text-slate-300 shadow-sm">Anladım, Teşekkürler</button>
                     </div>
@@ -1373,10 +1393,105 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            initTheme();
-            initEventListeners();
             renderStartScreen();
         });
+
+        const THEMES = {
+            'sakarya': {
+                name: 'Sakarya (54)',
+                desc: 'Yeşil & Siyah',
+                colors: {
+                    50: '#f0fdf4', 100: '#dcfce7', 200: '#bbf7d0', 300: '#86efac', 400: '#4ade80',
+                    500: '#22c55e', 600: '#16a34a', 700: '#15803d', 800: '#166534', 900: '#14532d', 950: '#052e16'
+                }
+            },
+            'trabzon': {
+                name: 'Trabzon (61)',
+                desc: 'Bordo & Mavi',
+                colors: {
+                    50: '#fff1f2', 100: '#ffe4e6', 200: '#fecdd3', 300: '#fda4af', 400: '#fb7185',
+                    500: '#800000', 600: '#700000', 700: '#600000', 800: '#500000', 900: '#400000', 950: '#200000'
+                }
+            },
+            'edirne': {
+                name: 'Edirne (22)',
+                desc: 'Kırmızı & Beyaz',
+                colors: {
+                    50: '#fef2f2', 100: '#fee2e2', 200: '#fecaca', 300: '#fca5a5', 400: '#f87171',
+                    500: '#ef4444', 600: '#dc2626', 700: '#b91c1c', 800: '#991b1b', 900: '#7f1d1d', 950: '#450a0a'
+                }
+            },
+            'fb': {
+                name: 'Fenerbahçe',
+                desc: 'Sarı & Lacivert',
+                colors: {
+                    50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa',
+                    500: '#1e3a8a', 600: '#1e40af', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a', 950: '#172554'
+                }
+            },
+            'gs': {
+                name: 'Galatasaray',
+                desc: 'Sarı & Kırmızı',
+                colors: {
+                    50: '#fff7ed', 100: '#ffedd5', 200: '#fed7aa', 300: '#fdba74', 400: '#fb923c',
+                    500: '#a90432', 600: '#91032a', 700: '#7a0223', 800: '#63021c', 900: '#4d0116', 950: '#36010f'
+                }
+            },
+            'bjk': {
+                name: 'Beşiktaş',
+                desc: 'Siyah & Beyaz',
+                colors: {
+                    50: '#fafafa', 100: '#f5f5f5', 200: '#e5e5e5', 300: '#d4d4d4', 400: '#a3a3a3',
+                    500: '#171717', 600: '#0a0a0a', 700: '#000000', 800: '#000000', 900: '#000000', 950: '#000000'
+                }
+            }
+        };
+
+        function openThemeModal() {
+            const list = document.getElementById('themeList');
+            if(!list) return;
+            list.innerHTML = '';
+            Object.keys(THEMES).forEach(key => {
+                const theme = THEMES[key];
+                const btn = document.createElement('button');
+                btn.onclick = () => setTheme(key);
+                btn.className = `p-4 rounded-2xl border-2 transition-all text-left flex flex-col gap-1 relative overflow-hidden group
+                    ${localStorage.getItem('isg_theme_key') === key ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20' : 'border-slate-100 dark:border-slate-700 hover:border-slate-200 dark:hover:border-slate-600'}`;
+                btn.innerHTML = `
+                    <div class="w-8 h-8 rounded-full shadow-inner mb-1" style="background: ${theme.colors[600]}"></div>
+                    <div class="text-[10px] font-black dark:text-white">${theme.name}</div>
+                    <div class="text-[8px] text-slate-400 font-bold uppercase">${theme.desc}</div>
+                `;
+                list.appendChild(btn);
+            });
+            document.getElementById('themeModal').classList.remove('hidden');
+            document.getElementById('themeModal').classList.add('flex');
+            safeLucide();
+        }
+
+        function closeThemeModal() {
+            document.getElementById('themeModal').classList.add('hidden');
+            document.getElementById('themeModal').classList.remove('flex');
+        }
+
+        function setTheme(key) {
+            const theme = THEMES[key];
+            if (!theme) return;
+            localStorage.setItem('isg_theme_key', key);
+            const root = document.documentElement;
+            Object.keys(theme.colors).forEach(level => {
+                root.style.setProperty(`--p${level}`, theme.colors[level]);
+            });
+            closeThemeModal();
+            renderCurrentScreen();
+        }
+
+        (function initThemeSystem() {
+            const savedTheme = localStorage.getItem('isg_theme_key') || 'sakarya';
+            setTheme(savedTheme);
+            initTheme(); 
+            initEventListeners();
+        })();
     </script>
 </body>
 </html>
