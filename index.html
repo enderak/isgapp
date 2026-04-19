@@ -1429,6 +1429,7 @@
             for (var i = 0; i < levels.length; i++) {
                 root.style.setProperty('--p' + levels[i], theme.colors[levels[i]]);
             }
+            root.style.setProperty('--sec', theme.sec);
             closeThemeModal();
             renderCurrentScreen();
         }
