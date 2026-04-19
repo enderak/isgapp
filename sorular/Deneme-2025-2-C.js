@@ -177,9 +177,9 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
         category: "Mevzuat",
         text: "18. Yapı İşlerinde İş Sağlığı ve Güvenliği Yönetmeliği'ne göre, iskelelerin periyodik kontrolleri en az ne kadar sürede bir yapılmalıdır?",
         options: ["Haftalık", "Aylık", "3 aylık", "6 aylık", "Yıllık"],
-        correct: 1,
+        correct: 0,
         source: "Deneme-2025-2-C",
-        explanation: "İskelelerin periyodik kontrolleri ayda bir kez yapılmalıdır.",
+        explanation: "Yapı İşlerinde İSG Yönetmeliği'ne göre iskeleler kullanılmaya başlanmadan önce, üzerinde değişiklik yapıldığında, olumsuz hava şartlarından sonra ve her halükarda 'haftada en az bir kez' kontrol edilmelidir.",
         profile: "isg_c",
         image: ""
     },
