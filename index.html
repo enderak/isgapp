@@ -1287,6 +1287,201 @@
                         </div>
                         <div class="relative">
                             <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"></i>
+                else wrong++;
+            });
+
+            const score = currentQuestions.length > 0 ? ((correct / currentQuestions.length) * 100).toFixed(1) : 0;
+            const profileVal = activeProfile; 
+            const profileInfo = CONFIG[profileVal] || CONFIG['igu'];
+
+            if(!isReviewMode && activeProfile !== 'favoriler') {
+                const historyData = JSON.parse(localStorage.getItem('examHistory')) || [];
+                historyData.unshift({
+                    date: new Date().toLocaleDateString('tr-TR', { day: 'numeric', month: 'short', hour:'2-digit', minute:'2-digit'}),
+                    score: score,
+                    correct: correct,
+                    wrong: wrong,
+                    mode: isTimerActive ? 'Sınav' : 'Eğitim',
+                    profileLabel: profileInfo.label,
+                    profileColor: profileInfo.color
+                });
+                if(historyData.length > 10) historyData.pop();
+                localStorage.setItem('examHistory', JSON.stringify(historyData));
+
+                // TOPLAM DOĞRUYU GÜNCELLE
+                totalCorrectAllTime += correct;
+                localStorage.setItem('isg_total_correct', totalCorrectAllTime.toString());
+            }
+
+            let analysisHtml = '';
+            for (const [cat, data] of Object.entries(topicStats)) {
+                const percent = Math.round((data.correct / data.total) * 100);
+                let barColor = percent >= 70 ? 'bg-green-500' : (percent >= 40 ? 'bg-yellow-500' : 'bg-red-500');
+                
+                analysisHtml += `
+                    <div class="mb-3">
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="font-bold text-slate-700 dark:text-slate-300">${cat}</span>
+                            <span class="font-mono text-slate-500">${data.correct}/${data.total} (%${percent})</span>
+                        </div>
+                        <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
+                            <div class="${barColor} h-2 rounded-full" style="width: ${percent}%"></div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            app.innerHTML = `
+                <div class="flex flex-col h-full bg-white dark:bg-slate-900 overflow-y-auto scroller fade-in">
+                    <div class="p-6 flex flex-col items-center justify-center min-h-[35vh] bg-slate-50 dark:bg-slate-800/50 border-b border-slate-100 dark:border-slate-800">
+                        <div class="relative mb-4">
+                            <svg class="w-32 h-32 transform -rotate-90">
+                                <circle cx="64" cy="64" r="56" stroke="currentColor" stroke-width="8" fill="transparent" class="text-slate-200 dark:text-slate-700" />
+                                <circle cx="64" cy="64" r="56" stroke="currentColor" stroke-width="8" fill="transparent" class="${score >= 70 ? 'text-green-500' : 'text-red-500'} transition-all duration-1000" style="stroke-dasharray: 351.86; stroke-dashoffset: ${351.86 - (351.86 * score / 100)};" />
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center flex-col">
+                                <span class="text-3xl font-black text-slate-800 dark:text-white">${score}</span>
+                                <span class="text-[10px] uppercase font-bold text-slate-400">Puan</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-4 w-full justify-center">
+                            <div class="text-center px-4 py-2 bg-white dark:bg-slate-800 rounded-xl border border-green-100 dark:border-green-900/30">
+                                <div class="text-lg font-bold text-green-600">${correct}</div>
+                                <div class="text-[10px] text-slate-400 uppercase">Doğru</div>
+                            </div>
+                            <div class="text-center px-4 py-2 bg-white dark:bg-slate-800 rounded-xl border border-red-100 dark:border-red-900/30">
+                                <div class="text-lg font-bold text-red-500">${wrong}</div>
+                                <div class="text-[10px] text-slate-400 uppercase">Yanlış</div>
+                            </div>
+                            <div class="text-center px-4 py-2 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700">
+                                <div class="text-lg font-bold text-slate-500">${empty}</div>
+                                <div class="text-[10px] text-slate-400 uppercase">Boş</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 space-y-4">
+                        <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 shadow-sm">
+                            <h4 class="text-xs font-bold uppercase text-slate-400 mb-3 flex items-center gap-2"><i data-lucide="pie-chart" class="w-4 h-4"></i> Konu Karnesi</h4>
+                            <div class="mb-6 h-64">
+                                <canvas id="resultChart"></canvas>
+                            </div>
+                            <div class="space-y-3">
+                                ${analysisHtml}
+                            </div>
+                        </div>
+
+                        <button onclick="shareResult('${score}', ${correct}, ${wrong})" class="w-full py-3 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-xl font-bold text-sm flex items-center justify-center gap-2">
+                            <i data-lucide="share-2" class="w-4 h-4"></i> Sonucu Paylaş
+                        </button>
+
+                        <div class="grid grid-cols-1 gap-3">
+                            <button onclick="startReviewMode()" class="w-full py-3.5 bg-white dark:bg-slate-800 border-2 border-red-100 dark:border-red-900/30 text-red-600 dark:text-red-400 rounded-xl font-bold text-sm hover:bg-red-50 dark:hover:bg-red-900/10 transition-all flex items-center justify-center gap-2">
+                                <i data-lucide="search" class="w-4 h-4"></i> Cevapları İncele
+                            </button>
+                            
+                            <button onclick="renderStartScreen()" class="w-full py-3.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-bold text-sm shadow-lg hover:translate-y-[-2px] transition-all flex items-center justify-center gap-2">
+                                <i data-lucide="home" class="w-4 h-4"></i> Ana Menüye Dön
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            setTimeout(() => {
+                lucide.createIcons();
+                renderResultChart(topicStats);
+            }, 50);
+        }
+
+        function renderResultChart(stats) {
+            const canvas = document.getElementById('resultChart');
+            if(!canvas) return;
+
+            if (typeof Chart === 'undefined') {
+                canvas.parentElement.innerHTML = '<div class="flex items-center justify-center h-full text-slate-400 text-xs italic p-10 text-center">Grafik kütüphanesi yüklenemediğinden başarı grafiği gösterilemiyor.</div>';
+                return;
+            }
+
+            const ctx = canvas.getContext('2d');
+            const labels = Object.keys(stats);
+            const data = labels.map(l => Math.round((stats[l].correct / stats[l].total) * 100));
+            
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Başarı %',
+                        data: data,
+                        fill: true,
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                        borderColor: 'rgb(59, 130, 246)',
+                        pointBackgroundColor: 'rgb(59, 130, 246)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgb(59, 130, 246)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { display: true },
+                            suggestedMin: 0,
+                            suggestedMax: 100,
+                            ticks: { display: false }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+        }
+
+        function startReviewMode() {
+            isReviewMode = true;
+            currentIndex = 0;
+            renderQuiz();
+        }
+
+        // --- YENİ: SORU ARAMA (SEARCH) ---
+        async function openSearch() {
+            app.innerHTML = `
+                <div class="flex items-center justify-center h-full">
+                    <div class="flex flex-col items-center animate-pulse">
+                        <i data-lucide="loader-2" class="w-10 h-10 text-primary-600 animate-spin mb-3"></i>
+                        <div class="text-sm font-medium text-slate-400">Soru Bankası Hazırlanıyor...</div>
+                    </div>
+                </div>
+            `;
+            setTimeout(() => lucide.createIcons(), 0);
+
+            try {
+                // Tüm dosyaları yükle (Eğer daha önce yüklenmediyse)
+                await Promise.all(SOURCES_MANIFEST.map(m => loadQuestionFile(m.file)));
+            } catch (err) {
+                alert("Banka yüklenirken hata oluştu.");
+            }
+
+            renderSearchScreen();
+        }
+
+        function renderSearchScreen() {
+            currentScreen = 'search';
+            app.innerHTML = `
+                <div class="flex flex-col h-full bg-slate-50 dark:bg-slate-950">
+                    <div class="p-4 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-sm">
+                        <div class="flex items-center gap-3 mb-4">
+                            <button onclick="renderStartScreen()" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors text-slate-400">
+                                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                            </button>
+                            <h2 class="text-lg font-bold text-slate-800 dark:text-white">Soru Bankası</h2>
+                        </div>
+                        <div class="relative">
+                            <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"></i>
                             <input type="text" id="searchInput" oninput="performSearch()" placeholder="Soru veya konu ara..." class="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm outline-none focus:ring-2 focus:ring-primary-500 transition-all">
                         </div>
                     </div>
@@ -1321,7 +1516,12 @@
                 resultsBox.innerHTML = `<div class="text-center py-20 text-slate-400"><p class="text-sm">Sonuç bulunamadı.</p></div>`;
                 return;
             }
-                            <span class="text-[9px] font-bold px-1.5 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 rounded uppercase border border-slate-200 dark:border-slate-700">${m.source}</span>
+
+            resultsBox.innerHTML = matches.map(m => `
+                <div class="p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm hover:border-primary-500 transition-all cursor-pointer group" onclick="viewSingleQuestion('${encodeURIComponent(JSON.stringify(m))}')">
+                    <div class="flex gap-2 mb-2">
+                        <span class="text-[9px] font-bold px-1.5 py-0.5 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded uppercase border border-blue-100 dark:border-blue-800">${m.category}</span>
+                        <span class="text-[9px] font-bold px-1.5 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 rounded uppercase border border-slate-200 dark:border-slate-700">${m.source}</span>
                     </div>
                     <p class="text-xs text-slate-700 dark:text-slate-300 line-clamp-2 leading-relaxed font-medium">${m.text}</p>
                 </div>
