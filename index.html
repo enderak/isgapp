@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="tr" class="light">
 <head>
     <meta charset="UTF-8">
@@ -127,17 +127,9 @@
     </div>
 
     <!-- TEMA SECIM MODALI -->
-    <div id="themeModal" class="fixed inset-0 z-[120] hidden items-center justify-center modal-overlay p-4">
-        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl w-full max-w-sm p-6 fade-in border border-slate-200 dark:border-slate-700">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-base font-bold text-slate-800 dark:text-white flex items-center gap-2">
-                    <i data-lucide="palette" class="w-5 h-5 text-primary-600"></i> Renk Teması
-                </h3>
-                <button onclick="closeThemeModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </button>
-            </div>
-            <div id="themeList" class="grid grid-cols-3 gap-3"></div>
+    <div id="themeModal" class="fixed inset-0 z-[120] hidden items-center justify-center modal-overlay p-4" onclick="closeThemeModal()">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl p-5 fade-in border border-slate-200 dark:border-slate-700" onclick="event.stopPropagation()">
+            <div id="themeList" class="flex items-center gap-4"></div>
         </div>
     </div>
 
@@ -1393,14 +1385,14 @@
             setTimeout(() => lucide.createIcons(), 0);
         }
 
-        // --- TEMA SİSTEMİ ---
+        // --- TEMA SiSTEMi ---
         const THEMES = {
-            'sakarya': { name: 'Sakarya (54)', desc: 'Yeşil & Siyah', colors: { 50:'#f0fdf4',100:'#dcfce7',200:'#bbf7d0',300:'#86efac',400:'#4ade80',500:'#22c55e',600:'#16a34a',700:'#15803d',800:'#166534',900:'#14532d',950:'#052e16' } },
-            'trabzon': { name: 'Trabzon (61)', desc: 'Bordo & Mavi', colors: { 50:'#fff1f2',100:'#ffe4e6',200:'#fecdd3',300:'#fda4af',400:'#fb7185',500:'#800000',600:'#700000',700:'#600000',800:'#500000',900:'#400000',950:'#200000' } },
-            'edirne': { name: 'Edirne (22)', desc: 'Kırmızı & Beyaz', colors: { 50:'#fef2f2',100:'#fee2e2',200:'#fecaca',300:'#fca5a5',400:'#f87171',500:'#ef4444',600:'#dc2626',700:'#b91c1c',800:'#991b1b',900:'#7f1d1d',950:'#450a0a' } },
-            'fb': { name: 'Fenerbahçe', desc: 'Sarı & Lacivert', colors: { 50:'#eff6ff',100:'#dbeafe',200:'#bfdbfe',300:'#93c5fd',400:'#60a5fa',500:'#1e3a8a',600:'#1e40af',700:'#1d4ed8',800:'#1e40af',900:'#1e3a8a',950:'#172554' } },
-            'gs': { name: 'Galatasaray', desc: 'Sarı & Kırmızı', colors: { 50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#a90432',600:'#91032a',700:'#7a0223',800:'#63021c',900:'#4d0116',950:'#36010f' } },
-            'bjk': { name: 'Beşiktaş', desc: 'Siyah & Beyaz', colors: { 50:'#fafafa',100:'#f5f5f5',200:'#e5e5e5',300:'#d4d4d4',400:'#a3a3a3',500:'#171717',600:'#0a0a0a',700:'#000000',800:'#000000',900:'#000000',950:'#000000' } }
+            'sakarya': { label: '54', colors: { 50:'#f0fdf4',100:'#dcfce7',200:'#bbf7d0',300:'#86efac',400:'#4ade80',500:'#22c55e',600:'#16a34a',700:'#15803d',800:'#166534',900:'#14532d',950:'#052e16' } },
+            'trabzon': { label: '61', colors: { 50:'#fff1f2',100:'#ffe4e6',200:'#fecdd3',300:'#fda4af',400:'#fb7185',500:'#800000',600:'#700000',700:'#600000',800:'#500000',900:'#400000',950:'#200000' } },
+            'edirne': { label: '22', colors: { 50:'#fef2f2',100:'#fee2e2',200:'#fecaca',300:'#fca5a5',400:'#f87171',500:'#ef4444',600:'#dc2626',700:'#b91c1c',800:'#991b1b',900:'#7f1d1d',950:'#450a0a' } },
+            'fb': { label: 'FB', colors: { 50:'#eff6ff',100:'#dbeafe',200:'#bfdbfe',300:'#93c5fd',400:'#60a5fa',500:'#1e3a8a',600:'#1e40af',700:'#1d4ed8',800:'#1e40af',900:'#1e3a8a',950:'#172554' } },
+            'gs': { label: 'GS', colors: { 50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#a90432',600:'#91032a',700:'#7a0223',800:'#63021c',900:'#4d0116',950:'#36010f' } },
+            'bjk': { label: 'BJK', colors: { 50:'#fafafa',100:'#f5f5f5',200:'#e5e5e5',300:'#d4d4d4',400:'#a3a3a3',500:'#171717',600:'#0a0a0a',700:'#000000',800:'#000000',900:'#000000',950:'#000000' } }
         };
 
         function openThemeModal() {
@@ -1413,15 +1405,14 @@
                 var theme = THEMES[key];
                 var isActive = localStorage.getItem('isg_theme_key') === key;
                 var btn = document.createElement('button');
-                btn.setAttribute('data-theme-key', key);
-                btn.className = 'p-4 rounded-2xl border-2 transition-all text-left flex flex-col gap-1 ' + (isActive ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20' : 'border-slate-100 dark:border-slate-700 hover:border-slate-200');
-                btn.innerHTML = '<div class="w-8 h-8 rounded-full shadow-inner mb-1" style="background:' + theme.colors[600] + '"></div><div class="text-[10px] font-black dark:text-white">' + theme.name + '</div><div class="text-[8px] text-slate-400 font-bold uppercase">' + theme.desc + '</div>';
                 btn.onclick = (function(k) { return function() { setColorTheme(k); }; })(key);
+                btn.className = 'flex flex-col items-center gap-1.5 transition-all';
+                var ringClass = isActive ? 'ring-2 ring-offset-2 ring-primary-500 scale-110' : 'hover:scale-105';
+                btn.innerHTML = '<div class="w-12 h-12 rounded-full shadow-lg flex items-center justify-center text-white font-black text-sm ' + ringClass + '" style="background:linear-gradient(135deg,' + theme.colors[500] + ',' + theme.colors[800] + ')">' + theme.label + '</div>';
                 list.appendChild(btn);
             }
             document.getElementById('themeModal').classList.remove('hidden');
             document.getElementById('themeModal').classList.add('flex');
-            safeLucide();
         }
 
         function closeThemeModal() {
