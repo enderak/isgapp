@@ -221,6 +221,7 @@
         };
 
         const STANDARD_DISTRIBUTION = { 'Teknik': 20, 'Mevzuat': 15, 'Genel İSG Konuları': 7, 'Sağlık': 5, 'Hukuk': 3 };
+        const HEKIM_DISTRIBUTION = { 'Meslek Hastalıkları': 15, 'Mevzuat': 10, 'Toksikoloji': 10, 'Sağlık Gözetimi': 5, 'İş Hijyeni': 5, 'Epidemiyoloji': 5 };
         
         const RANKS = [
             { min: 0, title: "Çırak", icon: "user", color: "gray" },
@@ -815,19 +816,27 @@
             }
 
             if ((source === 'KARMA_DENEME' || source === 'KARMA_CIKMIS') && category === 'TUMU') {
-                const distribution = STANDARD_DISTRIBUTION;
+                const isHekim = profile === 'hekim';
+                const distribution = isHekim ? HEKIM_DISTRIBUTION : STANDARD_DISTRIBUTION;
+                let collectedQuestions = [];
                 for (const [cat, num] of Object.entries(distribution)) {
                     let catQuestions = filteredPool.filter(q => q.category === cat);
                     if (catQuestions.length > 0) {
-                        // Güvenli çoğaltma (Sonsuz döngü engellendi)
-                        let targetCount = Math.min(num, 50); 
-                        while(catQuestions.length < targetCount) { 
-                            catQuestions.push(catQuestions[Math.floor(Math.random() * catQuestions.length)]); 
-                        }
                         catQuestions.sort(() => Math.random() - 0.5);
-                        currentQuestions.push(...catQuestions.slice(0, targetCount));
+                        collectedQuestions.push(...catQuestions.slice(0, num));
                     }
                 }
+
+                if (collectedQuestions.length < 50) {
+                    const remainingPool = filteredPool.filter(q => !collectedQuestions.includes(q));
+                    remainingPool.sort(() => Math.random() - 0.5);
+                    collectedQuestions.push(...remainingPool.slice(0, 50 - collectedQuestions.length));
+                }
+
+                while (collectedQuestions.length < 50 && collectedQuestions.length > 0) {
+                    collectedQuestions.push(collectedQuestions[Math.floor(Math.random() * collectedQuestions.length)]);
+                }
+                currentQuestions = collectedQuestions;
             } else {
                 currentQuestions = filteredPool;
             }
@@ -1445,3 +1454,4 @@
     </script>
 </body>
 </html>
+
