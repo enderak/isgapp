@@ -127,9 +127,9 @@
     </div>
 
     <!-- TEMA SECIM MODALI -->
-    <div id="themeModal" class="fixed inset-0 z-[120] hidden items-center justify-center modal-overlay p-4" onclick="closeThemeModal()">
-        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl p-5 fade-in border border-slate-200 dark:border-slate-700" onclick="event.stopPropagation()">
-            <div id="themeList" class="flex items-center gap-4"></div>
+    <div id="themeModal" class="fixed inset-0 z-[120] hidden" onclick="closeThemeModal()">
+        <div class="absolute top-20 left-1/2 -translate-x-1/2 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md rounded-full shadow-2xl p-3 fade-in border border-slate-200 dark:border-slate-700" onclick="event.stopPropagation()">
+            <div id="themeList" class="flex flex-wrap justify-center items-center gap-2"></div>
         </div>
     </div>
 
@@ -1416,9 +1416,9 @@
                 var isActive = localStorage.getItem('isg_theme_key') === key;
                 var btn = document.createElement('button');
                 btn.onclick = (function(k) { return function() { setColorTheme(k); }; })(key);
-                btn.className = 'flex flex-col items-center gap-1.5 transition-all';
+                btn.className = 'flex flex-col items-center transition-all';
                 var ringClass = isActive ? 'ring-2 ring-offset-2 ring-primary-500 scale-110' : 'hover:scale-105';
-                btn.innerHTML = '<div class="w-12 h-12 rounded-full shadow-lg flex items-center justify-center text-white font-black text-sm ' + ringClass + '" style="background:linear-gradient(135deg,' + theme.colors[500] + ',' + theme.sec + ')">' + theme.label + '</div>';
+                btn.innerHTML = '<div class="w-10 h-10 rounded-full shadow-md flex items-center justify-center text-white font-bold text-[11px] ' + ringClass + '" style="background:linear-gradient(135deg,' + theme.colors[500] + ',' + theme.sec + ')">' + theme.label + '</div>';
                 list.appendChild(btn);
             }
             document.getElementById('themeModal').classList.remove('hidden');
