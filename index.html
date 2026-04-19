@@ -550,7 +550,7 @@
                     <div class="flex-1 overflow-y-auto p-5 scroller space-y-6">
                         
                         ${countdownVisible ? `
-                        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary-700 to-secondary-500 p-5 text-white shadow-lg shadow-primary-200 dark:shadow-none animate-pulse-subtle">
+                        <div class="relative overflow-hidden rounded-2xl p-5 text-white shadow-lg shadow-primary-200 dark:shadow-none animate-pulse-subtle" style="background: linear-gradient(to right, var(--p500), var(--sec)); text-shadow: 0px 1px 3px rgba(0,0,0,0.5);">
                             <button onclick="toggleCountdown()" class="absolute top-2 right-2 p-1.5 hover:bg-white/20 rounded-lg transition-colors">
                                 <i data-lucide="eye-off" class="w-4 h-4 text-white/70"></i>
                             </button>
@@ -666,7 +666,7 @@
                                 </label>
                             </div>
                             
-                            <button onclick="startCustomQuiz()" class="w-full py-3.5 bg-gradient-to-r from-primary-700 to-secondary-500 text-white rounded-xl font-bold text-sm shadow-lg shadow-primary-200 dark:shadow-none hover:shadow-xl hover:translate-y-[-2px] transition-all flex items-center justify-center gap-2">
+                            <button onclick="startCustomQuiz()" class="w-full py-3.5 text-white rounded-xl font-bold text-sm shadow-lg shadow-primary-200 dark:shadow-none hover:shadow-xl hover:translate-y-[-2px] transition-all flex items-center justify-center gap-2" style="background: linear-gradient(to right, var(--p500), var(--sec)); text-shadow: 0px 1px 3px rgba(0,0,0,0.5);">
                                 Sınavı Başlat <i data-lucide="arrow-right" class="w-4 h-4"></i>
                             </button>
                         </div>
@@ -1387,12 +1387,12 @@
 
         // --- TEMA SiSTEMi ---
         const THEMES = {
-            'sakarya': { label: '54', sec: '#171717', colors: { 50:'#f0fdf4',100:'#dcfce7',200:'#bbf7d0',300:'#86efac',400:'#4ade80',500:'#22c55e',600:'#16a34a',700:'#15803d',800:'#166534',900:'#14532d',950:'#052e16' } },
-            'trabzon': { label: '61', sec: '#3b82f6', colors: { 50:'#fff1f2',100:'#ffe4e6',200:'#fecdd3',300:'#fda4af',400:'#fb7185',500:'#800000',600:'#700000',700:'#600000',800:'#500000',900:'#400000',950:'#200000' } },
-            'edirne': { label: '22', sec: '#f8fafc', colors: { 50:'#fef2f2',100:'#fee2e2',200:'#fecaca',300:'#fca5a5',400:'#f87171',500:'#ef4444',600:'#dc2626',700:'#b91c1c',800:'#991b1b',900:'#7f1d1d',950:'#450a0a' } },
-            'fb': { label: 'FB', sec: '#eab308', colors: { 50:'#eff6ff',100:'#dbeafe',200:'#bfdbfe',300:'#93c5fd',400:'#60a5fa',500:'#1e3a8a',600:'#1e40af',700:'#1d4ed8',800:'#1e40af',900:'#1e3a8a',950:'#172554' } },
-            'gs': { label: 'GS', sec: '#f59e0b', colors: { 50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#a90432',600:'#91032a',700:'#7a0223',800:'#63021c',900:'#4d0116',950:'#36010f' } },
-            'bjk': { label: 'BJK', sec: '#f8fafc', colors: { 50:'#fafafa',100:'#f5f5f5',200:'#e5e5e5',300:'#d4d4d4',400:'#a3a3a3',500:'#171717',600:'#0a0a0a',700:'#000000',800:'#000000',900:'#000000',950:'#000000' } }
+            'sakarya': { label: '54', sec: '#000000', colors: { 50:'#f0fdf4',100:'#dcfce7',200:'#bbf7d0',300:'#86efac',400:'#4ade80',500:'#16a34a',600:'#15803d',700:'#166534',800:'#14532d',900:'#052e16',950:'#022c22' } },
+            'trabzon': { label: '61', sec: '#2563eb', colors: { 50:'#fff1f2',100:'#ffe4e6',200:'#fecdd3',300:'#fda4af',400:'#fb7185',500:'#800000',600:'#700000',700:'#600000',800:'#500000',900:'#400000',950:'#200000' } },
+            'edirne': { label: '22', sec: '#ffffff', colors: { 50:'#fef2f2',100:'#fee2e2',200:'#fecaca',300:'#fca5a5',400:'#f87171',500:'#dc2626',600:'#b91c1c',700:'#991b1b',800:'#7f1d1d',900:'#450a0a',950:'#3f0808' } },
+            'fb': { label: 'FB', sec: '#facc15', colors: { 50:'#eff6ff',100:'#dbeafe',200:'#bfdbfe',300:'#93c5fd',400:'#60a5fa',500:'#1e3a8a',600:'#1e40af',700:'#1d4ed8',800:'#1e40af',900:'#1e3a8a',950:'#172554' } },
+            'gs': { label: 'GS', sec: '#facc15', colors: { 50:'#fff7ed',100:'#ffedd5',200:'#fed7aa',300:'#fdba74',400:'#fb923c',500:'#b91c1c',600:'#991b1b',700:'#7f1d1d',800:'#63021c',900:'#4d0116',950:'#36010f' } },
+            'bjk': { label: 'BJK', sec: '#ffffff', colors: { 50:'#fafafa',100:'#f5f5f5',200:'#e5e5e5',300:'#d4d4d4',400:'#a3a3a3',500:'#000000',600:'#000000',700:'#000000',800:'#000000',900:'#000000',950:'#000000' } }
         };
 
         function openThemeModal() {
@@ -1408,7 +1408,7 @@
                 btn.onclick = (function(k) { return function() { setColorTheme(k); }; })(key);
                 btn.className = 'flex flex-col items-center gap-1.5 transition-all';
                 var ringClass = isActive ? 'ring-2 ring-offset-2 ring-primary-500 scale-110' : 'hover:scale-105';
-                btn.innerHTML = '<div class="w-12 h-12 rounded-full shadow-lg flex items-center justify-center text-white font-black text-sm ' + ringClass + '" style="background:linear-gradient(135deg,' + theme.colors[600] + ',' + theme.sec + ')">' + theme.label + '</div>';
+                btn.innerHTML = '<div class="w-12 h-12 rounded-full shadow-lg flex items-center justify-center text-white font-black text-sm ' + ringClass + '" style="background:linear-gradient(135deg,' + theme.colors[500] + ',' + theme.sec + ')">' + theme.label + '</div>';
                 list.appendChild(btn);
             }
             document.getElementById('themeModal').classList.remove('hidden');
