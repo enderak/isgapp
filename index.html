@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr" class="light">
 <head>
     <meta charset="UTF-8">
@@ -7,8 +7,21 @@
     <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval' data: blob:; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; connect-src *;">
     
     <title>İSG Sınavmatik</title>
-    <!-- Cookiebot and GA removed for local stability -->
-    <!-- <script id="Cookiebot" ... ></script> -->
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#22c55e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="img/icon-192.png">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XNTGQBXZ3Y"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XNTGQBXZ3Y');
+    </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -1489,6 +1502,23 @@
             initEventListeners();
             renderStartScreen();
         });
+    </script>
+    <script>
+        // Standalone/App Mode Optimization
+        if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
+            const appContainer = document.getElementById('app');
+            appContainer.classList.remove('max-w-md', 'mx-auto', 'shadow-2xl', 'border-x');
+            appContainer.classList.add('max-w-none');
+        }
+
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Service Worker registered:', reg))
+                    .catch(err => console.log('Service Worker registration failed:', err));
+            });
+        }
     </script>
 </body>
 </html>
