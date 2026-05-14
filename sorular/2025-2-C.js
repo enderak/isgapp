@@ -325,7 +325,7 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
     },
     {
         category: "Teknik",
-        text: "33. Çalışanların Titreşimle İlgili Risklerden Korunmalarına Dair Yönetmelik'e göre yukarıdakilerden hangileri el-kol titreşiminin ölçümünde dikkate alınması gereken hususlardandır?\n\nI. Kullanılan yöntemler mekanik titreşime maruz kalan çalışanların kişisel maruziyetini belirleyebilecek nitelikte olacaktır.\nII. Kullanılan cihazlar ve yöntemler, ölçülecek mekanik titreşimin karakteristiğine, çevresel etkilere ve ölçüm aygıtlarının özelliklerine uyumlu olacaktır.\nIII. Çift elle kullanılan aygıtlarda, ölçümler her el için ayrı ayrı yapılacaktır.",
+        text: "33. Çalışanların Titreşimle İlgili Risklerden Korunmalarına Dair Yönetmelik'e göre yukarıdakilerden hangileri el-kol titreşiminin ölçümünde dikkate alınması gereken hususlardandır?\n\nI. Kullanılan yöntemler mekanik titreşime maruz kalan çalışanların kişisel maruziyetini belirleyebilecek nitelikte olacaktır.\nII. Kullanılan cihazlar ve yöntemler, ölçülecek mekanik titreşimin karakteristiğine, çevresel etkilere ve ölçüm aygıtlarının özelliklerine uyumlu olacaktır.\nIII. Çift elle kullanılan aygıtlarda, ölçümler her el için ayrı ayrı yapılacaktır.\nIV. Çift elle kullanılan aygıtlarda maruziyet, her iki eldeki ölçüm değerlerinin ortalaması esas alınarak belirlenecektir.",
         options: ["I ve II", "I, II ve III", "I, III ve IV", "II, III ve IV", "I, II, III ve IV"],
         correct: 1,
         source: "2025-2-C",
