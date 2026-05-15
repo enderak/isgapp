@@ -154,26 +154,27 @@
         window.SoruHavuzu = window.SoruHavuzu || [];
         const LOADED_FILES = new Set();
         const SOURCES_MANIFEST = [
-            { id: "2023-2-C", file: "2023-2-C.js", profile: "isg_c" },
-            { id: "2024-1-C", file: "2024-1-C.js", profile: "isg_c" },
-            { id: "2024-2-C", file: "2024-2-C.js", profile: "isg_c" },
-            { id: "2025-1-A", file: "2025-1-A.js", profile: "isg_a" },
-            { id: "2025-1-B", file: "2025-1-B.js", profile: "isg_b" },
-            { id: "2025-1-C", file: "2025-1-C.js", profile: "isg_c" },
-            { id: "2025-2-C", file: "2025-2-C.js", profile: "isg_c" },
-            { id: "Deneme-2024-1-C", file: "Deneme-2024-1-C.js", profile: "isg_c" },
-            { id: "Deneme-2024-2-C", file: "Deneme-2024-2-C.js", profile: "isg_c" },
-            { id: "Deneme-2025-1-A", file: "Deneme-2025-1-A.js", profile: "isg_a" },
-            { id: "Deneme-2025-1-B", file: "Deneme-2025-1-B.js", profile: "isg_b" },
-            { id: "Deneme-2025-1-C", file: "Deneme-2025-1-C.js", profile: "isg_c" },
-            { id: "Deneme-2025-2-C", file: "Deneme-2025-2-C.js", profile: "isg_c" },
-            { id: "Deneme-2026-Tahmini-C", file: "Deneme-2026-Tahmini-C.js", profile: "isg_c" },
-            { id: "Deneme-2026-Tahmini2-C", file: "Deneme-2026-Tahmini2-C.js", profile: "isg_c" },
-            { id: "Deneme-2026-Tahmini3-C", file: "Deneme-2026-Tahmini3-C.js", profile: "isg_c" },
-            { id: "Deneme-2026-Tahmini4-C", file: "Deneme-2026-Tahmini4-C.js", profile: "isg_c" },
-            { id: "Deneme-2024-Hekim", file: "Deneme-2024-Hekim.js", profile: "hekim" },
-            { id: "2023-Aralık İşyeri Hekimliği", file: "2023-Aralik-Hekim.js", profile: "hekim" },
-            { id: "2024-1 İşyeri Hekimliği", file: "2024-1-Hekim.js", profile: "hekim" }
+            { id: "2023-2-C", file: "cikmis/2023-2-C.js", profile: "isg_c" },
+            { id: "2024-1-C", file: "cikmis/2024-1-C.js", profile: "isg_c" },
+            { id: "2024-2-C", file: "cikmis/2024-2-C.js", profile: "isg_c" },
+            { id: "2025-1-A", file: "cikmis/2025-1-A.js", profile: "isg_a" },
+            { id: "2025-1-B", file: "cikmis/2025-1-B.js", profile: "isg_b" },
+            { id: "2025-1-C", file: "cikmis/2025-1-C.js", profile: "isg_c" },
+            { id: "2025-2-C", file: "cikmis/2025-2-C.js", profile: "isg_c" },
+            { id: "2023-Aralık İşyeri Hekimliği", file: "cikmis/2023-Aralik-Hekim.js", profile: "hekim" },
+            { id: "2024-1 İşyeri Hekimliği", file: "cikmis/2024-1-Hekim.js", profile: "hekim" },
+            { id: "Deneme-2024-1-C", file: "deneme/Deneme-2024-1-C.js", profile: "isg_c" },
+            { id: "Deneme-2024-2-C", file: "deneme/Deneme-2024-2-C.js", profile: "isg_c" },
+            { id: "Deneme-2025-1-A", file: "deneme/Deneme-2025-1-A.js", profile: "isg_a" },
+            { id: "Deneme-2025-1-B", file: "deneme/Deneme-2025-1-B.js", profile: "isg_b" },
+            { id: "Deneme-2025-1-C", file: "deneme/Deneme-2025-1-C.js", profile: "isg_c" },
+            { id: "Deneme-2025-2-C", file: "deneme/Deneme-2025-2-C.js", profile: "isg_c" },
+            { id: "Deneme-2026-Tahmini-C", file: "deneme/Deneme-2026-Tahmini-C.js", profile: "isg_c" },
+            { id: "Deneme-2026-Tahmini2-C", file: "deneme/Deneme-2026-Tahmini2-C.js", profile: "isg_c" },
+            { id: "Deneme-2026-Tahmini3-C", file: "deneme/Deneme-2026-Tahmini3-C.js", profile: "isg_c" },
+            { id: "Deneme-2026-Tahmini4-C", file: "deneme/Deneme-2026-Tahmini4-C.js", profile: "isg_c" },
+            { id: "Deneme-2026-Tahmini5-C", file: "deneme/Deneme-2026-Tahmini5-C.js", profile: "isg_c" },
+            { id: "Deneme-2024-Hekim", file: "deneme/Deneme-2024-Hekim.js", profile: "hekim" }
         ];
 
         // --- HELPER: SAFE LUCIDE ---
@@ -235,6 +236,11 @@
 
         const STANDARD_DISTRIBUTION = { 'Teknik': 20, 'Mevzuat': 15, 'Genel İSG Konuları': 7, 'Sağlık': 5, 'Hukuk': 3 };
         const HEKIM_DISTRIBUTION = { 'Meslek Hastalıkları': 15, 'Mevzuat': 10, 'Toksikoloji': 10, 'Sağlık Gözetimi': 5, 'İş Hijyeni': 5, 'Epidemiyoloji': 5 };
+        
+        const COMMON_CATEGORIES = [
+            "Mevzuat", "Teknik", "Sağlık", "Hukuk", "Genel İSG Konuları", 
+            "Meslek Hastalıkları", "Toksikoloji", "Sağlık Gözetimi", "İş Hijyeni", "Epidemiyoloji"
+        ];
         
         const RANKS = [
             { min: 0, title: "Çırak", icon: "user", color: "gray" },
@@ -539,8 +545,9 @@
                 </div>
             `).join('') || '<div class="text-xs text-slate-400 text-center py-4">Henüz sınav geçmişi yok.</div>';
 
-            const categories = [...new Set(window.SoruHavuzu.map(q => q.category))].sort();
-            let catOpts = categories.map(c => `<option value="${c}">${c}</option>`).join('');
+            const poolCategories = [...new Set(window.SoruHavuzu.map(q => q.category))];
+            const allCategories = [...new Set([...COMMON_CATEGORIES, ...poolCategories])].filter(Boolean).sort();
+            let catOpts = allCategories.map(c => `<option value="${c}">${c}</option>`).join('');
             
             const profileOptions = Object.keys(CONFIG).map(key => 
                 `<option value="${key}" ${activeProfile === key ? 'selected' : ''}>${CONFIG[key].label}</option>`
@@ -819,7 +826,7 @@
             }
 
             if (category !== 'TUMU') {
-                filteredPool = filteredPool.filter(q => q.category === category);
+                filteredPool = filteredPool.filter(q => q.category && q.category.trim() === category.trim());
             }
 
             if (filteredPool.length === 0) { 
