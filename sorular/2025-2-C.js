@@ -315,11 +315,11 @@ window.SoruHavuzu = window.SoruHavuzu.concat([
     },
     {
         category: "Mevzuat",
-        text: "32. Karayolları Trafik Yönetmeliği'ne göre römorksuz bir lastik tekerlekli traktörü kullanan tarım işçisinin aksine bir işaret bulunmadıkça yerleşim yeri içinde uyması gereken azami hız sınırı kaç km/s'tir?",
+        text: "32. Karayolları Trafik Yönetmeliği'ne göre römorksuz bir lastik tekerlekli traktörü kullanan tarım işçisinin aksine bir işaret bulunmadıkça yerleşim yeri içinde uyması gereken azami hız sınırı kaç km/sa'tir?",
         options: ["20", "30", "40", "50", "60"],
         correct: 0,
         source: "2025-2-C",
-        explanation: "Traktörler için yerleşim yerindeki hız sınırı 20 km/s olarak belirlenmiştir.",
+        explanation: "Traktörler için yerleşim yerindeki hız sınırı 20 km/sa olarak belirlenmiştir.",
         profile: "isg_c",
         image: ""
     },
